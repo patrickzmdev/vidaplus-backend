@@ -32,4 +32,15 @@ public abstract class Pessoa {
 
     @Column(nullable = false)
     private String telefone;
+
+    @Column(nullable = false)
+    private String cep;
+
+    private String logradouro;
+
+    private String bairro;
+
+    private String cidade;
+
+    private String uf;
 }
