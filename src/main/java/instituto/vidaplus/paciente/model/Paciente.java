@@ -1,5 +1,7 @@
 package instituto.vidaplus.paciente.model;
 
+import instituto.vidaplus.administrador.model.Administrador;
+import instituto.vidaplus.consulta.model.Consulta;
 import instituto.vidaplus.core.Pessoa;
 import instituto.vidaplus.exame.model.Exame;
 import instituto.vidaplus.historico.model.HistoricoClinico;
@@ -27,9 +29,6 @@ public class Paciente extends Pessoa {
 
     private String planoDeSaudeNome;
 
-    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<HistoricoClinico> historicoClinico;
-
     @Column(nullable = false)
     private Boolean receberNotificacaoEmail = true;
 
@@ -38,6 +37,9 @@ public class Paciente extends Pessoa {
     private String tokenTeleconsulta;
 
     private String tipoSanguineo;
+
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<HistoricoClinico> historicoClinico;
 
     @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PacienteAlergia> alergias = new ArrayList<>();
@@ -50,4 +52,8 @@ public class Paciente extends Pessoa {
 
     @OneToMany(mappedBy = "paciente")
     private List<Consulta> consultas = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "administrador_id", nullable = false)
+    private Administrador administrador;
 }

@@ -1,4 +1,4 @@
-package instituto.vidaplus.prontuario.model;
+package instituto.vidaplus.receita.model;
 
 import instituto.vidaplus.paciente.model.Paciente;
 import instituto.vidaplus.profissional.model.Profissional;
@@ -8,12 +8,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "prontuarios")
-public class Prontuario {
+@Table(name = "receitas")
+public class Receita {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,14 +30,13 @@ public class Prontuario {
     private Profissional profissional;
 
     @Column(nullable = false)
-    private LocalDate dataRegistro;
+    private LocalDate dataEmissao;
 
-    @Column(nullable = false)
-    private String descricao;
+    @Column
+    private LocalDate dataFimValidade;
 
-    private String diagnostico;
-
-    private String tratamentoIndicado;
+    @OneToMany(mappedBy = "receita", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ItemReceita> medicamentos = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "telemedicina_id", nullable = false)

@@ -2,12 +2,15 @@ package instituto.vidaplus.core;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
 
-@Entity
+@MappedSuperclass
+@SuperBuilder
 @Data
-@Inheritance(strategy = InheritanceType.JOINED)
+@NoArgsConstructor
 public abstract class Pessoa {
 
     @Id
