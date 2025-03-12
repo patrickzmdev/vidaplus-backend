@@ -25,7 +25,7 @@ public class HorarioDisponivel {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private DiasDaSemanaEnum diasDaSemana;
+    private DiasDaSemanaEnum diaDaSemana;
 
     @Column(nullable = false)
     private LocalTime horaInicio;

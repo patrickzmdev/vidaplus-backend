@@ -40,9 +40,6 @@ public class Profissional extends Pessoa {
     @Column(nullable = false)
     private Boolean permiteTelemedicina;
 
-    @Column(nullable = false)
-    private String formacaoAcademica;
-
     private String tokenTelemedicina;
 
     @OneToMany(mappedBy = "profissional")

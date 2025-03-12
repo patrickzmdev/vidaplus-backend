@@ -1,5 +1,9 @@
 package instituto.vidaplus.exception;
 
+import instituto.vidaplus.exception.genericas.CPFInvalidoException;
+import instituto.vidaplus.exception.genericas.CepInvalidoException;
+import instituto.vidaplus.exception.genericas.EmailInvalidoException;
+import instituto.vidaplus.exception.genericas.TelefoneInvalidoException;
 import instituto.vidaplus.paciente.exception.PacienteNaoEncontradoException;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
@@ -33,5 +37,30 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(PacienteNaoEncontradoException.class)
     public ResponseEntity<String> handlePacienteNaoEncontradoException(PacienteNaoEncontradoException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(CPFInvalidoException.class)
+    public ResponseEntity<String> handleCPFInvalidoException(CPFInvalidoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(EmailInvalidoException.class)
+    public ResponseEntity<String> handleEmailInvalidoException(EmailInvalidoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(TelefoneInvalidoException.class)
+    public ResponseEntity<String> handleTelefoneInvalidoException(TelefoneInvalidoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(CepInvalidoException.class)
+    public ResponseEntity<String> handleCepInvalidoException(CepInvalidoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }

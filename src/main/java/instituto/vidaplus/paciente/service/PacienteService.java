@@ -9,14 +9,7 @@ import java.util.List;
 
 public interface PacienteService {
     Paciente cadastrarPaciente(Paciente paciente);
-    Long editarPaciente(Long pacienteId, Paciente paciente);
+    String editarPaciente(Long pacienteId, Paciente paciente);
+    Paciente buscarPaciente(Long pacienteId);
     void excluirPaciente(Long pacienteId);
-    Paciente visualizarHistoricoClinico(Long pacienteId);
-    Consulta agendarConsulta(Long pacienteId, Consulta consulta);
-    void cancelarConsulta(Long consultaId);
-    List<Consulta> listarConsultas(Long pacienteId);
-    List<Exame> listarExames(Long pacienteId);
-    List<Prontuario> listarProntuarios(Long pacienteId);
-    void receberNotificacoes(Long pacienteId, String mensagem);
-    void acessarTeleconsulta(Long pacienteId);
 }
