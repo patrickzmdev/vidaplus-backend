@@ -1,9 +1,11 @@
 package instituto.vidaplus.exception;
 
-import instituto.vidaplus.exception.genericas.CPFInvalidoException;
-import instituto.vidaplus.exception.genericas.CepInvalidoException;
-import instituto.vidaplus.exception.genericas.EmailInvalidoException;
-import instituto.vidaplus.exception.genericas.TelefoneInvalidoException;
+import instituto.vidaplus.administrador.exception.AdministradorNaoEncontradoException;
+import instituto.vidaplus.exception.genericas.*;
+import instituto.vidaplus.internacao.exception.InternacaoNaoEncontradaException;
+import instituto.vidaplus.internacao.exception.MotivoInternacaoException;
+import instituto.vidaplus.leito.exception.LeitoNaoExistenteException;
+import instituto.vidaplus.leito.exception.LeitoOcupadoException;
 import instituto.vidaplus.paciente.exception.PacienteNaoEncontradoException;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
@@ -61,6 +63,36 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(CepInvalidoException.class)
     public ResponseEntity<String> handleCepInvalidoException(CepInvalidoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(AdministradorNaoEncontradoException.class)
+    public ResponseEntity<String> handleAdministradorNaoEncontradoException(AdministradorNaoEncontradoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(LeitoNaoExistenteException.class)
+    public ResponseEntity<String> handleLeitoNaoExistenteException(LeitoNaoExistenteException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(LeitoOcupadoException.class)
+    public ResponseEntity<String> handleLeitoOcupadoException(LeitoOcupadoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(MotivoInternacaoException.class)
+    public ResponseEntity<String> handleMotivoInternacaoException(MotivoInternacaoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(InternacaoNaoEncontradaException.class)
+    public ResponseEntity<String> handleInternacaoNaoEncontradaException(InternacaoNaoEncontradaException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(DadoUnicoException.class)
+    public ResponseEntity<String> handleDadoUnicoException(DadoUnicoException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }

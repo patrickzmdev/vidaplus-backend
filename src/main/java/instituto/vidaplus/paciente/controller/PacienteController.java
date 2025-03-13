@@ -1,8 +1,9 @@
 package instituto.vidaplus.paciente.controller;
 
+import instituto.vidaplus.exception.genericas.DadoUnicoException;
+import instituto.vidaplus.paciente.dto.PacienteDTO;
 import instituto.vidaplus.paciente.model.Paciente;
 import instituto.vidaplus.paciente.service.PacienteService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,21 +19,25 @@ public class PacienteController {
     }
 
     @PostMapping
-    public ResponseEntity<Paciente> cadastrarPaciente(@RequestBody Paciente paciente) {
-        Paciente pacienteCadastrado = pacienteService.cadastrarPaciente(paciente);
-        return new ResponseEntity<>(pacienteCadastrado, HttpStatus.OK);
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<?> cadastrarPaciente(@RequestParam Long administradorId, @RequestBody PacienteDTO paciente) {
+        try {
+            PacienteDTO pacienteCadastrado = pacienteService.cadastrarPaciente(administradorId, paciente);
+            return new ResponseEntity<>(pacienteCadastrado, HttpStatus.OK);
+        } catch (DadoUnicoException ex){
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Paciente> editarPaciente(@PathVariable Long id, @RequestBody Paciente paciente) {
-        pacienteService.editarPaciente(id, paciente);
-        Paciente pacienteAtualizado = pacienteService.buscarPaciente(id);
-        return new ResponseEntity<>(pacienteAtualizado, HttpStatus.OK);
+    public ResponseEntity<PacienteDTO> editarPaciente(@PathVariable Long id, @RequestBody PacienteDTO paciente) {
+        PacienteDTO pacienteEditado = pacienteService.editarPaciente(id, paciente);
+        return ResponseEntity.ok(pacienteEditado);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Paciente> excluirPaciente(@PathVariable Long id) {
-        pacienteService.excluirPaciente(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public ResponseEntity<String> excluirPaciente(@PathVariable Long id) {
+        String mensagem = pacienteService.excluirPaciente(id);
+        return ResponseEntity.ok(mensagem);
     }
 }

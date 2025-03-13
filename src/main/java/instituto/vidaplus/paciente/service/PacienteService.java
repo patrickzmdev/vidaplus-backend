@@ -1,15 +1,11 @@
 package instituto.vidaplus.paciente.service;
 
-import instituto.vidaplus.consulta.model.Consulta;
-import instituto.vidaplus.exame.model.Exame;
+import instituto.vidaplus.paciente.dto.PacienteDTO;
 import instituto.vidaplus.paciente.model.Paciente;
-import instituto.vidaplus.prontuario.model.Prontuario;
-
-import java.util.List;
 
 public interface PacienteService {
-    Paciente cadastrarPaciente(Paciente paciente);
-    String editarPaciente(Long pacienteId, Paciente paciente);
+    PacienteDTO cadastrarPaciente(Long administradorId, PacienteDTO paciente);
+    PacienteDTO editarPaciente(Long pacienteId, PacienteDTO paciente);
     Paciente buscarPaciente(Long pacienteId);
-    void excluirPaciente(Long pacienteId);
+    String excluirPaciente(Long pacienteId);
 }
