@@ -19,10 +19,10 @@ public enum AlergiaEnum {
     MARISCOS("Mariscos"),
     POEIRA("Poeira"),
     POLEN("Pólen"),
-    ÁCAROS("Ácaros"),
-    LÁTEX("Látex"),
+    ACAROS("Ácaros"),
+    LATEX("Látex"),
     ABELHAS("Abelhas"),
-    FORMALDEÍDO("Formaldeído"),
+    FORMALDEIDO("Formaldeído"),
     OUTRA("Outra");
 
     private final String descricao;

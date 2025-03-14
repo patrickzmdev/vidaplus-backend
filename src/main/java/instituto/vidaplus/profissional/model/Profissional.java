@@ -27,7 +27,7 @@ import java.util.List;
 @Table(name = "profissionais")
 public class Profissional extends Pessoa {
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String registro;
 
     @Enumerated(EnumType.STRING)

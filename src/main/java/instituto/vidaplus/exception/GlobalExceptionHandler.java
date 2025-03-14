@@ -6,7 +6,11 @@ import instituto.vidaplus.internacao.exception.InternacaoNaoEncontradaException;
 import instituto.vidaplus.internacao.exception.MotivoInternacaoException;
 import instituto.vidaplus.leito.exception.LeitoNaoExistenteException;
 import instituto.vidaplus.leito.exception.LeitoOcupadoException;
+import instituto.vidaplus.paciente.exception.AlergiaJaCadastradaException;
+import instituto.vidaplus.paciente.exception.AlergiaNaoEncontradaException;
 import instituto.vidaplus.paciente.exception.PacienteNaoEncontradoException;
+import instituto.vidaplus.profissional.exception.ProfissionalNaoEncontradoException;
+import instituto.vidaplus.profissional.exception.RegistroProfissionalObrigatorio;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
@@ -94,5 +98,25 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(DadoUnicoException.class)
     public ResponseEntity<String> handleDadoUnicoException(DadoUnicoException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(AlergiaJaCadastradaException.class)
+    public ResponseEntity<String> handleAlergiaJaCadastradaException(AlergiaJaCadastradaException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(AlergiaNaoEncontradaException.class)
+    public ResponseEntity<String> handleAlergiaNaoEncontradaException(AlergiaNaoEncontradaException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(RegistroProfissionalObrigatorio.class)
+    public ResponseEntity<String> handleRegistroProfissionalObrigatorio(RegistroProfissionalObrigatorio ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ProfissionalNaoEncontradoException.class)
+    public ResponseEntity<String> handleProfissionalNaoEncontradoException(ProfissionalNaoEncontradoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 }

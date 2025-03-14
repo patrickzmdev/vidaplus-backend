@@ -40,4 +40,10 @@ public class PacienteController {
         String mensagem = pacienteService.excluirPaciente(id);
         return ResponseEntity.ok(mensagem);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PacienteDTO> buscarPaciente(@PathVariable Long id) {
+        PacienteDTO paciente = pacienteService.buscarPaciente(id);
+        return ResponseEntity.ok(paciente);
+    }
 }

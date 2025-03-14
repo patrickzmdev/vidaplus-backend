@@ -4,6 +4,7 @@ import instituto.vidaplus.core.SexoEnum;
 import instituto.vidaplus.exame.model.Exame;
 import instituto.vidaplus.profissional.enums.EspecialidadeEnum;
 import instituto.vidaplus.profissional.enums.TipoProfissionalEnum;
+import instituto.vidaplus.profissional.model.Profissional;
 import instituto.vidaplus.prontuario.model.Prontuario;
 import instituto.vidaplus.receita.model.Receita;
 import lombok.AllArgsConstructor;
@@ -40,5 +41,29 @@ public class ProfissionalDTO {
     private List<Exame> examesSolicitados = new ArrayList<>();
     private List<Receita> receitasDigitais = new ArrayList<>();
     private Long administradorId;
+
+    public ProfissionalDTO(Profissional profissional) {
+        this.id = profissional.getId();
+        this.nome = profissional.getNome();
+        this.sexo = profissional.getSexo();
+        this.cpf = profissional.getCpf();
+        this.dataNascimento = profissional.getDataNascimento();
+        this.email = profissional.getEmail();
+        this.telefone = profissional.getTelefone();
+        this.cep = profissional.getCep();
+        this.logradouro = profissional.getLogradouro();
+        this.bairro = profissional.getBairro();
+        this.cidade = profissional.getCidade();
+        this.uf = profissional.getUf();
+        this.registro = profissional.getRegistro();
+        this.tipoProfissional = profissional.getTipoProfissional();
+        this.especialidade = profissional.getEspecialidade();
+        this.permiteTelemedicina = profissional.getPermiteTelemedicina();
+        this.tokenTelemedicina = profissional.getTokenTelemedicina();
+        this.prontuarios = profissional.getProntuarios();
+        this.examesSolicitados = profissional.getExamesSolicitados();
+        this.receitasDigitais = profissional.getReceitasDigitais();
+        this.administradorId = profissional.getAdministrador().getId();
+    }
 
 }

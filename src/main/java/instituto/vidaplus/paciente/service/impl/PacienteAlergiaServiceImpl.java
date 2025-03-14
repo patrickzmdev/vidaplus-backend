@@ -1,6 +1,9 @@
 package instituto.vidaplus.paciente.service.impl;
 
+import instituto.vidaplus.paciente.dto.PacienteAlergiaDTO;
 import instituto.vidaplus.paciente.enums.AlergiaEnum;
+import instituto.vidaplus.paciente.exception.AlergiaJaCadastradaException;
+import instituto.vidaplus.paciente.exception.AlergiaNaoEncontradaException;
 import instituto.vidaplus.paciente.exception.PacienteNaoEncontradoException;
 import instituto.vidaplus.paciente.model.Paciente;
 import instituto.vidaplus.paciente.model.PacienteAlergia;
@@ -11,6 +14,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class PacienteAlergiaServiceImpl implements PacienteAlergiaService {
@@ -19,24 +25,47 @@ public class PacienteAlergiaServiceImpl implements PacienteAlergiaService {
     private final PacienteAlergiaRepository pacienteAlergiaRepository;
 
     @Transactional
-    public void adicionarAlergia(Long pacienteId, AlergiaEnum alergia, String observacao) {
+    public PacienteAlergiaDTO adicionarAlergia(Long pacienteId, AlergiaEnum alergia, String observacao) {
         Paciente paciente = pacienteRepository.findById(pacienteId)
                 .orElseThrow(() -> new PacienteNaoEncontradoException("Paciente não encontrado"));
+
+        PacienteAlergia pacienteAlergiaJaCadastrada = pacienteAlergiaRepository.findByPacienteIdAndAlergia(pacienteId, alergia);
+
+        if(pacienteAlergiaJaCadastrada != null) {
+            throw new AlergiaJaCadastradaException("Alergia já cadastrada para o paciente");
+        }
 
         PacienteAlergia pacienteAlergia = new PacienteAlergia();
         pacienteAlergia.setPaciente(paciente);
         pacienteAlergia.setAlergia(alergia);
         pacienteAlergia.setObservacao(observacao);
 
-        pacienteAlergiaRepository.save(pacienteAlergia);
+        PacienteAlergia pacienteSalvo = pacienteAlergiaRepository.save(pacienteAlergia);
+        return new PacienteAlergiaDTO(pacienteSalvo);
     }
 
-    @Transactional
-    public void removerAlergia(Long alergiaId) {
-        pacienteAlergiaRepository.deleteById(alergiaId);
+    public List<PacienteAlergiaDTO> listaAlergiasPaciente(Long pacienteId, PacienteAlergiaDTO pacienteAlergia) {
+        if(!pacienteRepository.existsById(pacienteId)) {
+            throw new PacienteNaoEncontradoException("Paciente não encontrado");
+        }
+
+        List<PacienteAlergia> alergias = pacienteAlergiaRepository.findByPacienteId(pacienteId);
+
+        return alergias.stream().map(PacienteAlergiaDTO::new).collect(Collectors.toList());
     }
 
-    public boolean pacientePossuiAlergias(Long pacienteId) {
-        return pacienteAlergiaRepository.existsByPacienteId(pacienteId);
+    @Override
+    public String excluirAlergia(Long pacienteId, AlergiaEnum alergia) {
+        Paciente paciente = pacienteRepository.findById(pacienteId)
+                .orElseThrow(() -> new PacienteNaoEncontradoException("Paciente não encontrado"));
+
+        PacienteAlergia pacienteAlergia = pacienteAlergiaRepository.findByPacienteIdAndAlergia(pacienteId, alergia);
+
+        if(pacienteAlergia == null) {
+            throw new AlergiaNaoEncontradaException("Alergia não encontrada para o paciente");
+        }
+
+        pacienteAlergiaRepository.delete(pacienteAlergia);
+        return "Alergia excluída com sucesso";
     }
 }

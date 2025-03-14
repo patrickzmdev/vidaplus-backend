@@ -158,9 +158,10 @@ public class PacienteServiceImpl implements PacienteService {
     }
 
     @Override
-    public Paciente buscarPaciente(Long pacienteId) {
-        return pacienteRepository.findById(pacienteId)
+    public PacienteDTO buscarPaciente(Long pacienteId) {
+        Paciente paciente = pacienteRepository.findById(pacienteId)
                 .orElseThrow(() -> new PacienteNaoEncontradoException("Paciente não encontrado"));
+        return new PacienteDTO(paciente);
     }
 
     @Override
