@@ -1,5 +1,6 @@
 package instituto.vidaplus.suprimento.dto;
 
+import instituto.vidaplus.suprimento.model.Suprimento;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,4 +15,12 @@ public class SuprimentoDTO {
     private Integer quantidade;
     private String unidadeMedida;
     private Long administradorId;
+
+    public SuprimentoDTO(Suprimento suprimento) {
+        this.id = suprimento.getId();
+        this.nome = suprimento.getNome();
+        this.quantidade = suprimento.getQuantidade();
+        this.unidadeMedida = suprimento.getUnidadeMedida();
+        this.administradorId = suprimento.getAdministrador().getId();
+    }
 }

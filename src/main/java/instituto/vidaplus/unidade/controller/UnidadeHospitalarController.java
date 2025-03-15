@@ -1,4 +1,4 @@
-package instituto.vidaplus.unidade;
+package instituto.vidaplus.unidade.controller;
 
 import instituto.vidaplus.exception.genericas.DadoUnicoException;
 import instituto.vidaplus.unidade.dto.UnidadeHospitalarDTO;

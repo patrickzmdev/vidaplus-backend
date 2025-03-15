@@ -11,6 +11,8 @@ import instituto.vidaplus.paciente.exception.AlergiaNaoEncontradaException;
 import instituto.vidaplus.paciente.exception.PacienteNaoEncontradoException;
 import instituto.vidaplus.profissional.exception.ProfissionalNaoEncontradoException;
 import instituto.vidaplus.profissional.exception.RegistroProfissionalObrigatorio;
+import instituto.vidaplus.suprimento.exception.QuantidadeSuprimentoException;
+import instituto.vidaplus.suprimento.exception.SuprimentoNaoEncontradoException;
 import instituto.vidaplus.unidade.exception.UnidadeHospitalarNaoEncontradaException;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
@@ -123,6 +125,16 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(UnidadeHospitalarNaoEncontradaException.class)
     public ResponseEntity<String> handleUnidadeHospitalarNaoEncontradaException(UnidadeHospitalarNaoEncontradaException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(QuantidadeSuprimentoException.class)
+    public ResponseEntity<String> handleQuantidadeSuprimentoException(QuantidadeSuprimentoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(SuprimentoNaoEncontradoException.class)
+    public ResponseEntity<String> handleSuprimentoNaoEncontradoException(SuprimentoNaoEncontradoException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 }

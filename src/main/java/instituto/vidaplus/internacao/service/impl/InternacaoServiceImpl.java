@@ -1,9 +1,13 @@
 package instituto.vidaplus.internacao.service.impl;
 
+import instituto.vidaplus.internacao.dto.InternacaoDTO;
+import instituto.vidaplus.internacao.dto.InternacaoSuprimentoDto;
 import instituto.vidaplus.internacao.exception.InternacaoNaoEncontradaException;
 import instituto.vidaplus.internacao.exception.MotivoInternacaoException;
 import instituto.vidaplus.internacao.model.Internacao;
+import instituto.vidaplus.internacao.model.InternacaoSuprimento;
 import instituto.vidaplus.internacao.repository.InternacaoRepository;
+import instituto.vidaplus.internacao.repository.InternacaoSuprimentoRepository;
 import instituto.vidaplus.internacao.service.InternacaoService;
 import instituto.vidaplus.leito.exception.LeitoNaoExistenteException;
 import instituto.vidaplus.leito.exception.LeitoOcupadoException;
@@ -12,8 +16,13 @@ import instituto.vidaplus.leito.repository.LeitoRepository;
 import instituto.vidaplus.paciente.exception.PacienteNaoEncontradoException;
 import instituto.vidaplus.paciente.model.Paciente;
 import instituto.vidaplus.paciente.repository.PacienteRepository;
+import instituto.vidaplus.suprimento.exception.QuantidadeSuprimentoException;
+import instituto.vidaplus.suprimento.exception.SuprimentoNaoEncontradoException;
+import instituto.vidaplus.suprimento.model.Suprimento;
+import instituto.vidaplus.suprimento.repository.SuprimentoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -24,9 +33,11 @@ public class InternacaoServiceImpl implements InternacaoService {
     private final InternacaoRepository internacaoRepository;
     private final PacienteRepository pacienteRepository;
     private final LeitoRepository leitoRepository;
+    private final SuprimentoRepository suprimentoRepository;
+    private final InternacaoSuprimentoRepository internacaoSuprimentoRepository;
 
     @Override
-    public String registrarInternacao(Long pacienteId, Long leitoId, Internacao internacao) {
+    public InternacaoDTO registrarInternacao(Long pacienteId, Long leitoId, Internacao internacao) {
         Paciente paciente = pacienteRepository.findById(pacienteId)
                 .orElseThrow(() -> new PacienteNaoEncontradoException("Paciente não encontrado"));
 
@@ -51,8 +62,8 @@ public class InternacaoServiceImpl implements InternacaoService {
         efetivarInternacao.setAdministrador(internacao.getAdministrador());
         efetivarInternacao.setAtiva(true);
 
-        internacaoRepository.save(efetivarInternacao);
-        return "Internação efetivada com sucesso";
+        Internacao internacaoSalva = internacaoRepository.save(efetivarInternacao);
+        return new InternacaoDTO(internacaoSalva);
     }
 
     @Override
@@ -68,7 +79,7 @@ public class InternacaoServiceImpl implements InternacaoService {
     }
 
     @Override
-    public String transferirPaciente(Long internacaoId, Long leitoId) {
+    public InternacaoDTO transferirPaciente(Long internacaoId, Long leitoId) {
         Internacao internacao = internacaoRepository.findById(internacaoId)
                 .orElseThrow(() -> new InternacaoNaoEncontradaException ("Internação não encontrada"));
 
@@ -87,7 +98,31 @@ public class InternacaoServiceImpl implements InternacaoService {
 
         leitoRepository.save(leitoAntigo);
         leitoRepository.save(novoLeito);
-        internacaoRepository.save(internacao);
-        return "Paciente transferido com sucesso";
+        Internacao internacaoTransferida = internacaoRepository.save(internacao);
+        return new InternacaoDTO(internacaoTransferida);
+    }
+
+    @Override
+    @Transactional
+    public InternacaoSuprimentoDto adicionarSuprimentoAUmaInternacao(Long internacaoId, Long suprimentoId, Integer quantidadeUtilizada) {
+        Internacao internacao = internacaoRepository.findById(internacaoId)
+                .orElseThrow(() -> new InternacaoNaoEncontradaException("Internação não encontrada"));
+
+        Suprimento suprimento = suprimentoRepository.findById(suprimentoId)
+                .orElseThrow(() -> new SuprimentoNaoEncontradoException("Suprimento não encontrado"));
+
+        if(suprimento.getQuantidade() < quantidadeUtilizada){
+            throw new QuantidadeSuprimentoException("Quantidade de suprimento insuficiente");
+        }
+
+        suprimento.setQuantidade(suprimento.getQuantidade() - quantidadeUtilizada);
+        suprimentoRepository.save(suprimento);
+
+        InternacaoSuprimento internacaoSuprimento = new InternacaoSuprimento();
+        internacaoSuprimento.setInternacao(internacao);
+        internacaoSuprimento.setSuprimento(suprimento);
+        internacaoSuprimento.setQuantidadeUtilizada(quantidadeUtilizada);
+        InternacaoSuprimento internacaoSuprimentoSalvo = internacaoSuprimentoRepository.save(internacaoSuprimento);
+        return new InternacaoSuprimentoDto(internacaoSuprimentoSalvo);
     }
 }
