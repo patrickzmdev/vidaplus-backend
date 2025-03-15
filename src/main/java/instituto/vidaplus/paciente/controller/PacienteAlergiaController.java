@@ -3,19 +3,17 @@ package instituto.vidaplus.paciente.controller;
 import instituto.vidaplus.paciente.dto.PacienteAlergiaDTO;
 import instituto.vidaplus.paciente.enums.AlergiaEnum;
 import instituto.vidaplus.paciente.service.PacienteAlergiaService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/pacientesAlergias")
+@RequiredArgsConstructor
 public class PacienteAlergiaController {
 
     private final PacienteAlergiaService pacienteAlergiaService;
-
-    public PacienteAlergiaController(PacienteAlergiaService pacienteAlergiaService) {
-        this.pacienteAlergiaService = pacienteAlergiaService;
-    }
 
     @PostMapping("/{pacienteId}")
     @ResponseStatus(HttpStatus.CREATED)

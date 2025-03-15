@@ -8,6 +8,7 @@ import instituto.vidaplus.endereco.service.CepService;
 import instituto.vidaplus.exception.genericas.DadoUnicoException;
 import instituto.vidaplus.profissional.dto.ProfissionalDTO;
 import instituto.vidaplus.profissional.dto.ProfissionalResumoDTO;
+import instituto.vidaplus.profissional.enums.EspecialidadeEnum;
 import instituto.vidaplus.profissional.exception.ProfissionalNaoEncontradoException;
 import instituto.vidaplus.profissional.exception.RegistroProfissionalObrigatorio;
 import instituto.vidaplus.profissional.model.Profissional;
@@ -181,17 +182,17 @@ public class ProfissionalServiceImpl implements ProfissionalService {
     }
 
     @Override
-    public Page<ProfissionalDTO> buscarProfissionaisPorEspecialidade(String especialidade, Pageable pageable) {
-        return null;
+    public Page<ProfissionalResumoDTO> buscarProfissionaisPorEspecialidade(EspecialidadeEnum especialidade, Pageable pageable) {
+        return profissionalCustomRepository.findProfissionaisByEspecialidade(especialidade, pageable);
     }
 
     @Override
-    public Page<ProfissionalDTO> buscarProfissionaisPorCidade(String cidade, Pageable pageable) {
-        return null;
+    public Page<ProfissionalResumoDTO> buscarProfissionaisPorCidade(String cidade, Pageable pageable) {
+        return profissionalCustomRepository.findProfissionaisByCidadeContaining(cidade, pageable);
     }
 
     @Override
-    public Page<ProfissionalDTO> buscarProfissionaisPorEspecialidadeCidade(String especialidade, String cidade, Pageable pageable) {
-        return null;
+    public Page<ProfissionalResumoDTO> buscarProfissionaisPorEspecialidadeCidade(EspecialidadeEnum especialidade, String cidade, Pageable pageable) {
+        return profissionalCustomRepository.findProfissionaisByEspecialidadeAndCidadeContaining(especialidade, cidade, pageable);
     }
 }

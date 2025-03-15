@@ -11,6 +11,7 @@ import instituto.vidaplus.paciente.exception.AlergiaNaoEncontradaException;
 import instituto.vidaplus.paciente.exception.PacienteNaoEncontradoException;
 import instituto.vidaplus.profissional.exception.ProfissionalNaoEncontradoException;
 import instituto.vidaplus.profissional.exception.RegistroProfissionalObrigatorio;
+import instituto.vidaplus.unidade.exception.UnidadeHospitalarNaoEncontradaException;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
@@ -117,6 +118,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ProfissionalNaoEncontradoException.class)
     public ResponseEntity<String> handleProfissionalNaoEncontradoException(ProfissionalNaoEncontradoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(UnidadeHospitalarNaoEncontradaException.class)
+    public ResponseEntity<String> handleUnidadeHospitalarNaoEncontradaException(UnidadeHospitalarNaoEncontradaException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 }

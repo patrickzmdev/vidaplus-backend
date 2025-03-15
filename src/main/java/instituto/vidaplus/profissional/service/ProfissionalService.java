@@ -2,6 +2,7 @@ package instituto.vidaplus.profissional.service;
 
 import instituto.vidaplus.profissional.dto.ProfissionalDTO;
 import instituto.vidaplus.profissional.dto.ProfissionalResumoDTO;
+import instituto.vidaplus.profissional.enums.EspecialidadeEnum;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -13,7 +14,7 @@ public interface ProfissionalService {
     String excluirProfissional(Long id);
     ProfissionalDTO buscarProfissional(Long id);
     Page<ProfissionalResumoDTO> buscarProfissionaisPorNome(String nome, Pageable pageable);
-    Page<ProfissionalDTO> buscarProfissionaisPorEspecialidade(String especialidade, Pageable pageable);
-    Page<ProfissionalDTO> buscarProfissionaisPorCidade(String cidade, Pageable pageable);
-    Page<ProfissionalDTO> buscarProfissionaisPorEspecialidadeCidade(String especialidade, String cidade, Pageable pageable);
+    Page<ProfissionalResumoDTO> buscarProfissionaisPorEspecialidade(EspecialidadeEnum especialidade, Pageable pageable);
+    Page<ProfissionalResumoDTO> buscarProfissionaisPorCidade(String cidade, Pageable pageable);
+    Page<ProfissionalResumoDTO> buscarProfissionaisPorEspecialidadeCidade(EspecialidadeEnum especialidade, String cidade, Pageable pageable);
 }

@@ -3,7 +3,9 @@ package instituto.vidaplus.profissional.controller;
 import instituto.vidaplus.exception.genericas.DadoUnicoException;
 import instituto.vidaplus.profissional.dto.ProfissionalDTO;
 import instituto.vidaplus.profissional.dto.ProfissionalResumoDTO;
+import instituto.vidaplus.profissional.enums.EspecialidadeEnum;
 import instituto.vidaplus.profissional.service.ProfissionalService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.EntityModel;
@@ -15,15 +17,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/profissionais")
+@RequiredArgsConstructor
 public class ProfissionalController {
 
     private final ProfissionalService profissionalService;
     private final PagedResourcesAssembler<ProfissionalResumoDTO> pagedResourcesAssembler;
-
-    public ProfissionalController(ProfissionalService profissionalService, PagedResourcesAssembler<ProfissionalResumoDTO> pagedResourcesAssembler) {
-        this.profissionalService = profissionalService;
-        this.pagedResourcesAssembler = pagedResourcesAssembler;
-    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -54,11 +52,31 @@ public class ProfissionalController {
         return ResponseEntity.ok(profissional);
     }
 
-    @GetMapping
+    @GetMapping("/nome")
     public ResponseEntity<?> buscarProfissionaisPorNome(@RequestParam String nome, Pageable pageable) {
         Page<ProfissionalResumoDTO> profissionais = profissionalService.buscarProfissionaisPorNome(nome, pageable);
-        PagedModel<EntityModel<ProfissionalResumoDTO>> pagedModel = pagedResourcesAssembler.toModel(profissionais);
 
-        return ResponseEntity.ok(pagedModel);
+        return ResponseEntity.ok(profissionais);
+    }
+
+    @GetMapping("/especialidade")
+    public ResponseEntity<?> buscarProfissionaisPorEspecialidade(@RequestParam EspecialidadeEnum especialidade, Pageable pageable) {
+        Page<ProfissionalResumoDTO> profissionais = profissionalService.buscarProfissionaisPorEspecialidade(especialidade, pageable);
+
+        return ResponseEntity.ok(profissionais);
+    }
+
+    @GetMapping("/cidade")
+    public ResponseEntity<?> buscarProfissionaisPorCidade(@RequestParam String cidade, Pageable pageable) {
+        Page<ProfissionalResumoDTO> profissionais = profissionalService.buscarProfissionaisPorCidade(cidade, pageable);
+
+        return ResponseEntity.ok(profissionais);
+    }
+
+    @GetMapping("/especialidade-cidade")
+    public ResponseEntity<?> buscarProfissionaisPorEspecialidadeCidade(@RequestParam EspecialidadeEnum especialidade, @RequestParam String cidade, Pageable pageable) {
+        Page<ProfissionalResumoDTO> profissionais = profissionalService.buscarProfissionaisPorEspecialidadeCidade(especialidade, cidade, pageable);
+
+        return ResponseEntity.ok(profissionais);
     }
 }

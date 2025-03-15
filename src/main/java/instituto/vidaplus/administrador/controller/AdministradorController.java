@@ -2,18 +2,16 @@ package instituto.vidaplus.administrador.controller;
 
 import instituto.vidaplus.administrador.model.Administrador;
 import instituto.vidaplus.administrador.service.AdministradorService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/administradores")
 public class AdministradorController {
 
     private final AdministradorService administradorService;
-
-    public AdministradorController(AdministradorService administradorService) {
-        this.administradorService = administradorService;
-    }
 
     @PostMapping
     public ResponseEntity<Administrador> cadastrarAdministrador(@RequestBody Administrador administrador) {

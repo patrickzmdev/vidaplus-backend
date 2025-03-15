@@ -15,11 +15,18 @@ public class UnidadeHospitalar {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String nome;
 
     @Column(nullable = false)
-    private String endereco;
+    private String cep;
+
+    private String logradouro;
+
+    private String bairro;
+
+    private String cidade;
+
+    private String uf;
 
     @Column(nullable = false)
     private String telefone;

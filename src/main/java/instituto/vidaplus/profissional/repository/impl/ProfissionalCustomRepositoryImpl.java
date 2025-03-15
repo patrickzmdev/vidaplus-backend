@@ -43,16 +43,63 @@ public class ProfissionalCustomRepositoryImpl implements ProfissionalCustomRepos
 
     @Override
     public Page<ProfissionalResumoDTO> findProfissionaisByEspecialidade(EspecialidadeEnum especialidade, Pageable pageable) {
-        return null;
+        String jqpl = "SELECT NEW instituto.vidaplus.profissional.dto.ProfissionalResumoDTO(" +
+                "p.id, p.nome, p.registro, p.tipoProfissional, p.especialidade, p.permiteTelemedicina, p.cidade, p.uf) " +
+                "FROM Profissional p WHERE p.especialidade = :especialidade";
+
+        TypedQuery<ProfissionalResumoDTO> query = entityManager.createQuery(jqpl, ProfissionalResumoDTO.class)
+                .setParameter("especialidade", especialidade)
+                .setFirstResult((int) pageable.getOffset())
+                .setMaxResults(pageable.getPageSize());
+
+        String countJpql = "SELECT COUNT(p) FROM Profissional p WHERE p.especialidade = :especialidade";
+        Long total = entityManager.createQuery(countJpql, Long.class)
+                .setParameter("especialidade", especialidade)
+                .getSingleResult();
+
+        List<ProfissionalResumoDTO> resultado = query.getResultList();
+        return new PageImpl<>(resultado, pageable, total);
     }
 
     @Override
     public Page<ProfissionalResumoDTO> findProfissionaisByCidadeContaining(String cidade, Pageable pageable) {
-        return null;
+        String jqpl = "SELECT NEW instituto.vidaplus.profissional.dto.ProfissionalResumoDTO(" +
+                "p.id, p.nome, p.registro, p.tipoProfissional, p.especialidade, p.permiteTelemedicina, p.cidade, p.uf) " +
+                "FROM Profissional p WHERE LOWER(p.cidade) LIKE LOWER(CONCAT('%', :cidade, '%'))";
+
+        TypedQuery<ProfissionalResumoDTO> query = entityManager.createQuery(jqpl, ProfissionalResumoDTO.class)
+                .setParameter("cidade", cidade)
+                .setFirstResult((int) pageable.getOffset())
+                .setMaxResults(pageable.getPageSize());
+
+        String countJpql = "SELECT COUNT(p) FROM Profissional p WHERE LOWER(p.cidade) LIKE LOWER(CONCAT('%', :cidade, '%'))";
+        Long total = entityManager.createQuery(countJpql, Long.class)
+                .setParameter("cidade", cidade)
+                .getSingleResult();
+
+        List<ProfissionalResumoDTO> resultado = query.getResultList();
+        return new PageImpl<>(resultado, pageable, total);
     }
 
     @Override
     public Page<ProfissionalResumoDTO> findProfissionaisByEspecialidadeAndCidadeContaining(EspecialidadeEnum especialidade, String cidade, Pageable pageable) {
-        return null;
+        String jqpl = "SELECT NEW instituto.vidaplus.profissional.dto.ProfissionalResumoDTO(" +
+                "p.id, p.nome, p.registro, p.tipoProfissional, p.especialidade, p.permiteTelemedicina, p.cidade, p.uf) " +
+                "FROM Profissional p WHERE p.especialidade = :especialidade AND LOWER(p.cidade) LIKE LOWER(CONCAT('%', :cidade, '%'))";
+
+        TypedQuery<ProfissionalResumoDTO> query = entityManager.createQuery(jqpl, ProfissionalResumoDTO.class)
+                .setParameter("especialidade", especialidade)
+                .setParameter("cidade", cidade)
+                .setFirstResult((int) pageable.getOffset())
+                .setMaxResults(pageable.getPageSize());
+
+        String countJpql = "SELECT COUNT(p) FROM Profissional p WHERE p.especialidade = :especialidade AND LOWER(p.cidade) LIKE LOWER(CONCAT('%', :cidade, '%'))";
+        Long total = entityManager.createQuery(countJpql, Long.class)
+                .setParameter("especialidade", especialidade)
+                .setParameter("cidade", cidade)
+                .getSingleResult();
+
+        List<ProfissionalResumoDTO> resultado = query.getResultList();
+        return new PageImpl<>(resultado, pageable, total);
     }
 }
