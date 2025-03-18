@@ -1,5 +1,7 @@
 package instituto.vidaplus.internacao.service.impl;
 
+import instituto.vidaplus.administrador.model.Administrador;
+import instituto.vidaplus.administrador.repository.AdministradorRepository;
 import instituto.vidaplus.internacao.dto.InternacaoDTO;
 import instituto.vidaplus.internacao.dto.InternacaoSuprimentoDto;
 import instituto.vidaplus.internacao.exception.InternacaoNaoEncontradaException;
@@ -16,10 +18,15 @@ import instituto.vidaplus.leito.repository.LeitoRepository;
 import instituto.vidaplus.paciente.exception.PacienteNaoEncontradoException;
 import instituto.vidaplus.paciente.model.Paciente;
 import instituto.vidaplus.paciente.repository.PacienteRepository;
+import instituto.vidaplus.profissional.exception.ProfissionalNaoEncontradoException;
+import instituto.vidaplus.profissional.model.Profissional;
+import instituto.vidaplus.profissional.repository.ProfissionalRepository;
 import instituto.vidaplus.suprimento.exception.QuantidadeSuprimentoException;
 import instituto.vidaplus.suprimento.exception.SuprimentoNaoEncontradoException;
 import instituto.vidaplus.suprimento.model.Suprimento;
 import instituto.vidaplus.suprimento.repository.SuprimentoRepository;
+import instituto.vidaplus.utils.validador.ValidadorMedico;
+import instituto.vidaplus.utils.validador.ValidadorPacienteNaoInternado;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,14 +42,28 @@ public class InternacaoServiceImpl implements InternacaoService {
     private final LeitoRepository leitoRepository;
     private final SuprimentoRepository suprimentoRepository;
     private final InternacaoSuprimentoRepository internacaoSuprimentoRepository;
+    private final AdministradorRepository administradorRepository;
+    private final ProfissionalRepository profissionalRepository;
+    private final ValidadorMedico validadorMedico;
+    private final ValidadorPacienteNaoInternado validadorPacienteNaoInternado;
 
     @Override
-    public InternacaoDTO registrarInternacao(Long pacienteId, Long leitoId, Internacao internacao) {
+    @Transactional
+    public InternacaoDTO registrarInternacao(Long administradorId, Long pacienteId, Long leitoId, InternacaoDTO internacao) {
         Paciente paciente = pacienteRepository.findById(pacienteId)
                 .orElseThrow(() -> new PacienteNaoEncontradoException("Paciente não encontrado"));
 
         Leito leito = leitoRepository.findById(leitoId)
                 .orElseThrow(() -> new LeitoNaoExistenteException("Leito não encontrado"));
+
+        Administrador administrador = administradorRepository.findById(administradorId)
+                .orElseThrow(() -> new RuntimeException("Administrador não encontrado"));
+
+        Profissional profissional = profissionalRepository.findById(internacao.getMedicoResponsavelId())
+                .orElseThrow(() -> new ProfissionalNaoEncontradoException("Profissional não encontrado"));
+
+        validadorMedico.validarMedico(internacao.getMedicoResponsavelId());
+        validadorPacienteNaoInternado.validarPacienteNaoInternado(pacienteId);
 
         if (leito.getOcupado()) {
             throw new LeitoOcupadoException("Leito já está ocupado");
@@ -52,14 +73,16 @@ public class InternacaoServiceImpl implements InternacaoService {
             throw new MotivoInternacaoException("Motivo da internação é obrigatório");
         }
 
+        leito.setOcupado(true);
+
         Internacao efetivarInternacao = new Internacao();
         efetivarInternacao.setPaciente(paciente);
         efetivarInternacao.setLeito(leito);
         efetivarInternacao.setDataAdmissao(LocalDateTime.now());
         efetivarInternacao.setMotivoInternacao(internacao.getMotivoInternacao());
         efetivarInternacao.setObservacoes(internacao.getObservacoes());
-        efetivarInternacao.setMedicoResponsavel(internacao.getMedicoResponsavel());
-        efetivarInternacao.setAdministrador(internacao.getAdministrador());
+        efetivarInternacao.setMedicoResponsavel(profissional);
+        efetivarInternacao.setAdministrador(administrador);
         efetivarInternacao.setAtiva(true);
 
         Internacao internacaoSalva = internacaoRepository.save(efetivarInternacao);
@@ -79,6 +102,7 @@ public class InternacaoServiceImpl implements InternacaoService {
     }
 
     @Override
+    @Transactional
     public InternacaoDTO transferirPaciente(Long internacaoId, Long leitoId) {
         Internacao internacao = internacaoRepository.findById(internacaoId)
                 .orElseThrow(() -> new InternacaoNaoEncontradaException ("Internação não encontrada"));
@@ -88,6 +112,10 @@ public class InternacaoServiceImpl implements InternacaoService {
 
         if (novoLeito.getOcupado()) {
             throw new LeitoOcupadoException("Leito já está ocupado");
+        }
+
+        if (!internacao.getAtiva()) {
+            throw new MotivoInternacaoException("Internação não está ativa");
         }
 
         Leito leitoAntigo = internacao.getLeito();

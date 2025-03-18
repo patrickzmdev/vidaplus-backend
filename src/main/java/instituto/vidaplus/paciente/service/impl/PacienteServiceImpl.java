@@ -86,14 +86,15 @@ public class PacienteServiceImpl implements PacienteService {
             Paciente pacienteSalvo = pacienteRepository.save(paciente);
             return new PacienteDTO(pacienteSalvo);
         }catch (DataIntegrityViolationException ex) {
-            if (ex.getMessage().contains("cpf")) {
-                throw new DadoUnicoException("CPF já cadastrado");
-            } else if (ex.getMessage().contains("email")) {
+            String errorMessage = ex.getMostSpecificCause().getMessage();
+            if (errorMessage.contains("email")) {
                 throw new DadoUnicoException("Email já cadastrado");
-            } else if (ex.getMessage().contains("telefone")) {
+            } else if (errorMessage.contains("cpf")) {
+                throw new DadoUnicoException("CPF já cadastrado");
+            } else if (errorMessage.contains("telefone")) {
                 throw new DadoUnicoException("Telefone já cadastrado");
             } else {
-                throw new RuntimeException("Erro ao cadastrar paciente: " + ex.getMessage());
+                throw new RuntimeException("Erro ao cadastrar paciente: " + errorMessage);
             }
         }
     }

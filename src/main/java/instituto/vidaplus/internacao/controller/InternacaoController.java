@@ -16,10 +16,10 @@ public class InternacaoController {
 
     private final InternacaoService internacaoService;
 
-    @PostMapping
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<InternacaoDTO> registrarInternacao(@RequestParam Long pacienteId, @RequestParam Long leitoId, @RequestBody Internacao internacao) {
-        InternacaoDTO internacaoRegistrada = internacaoService.registrarInternacao(pacienteId, leitoId, internacao);
+    public ResponseEntity<InternacaoDTO> registrarInternacao(@RequestParam Long administradorId, @RequestParam Long pacienteId, @RequestParam Long leitoId, @RequestBody InternacaoDTO internacao) {
+        InternacaoDTO internacaoRegistrada = internacaoService.registrarInternacao(administradorId,pacienteId, leitoId, internacao);
         return ResponseEntity.ok(internacaoRegistrada);
     }
 
@@ -36,10 +36,8 @@ public class InternacaoController {
     }
 
     @PostMapping("/suprimento/{internacaoId}")
-    public ResponseEntity<InternacaoSuprimentoDto> adicionarSuprimentoAUmaInternacao(@PathVariable Long internacaoId,@RequestParam Long suprimentoId, @RequestBody Integer quantidade) {
-        InternacaoSuprimentoDto internacaoSuprimento = internacaoService.adicionarSuprimentoAUmaInternacao(internacaoId, suprimentoId, quantidade);
+    public ResponseEntity<InternacaoSuprimentoDto> adicionarSuprimentoAUmaInternacao(@PathVariable Long internacaoId,@RequestParam Long suprimentoId, @RequestParam Integer quantidadeUtilizada) {
+        InternacaoSuprimentoDto internacaoSuprimento = internacaoService.adicionarSuprimentoAUmaInternacao(internacaoId, suprimentoId, quantidadeUtilizada);
         return ResponseEntity.ok(internacaoSuprimento);
     }
-
-
 }

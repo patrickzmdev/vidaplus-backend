@@ -24,10 +24,6 @@ public class Leito {
     private Boolean ocupado = false;
 
     @ManyToOne
-    @JoinColumn(name = "paciente_id")
-    private Paciente paciente;
-
-    @ManyToOne
     @JoinColumn(name = "unidade_hospitalar_id", nullable = false)
     private UnidadeHospitalar unidadeHospitalar;
 

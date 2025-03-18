@@ -4,11 +4,14 @@ import instituto.vidaplus.administrador.exception.AdministradorNaoEncontradoExce
 import instituto.vidaplus.exception.genericas.*;
 import instituto.vidaplus.internacao.exception.InternacaoNaoEncontradaException;
 import instituto.vidaplus.internacao.exception.MotivoInternacaoException;
+import instituto.vidaplus.leito.exception.LeitoJaCadastradoException;
 import instituto.vidaplus.leito.exception.LeitoNaoExistenteException;
 import instituto.vidaplus.leito.exception.LeitoOcupadoException;
 import instituto.vidaplus.paciente.exception.AlergiaJaCadastradaException;
 import instituto.vidaplus.paciente.exception.AlergiaNaoEncontradaException;
+import instituto.vidaplus.paciente.exception.PacienteJaInternadoException;
 import instituto.vidaplus.paciente.exception.PacienteNaoEncontradoException;
+import instituto.vidaplus.profissional.exception.ProfissionalNaoEMedicoException;
 import instituto.vidaplus.profissional.exception.ProfissionalNaoEncontradoException;
 import instituto.vidaplus.profissional.exception.RegistroProfissionalObrigatorio;
 import instituto.vidaplus.suprimento.exception.QuantidadeSuprimentoException;
@@ -136,5 +139,20 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(SuprimentoNaoEncontradoException.class)
     public ResponseEntity<String> handleSuprimentoNaoEncontradoException(SuprimentoNaoEncontradoException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(LeitoJaCadastradoException.class)
+    public ResponseEntity<String> handleLeitoJaCadastradoException(LeitoJaCadastradoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ProfissionalNaoEMedicoException.class)
+    public ResponseEntity<String> handleProfissionalNaoEMedicoException(ProfissionalNaoEMedicoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(PacienteJaInternadoException.class)
+    public ResponseEntity<String> handlePacienteJaInternadoException(PacienteJaInternadoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }
