@@ -1,5 +1,6 @@
 package instituto.vidaplus.receita.dto;
 
+import instituto.vidaplus.receita.model.ItemReceita;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,4 +14,11 @@ public class ItemReceitaDTO {
     private Long receitaId;
     private String nome;
     private Boolean controlado;
+
+    public ItemReceitaDTO(ItemReceita itemReceita) {
+        this.id = itemReceita.getId();
+        this.receitaId = itemReceita.getReceita().getId();
+        this.nome = itemReceita.getNome();
+        this.controlado = itemReceita.getControlado();
+    }
 }

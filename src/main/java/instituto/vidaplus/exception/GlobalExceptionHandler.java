@@ -1,8 +1,10 @@
 package instituto.vidaplus.exception;
 
 import instituto.vidaplus.administrador.exception.AdministradorNaoEncontradoException;
+import instituto.vidaplus.agenda.exception.AgendaNaoEncontradaException;
 import instituto.vidaplus.exame.exception.ExameNaoEncontradoException;
 import instituto.vidaplus.exception.genericas.*;
+import instituto.vidaplus.horario.exception.HorarioNaoEncontradoException;
 import instituto.vidaplus.internacao.exception.InternacaoNaoEncontradaException;
 import instituto.vidaplus.internacao.exception.MotivoInternacaoException;
 import instituto.vidaplus.leito.exception.LeitoJaCadastradoException;
@@ -165,5 +167,15 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(DataInvalidaException.class)
     public ResponseEntity<String> handleDataInvalidaException(DataInvalidaException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(AgendaNaoEncontradaException.class)
+    public ResponseEntity<String> handleAgendaNaoEncontradaException(AgendaNaoEncontradaException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(HorarioNaoEncontradoException.class)
+    public ResponseEntity<String> handleHorarioNaoEncontradoException(HorarioNaoEncontradoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 }

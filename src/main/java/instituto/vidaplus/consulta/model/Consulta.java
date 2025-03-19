@@ -4,12 +4,16 @@ import instituto.vidaplus.agenda.model.Agenda;
 import instituto.vidaplus.consulta.enums.StatusConsultaEnum;
 import instituto.vidaplus.paciente.model.Paciente;
 import instituto.vidaplus.profissional.model.Profissional;
+import instituto.vidaplus.prontuario.model.Prontuario;
+import instituto.vidaplus.receita.model.Receita;
 import instituto.vidaplus.telemedicina.model.Telemedicina;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -36,14 +40,17 @@ public class Consulta {
     @OneToOne(mappedBy = "consulta", cascade = CascadeType.ALL, orphanRemoval = true)
     private Telemedicina telemedicina;
 
+    @OneToMany(mappedBy = "consulta", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Receita> receitas = new ArrayList<>();
+
+    @OneToMany(mappedBy = "consulta", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Prontuario> prontuarios = new ArrayList<>();
+
     @Column(nullable = false)
     private LocalDateTime dataHoraInicio;
 
     @Column(nullable = false)
     private LocalDateTime dataHoraFim;
-
-    @Column(nullable = false)
-    private Boolean isTelemedicina;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

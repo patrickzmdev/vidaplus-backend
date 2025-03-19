@@ -24,12 +24,6 @@ public class Telemedicina {
     @JoinColumn(name = "consulta_id", nullable = false)
     private Consulta consulta;
 
-    @OneToMany(mappedBy = "telemedicina", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Receita> receitas = new ArrayList<>();
-
-    @OneToMany(mappedBy = "telemedicina", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Prontuario> prontuarios = new ArrayList<>();
-
     @Column(nullable = false)
     private String linkVideoChamada;
 

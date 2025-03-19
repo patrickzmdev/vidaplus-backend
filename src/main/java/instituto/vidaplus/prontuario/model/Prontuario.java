@@ -1,5 +1,6 @@
 package instituto.vidaplus.prontuario.model;
 
+import instituto.vidaplus.consulta.model.Consulta;
 import instituto.vidaplus.paciente.model.Paciente;
 import instituto.vidaplus.profissional.model.Profissional;
 import instituto.vidaplus.telemedicina.model.Telemedicina;
@@ -27,6 +28,10 @@ public class Prontuario {
     @JoinColumn(name = "profissional_id", nullable = false)
     private Profissional profissional;
 
+    @ManyToOne
+    @JoinColumn(name = "consulta_id", nullable = false)
+    private Consulta consulta;
+
     @Column(nullable = false)
     private LocalDate dataRegistro;
 
@@ -36,8 +41,4 @@ public class Prontuario {
     private String diagnostico;
 
     private String tratamentoIndicado;
-
-    @ManyToOne
-    @JoinColumn(name = "telemedicina_id", nullable = false)
-    private Telemedicina telemedicina;
 }

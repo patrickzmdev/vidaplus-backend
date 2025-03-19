@@ -1,5 +1,6 @@
 package instituto.vidaplus.receita.model;
 
+import instituto.vidaplus.consulta.model.Consulta;
 import instituto.vidaplus.paciente.model.Paciente;
 import instituto.vidaplus.profissional.model.Profissional;
 import instituto.vidaplus.telemedicina.model.Telemedicina;
@@ -29,6 +30,10 @@ public class Receita {
     @JoinColumn(name = "profissional_id", nullable = false)
     private Profissional profissional;
 
+    @ManyToOne
+    @JoinColumn(name = "consulta_id", nullable = false)
+    private Consulta consulta;
+
     @Column(nullable = false)
     private LocalDate dataEmissao;
 
@@ -37,8 +42,4 @@ public class Receita {
 
     @OneToMany(mappedBy = "receita", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemReceita> medicamentos = new ArrayList<>();
-
-    @ManyToOne
-    @JoinColumn(name = "telemedicina_id", nullable = false)
-    private Telemedicina telemedicina;
 }

@@ -1,14 +1,12 @@
 package instituto.vidaplus.consulta.dto;
 
 import instituto.vidaplus.consulta.enums.StatusConsultaEnum;
-import instituto.vidaplus.telemedicina.model.Telemedicina;
+import instituto.vidaplus.consulta.model.Consulta;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -19,11 +17,26 @@ public class ConsultaDTO {
     private Long pacienteId;
     private Long profissionalId;
     private Long agendaId;
-    private List<Telemedicina> listaTelemedicinas = new ArrayList<>();
+    private Long telemedicinaId;
+    private String linkVideoChamada;
     private LocalDateTime dataHoraInicio;
     private LocalDateTime dataHoraFim;
-    private Boolean isTelemedicina;
     private StatusConsultaEnum status;
     private String motivoConsulta;
 
+    public ConsultaDTO(Consulta consulta) {
+        this.id = consulta.getId();
+        this.pacienteId = consulta.getPaciente().getId();
+        this.profissionalId = consulta.getProfissional().getId();
+        this.agendaId = consulta.getAgenda().getId();
+        this.dataHoraInicio = consulta.getDataHoraInicio();
+        this.dataHoraFim = consulta.getDataHoraFim();
+        this.status = consulta.getStatus();
+        this.motivoConsulta = consulta.getMotivoConsulta();
+
+        if (consulta.getTelemedicina() != null) {
+            this.telemedicinaId = consulta.getTelemedicina().getId();
+            this.linkVideoChamada = consulta.getTelemedicina().getLinkVideoChamada();
+        }
+    }
 }
