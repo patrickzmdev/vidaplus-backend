@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @RestController
@@ -68,4 +70,16 @@ public class HorarioDisponivelController {
     public String marcarHorarioComoDisponivel(@PathVariable Long id) {
         return horarioDisponivelService.marcarHorarioComoDisponivel(id);
     }
+
+    @GetMapping("/agenda/{agendaId}/disponibilidade")
+    public Boolean verificarDisponibilidadeDeHorario(@PathVariable Long agendaId, @RequestParam LocalDate data, @RequestParam LocalTime horaInicio, @RequestParam LocalTime horaFim) {
+        return horarioDisponivelService.verificarDisponibilidadeDeHorario(agendaId, data, horaInicio, horaFim);
+    }
+
+    @GetMapping("/agenda/{agendaId}/disponiveis/data")
+    public ResponseEntity<List<HorarioDisponivelDTO>> listarHorariosDisponiveisPorData(@PathVariable Long agendaId, @RequestParam LocalDate data) {
+        List<HorarioDisponivelDTO> horariosDisponiveisPorData = horarioDisponivelService.listarHorariosDisponiveisPorData(agendaId, data);
+        return ResponseEntity.ok(horariosDisponiveisPorData);
+    }
+
 }

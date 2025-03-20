@@ -33,10 +33,5 @@ public class ConsultaDTO {
         this.dataHoraFim = consulta.getDataHoraFim();
         this.status = consulta.getStatus();
         this.motivoConsulta = consulta.getMotivoConsulta();
-
-        if (consulta.getTelemedicina() != null) {
-            this.telemedicinaId = consulta.getTelemedicina().getId();
-            this.linkVideoChamada = consulta.getTelemedicina().getLinkVideoChamada();
-        }
     }
 }

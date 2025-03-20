@@ -8,7 +8,8 @@ public enum StatusConsultaEnum {
     CONFIRMADA("Confirmada"),
     CANCELADA("Cancelada"),
     CONCLUIDA("Concluída"),
-    NAO_COMPARECEU("Não compareceu");
+    NAO_COMPARECEU("Não compareceu"),
+    EM_ANDAMENTO("Em andamento");
 
     private final String descricao;
 

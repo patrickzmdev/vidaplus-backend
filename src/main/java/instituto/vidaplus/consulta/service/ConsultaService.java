@@ -12,10 +12,6 @@ public interface ConsultaService {
     Page<ConsultaDTO> listarConsultas(Pageable pageable);
     ConsultaDTO atualizarConsulta(Long id, ConsultaDTO consultaDTO);
     String deletarConsulta(Long id);
-    ConsultaDTO converterParaTelemedicina(Long consultaId, String linkVideoChamada);
-    ConsultaDTO removerTelemedicina(Long consultaId);
-    ConsultaDTO atualizarLinkTelemedicina(Long consultaId, String novoLink);
-    Boolean isConsultaTelemedicina(Long consultaId);
-    List<ConsultaDTO> buscarConsultasPorPaciente(Long pacienteId);
-    List<ConsultaDTO> buscarConsultasPorProfissional(Long profissionalId);
+    Page<ConsultaDTO> buscarConsultasPorPaciente(Long pacienteId, Pageable pageable);
+    Page<ConsultaDTO> buscarConsultasPorProfissional(Long profissionalId, Pageable pageable);
 }

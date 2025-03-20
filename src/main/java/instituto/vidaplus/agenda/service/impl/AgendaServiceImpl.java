@@ -1,86 +1,102 @@
 package instituto.vidaplus.agenda.service.impl;
 
 import instituto.vidaplus.agenda.dto.AgendaDTO;
+import instituto.vidaplus.agenda.exception.AgendaNaoEncontradaException;
+import instituto.vidaplus.agenda.model.Agenda;
 import instituto.vidaplus.agenda.repository.AgendaRepository;
 import instituto.vidaplus.agenda.service.AgendaService;
-import instituto.vidaplus.horario.dto.HorarioDisponivelDTO;
+import instituto.vidaplus.profissional.exception.ProfissionalNaoEncontradoException;
+import instituto.vidaplus.profissional.model.Profissional;
+import instituto.vidaplus.profissional.repository.ProfissionalRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
 public class AgendaServiceImpl implements AgendaService {
 
     private final AgendaRepository agendaRepository;
+    private final ProfissionalRepository profissionalRepository;
 
     @Override
+    @Transactional
     public AgendaDTO criarAgenda(AgendaDTO agendaDTO) {
-        return null;
+        Agenda agenda = new Agenda();
+        Profissional profissional = profissionalRepository.findById(agenda.getProfissional().getId())
+                .orElseThrow(() -> new ProfissionalNaoEncontradoException("Profissional não encontrado"));
+
+        agenda.setProfissional(profissional);
+        agenda.setAtivo(true);
+        Agenda agendaSalva = agendaRepository.save(agenda);
+
+        return new AgendaDTO(agendaSalva);
     }
 
     @Override
     public AgendaDTO buscarAgendaPorId(Long id) {
-        return null;
+        Agenda agenda = agendaRepository.findById(id)
+                .orElseThrow(() -> new AgendaNaoEncontradaException("Agenda não encontrada"));
+        return new AgendaDTO(agenda);
     }
 
     @Override
     public Page<AgendaDTO> listarAgendas(Pageable pageable) {
-        return null;
+        return agendaRepository.findAll(pageable).map(AgendaDTO::new);
     }
 
     @Override
     public AgendaDTO atualizarAgenda(Long id, AgendaDTO agendaDTO) {
-        return null;
+        Agenda agenda = agendaRepository.findById(id)
+                .orElseThrow(() -> new AgendaNaoEncontradaException("Agenda não encontrada"));
+
+        if(agendaDTO.getProfissionalId() != null) {
+            Profissional profissional = profissionalRepository.findById(agendaDTO.getProfissionalId())
+                    .orElseThrow(() -> new ProfissionalNaoEncontradoException("Profissional não encontrado"));
+            agenda.setProfissional(profissional);
+        }
+
+        if(agendaDTO.getAtivo() != null) {
+            agenda.setAtivo(agendaDTO.getAtivo());
+        }
+
+        return new AgendaDTO(agendaRepository.save(agenda));
     }
 
     @Override
+    @Transactional
     public String deletarAgenda(Long id) {
-        return "";
+        Agenda agenda = agendaRepository.findById(id)
+                .orElseThrow(() -> new AgendaNaoEncontradaException("Agenda não encontrada"));
+
+        agendaRepository.delete(agenda);
+        return "Agenda deletada com sucesso";
     }
 
     @Override
     public AgendaDTO buscarAgendaPorProfissional(Long profissionalId) {
-        return null;
+        Agenda agenda = agendaRepository.findByProfissionalId(profissionalId)
+                .orElseThrow(() -> new AgendaNaoEncontradaException("Agenda não encontrada"));
+        return new AgendaDTO(agenda);
     }
 
     @Override
+    @Transactional
     public AgendaDTO ativarAgenda(Long id) {
-        return null;
+        Agenda agenda = agendaRepository.findById(id)
+                .orElseThrow(() -> new AgendaNaoEncontradaException("Agenda não encontrada"));
+        agenda.setAtivo(true);
+        return new AgendaDTO(agendaRepository.save(agenda));
     }
 
     @Override
+    @Transactional
     public AgendaDTO desativarAgenda(Long id) {
-        return null;
-    }
-
-    @Override
-    public AgendaDTO adicionarHorarioDisponivel(Long agendaId, HorarioDisponivelDTO horarioDTO) {
-        return null;
-    }
-
-    @Override
-    public AgendaDTO removerHorarioDisponivel(Long agendaId, Long horarioId) {
-        return null;
-    }
-
-    @Override
-    public List<HorarioDisponivelDTO> listarHorariosDisponiveisPorAgenda(Long agendaId) {
-        return List.of();
-    }
-
-    @Override
-    public Boolean verificarDisponibilidadeHorario(Long agendaId, LocalDate data, LocalTime horaInicio, LocalTime horaFim) {
-        return null;
-    }
-
-    @Override
-    public List<HorarioDisponivelDTO> buscarHorariosDisponiveisPorData(Long agendaId, LocalDate data) {
-        return List.of();
+        Agenda agenda = agendaRepository.findById(id)
+                .orElseThrow(() -> new AgendaNaoEncontradaException("Agenda não encontrada"));
+        agenda.setAtivo(false);
+        return new AgendaDTO(agendaRepository.save(agenda));
     }
 }

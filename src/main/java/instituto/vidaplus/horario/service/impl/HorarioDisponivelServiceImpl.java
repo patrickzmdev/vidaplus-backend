@@ -3,7 +3,9 @@ package instituto.vidaplus.horario.service.impl;
 import instituto.vidaplus.agenda.exception.AgendaNaoEncontradaException;
 import instituto.vidaplus.agenda.model.Agenda;
 import instituto.vidaplus.agenda.repository.AgendaRepository;
+import instituto.vidaplus.exception.genericas.DataInvalidaException;
 import instituto.vidaplus.horario.dto.HorarioDisponivelDTO;
+import instituto.vidaplus.horario.enums.DiasDaSemanaEnum;
 import instituto.vidaplus.horario.exception.HorarioNaoEncontradoException;
 import instituto.vidaplus.horario.model.HorarioDisponivel;
 import instituto.vidaplus.horario.repository.HorarioDisponivelRepository;
@@ -14,6 +16,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +29,7 @@ public class HorarioDisponivelServiceImpl implements HorarioDisponivelService {
     private AgendaRepository agendaRepository;
 
     @Override
+    @Transactional
     public HorarioDisponivelDTO criarHorarioDisponivel(HorarioDisponivelDTO horarioDisponivelDTO) {
         Agenda agenda = agendaRepository.findById(horarioDisponivelDTO.getAgendaId())
                 .orElseThrow(() -> new AgendaNaoEncontradaException("Agenda não encontrada"));
@@ -134,5 +139,42 @@ public class HorarioDisponivelServiceImpl implements HorarioDisponivelService {
         horario.setDisponivel(true);
         horarioDisponivelRepository.save(horario);
         return "Horário marcado como disponível";
+    }
+
+    @Override
+    public Boolean verificarDisponibilidadeDeHorario(Long agendaId, LocalDate data, LocalTime horaInicio, LocalTime horaFim) {
+        Agenda agenda = agendaRepository.findById(agendaId)
+                .orElseThrow(() -> new AgendaNaoEncontradaException("Agenda não encontrada"));
+
+        DiasDaSemanaEnum diaDaSemana = buscarDiaDaSemanaPorValor(data.getDayOfWeek().getValue());
+        List<HorarioDisponivel> horarios = horarioDisponivelRepository.findByAgendaIdAndDiaDaSemanaAndDisponivelTrue(agendaId, diaDaSemana);
+
+        for(HorarioDisponivel horario : horarios){
+            if(horario.getHoraInicio().isBefore(horaFim) && horario.getHoraFim().isAfter(horaInicio)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public List<HorarioDisponivelDTO> listarHorariosDisponiveisPorData(Long agendaId, LocalDate data) {
+        Agenda agenda = agendaRepository.findById(agendaId)
+                .orElseThrow(() -> new AgendaNaoEncontradaException("Agenda não encontrada"));
+
+        DiasDaSemanaEnum diaDaSemana = buscarDiaDaSemanaPorValor(data.getDayOfWeek().getValue());
+
+        List<HorarioDisponivel> horariosDisponiveis = horarioDisponivelRepository.findByAgendaIdAndDiaDaSemanaAndDisponivelTrue(agendaId, diaDaSemana);
+
+        return horariosDisponiveis.stream().map(HorarioDisponivelDTO::new).collect(Collectors.toList());
+    }
+
+    private DiasDaSemanaEnum buscarDiaDaSemanaPorValor(int valor){
+        for(DiasDaSemanaEnum dia : DiasDaSemanaEnum.values()){
+            if(dia.getValor().equals(valor)){
+                return dia;
+            }
+        }
+        throw new DataInvalidaException("Dia da semana inválido");
     }
 }

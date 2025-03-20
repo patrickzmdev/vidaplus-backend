@@ -1,14 +1,9 @@
 package instituto.vidaplus.telemedicina.model;
 
 import instituto.vidaplus.consulta.model.Consulta;
-import instituto.vidaplus.prontuario.model.Prontuario;
-import instituto.vidaplus.receita.model.Receita;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Data

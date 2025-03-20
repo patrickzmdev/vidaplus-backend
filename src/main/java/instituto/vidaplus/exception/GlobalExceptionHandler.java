@@ -2,6 +2,7 @@ package instituto.vidaplus.exception;
 
 import instituto.vidaplus.administrador.exception.AdministradorNaoEncontradoException;
 import instituto.vidaplus.agenda.exception.AgendaNaoEncontradaException;
+import instituto.vidaplus.consulta.exception.ConsultaNaoEncontradaException;
 import instituto.vidaplus.exame.exception.ExameNaoEncontradoException;
 import instituto.vidaplus.exception.genericas.*;
 import instituto.vidaplus.horario.exception.HorarioNaoEncontradoException;
@@ -19,6 +20,8 @@ import instituto.vidaplus.profissional.exception.ProfissionalNaoEncontradoExcept
 import instituto.vidaplus.profissional.exception.RegistroProfissionalObrigatorio;
 import instituto.vidaplus.suprimento.exception.QuantidadeSuprimentoException;
 import instituto.vidaplus.suprimento.exception.SuprimentoNaoEncontradoException;
+import instituto.vidaplus.telemedicina.exception.TelemedicinaJaCadastradaException;
+import instituto.vidaplus.telemedicina.exception.TelemedicinaNaoEncontradaException;
 import instituto.vidaplus.unidade.exception.UnidadeHospitalarNaoEncontradaException;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
@@ -176,6 +179,21 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(HorarioNaoEncontradoException.class)
     public ResponseEntity<String> handleHorarioNaoEncontradoException(HorarioNaoEncontradoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ConsultaNaoEncontradaException.class)
+    public ResponseEntity<String> handleConsultaNaoEncontradaException(ConsultaNaoEncontradaException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(TelemedicinaJaCadastradaException.class)
+    public ResponseEntity<String> handleTelemedicinaJaCadastradaException(TelemedicinaJaCadastradaException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(TelemedicinaNaoEncontradaException.class)
+    public ResponseEntity<String> handleTelemedicinaNaoEncontradaException(TelemedicinaNaoEncontradaException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 }

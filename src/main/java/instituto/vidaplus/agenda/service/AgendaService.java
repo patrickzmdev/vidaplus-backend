@@ -18,9 +18,4 @@ public interface AgendaService {
     AgendaDTO buscarAgendaPorProfissional(Long profissionalId);
     AgendaDTO ativarAgenda(Long id);
     AgendaDTO desativarAgenda(Long id);
-    AgendaDTO adicionarHorarioDisponivel(Long agendaId, HorarioDisponivelDTO horarioDTO);
-    AgendaDTO removerHorarioDisponivel(Long agendaId, Long horarioId);
-    List<HorarioDisponivelDTO> listarHorariosDisponiveisPorAgenda(Long agendaId);
-    Boolean verificarDisponibilidadeHorario(Long agendaId, LocalDate data, LocalTime horaInicio, LocalTime horaFim);
-    List<HorarioDisponivelDTO> buscarHorariosDisponiveisPorData(Long agendaId, LocalDate data);
 }
