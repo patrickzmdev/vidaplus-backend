@@ -18,12 +18,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class HorarioDisponivelController {
 
-    private HorarioDisponivelService horarioDisponivelService;
+    private final HorarioDisponivelService horarioDisponivelService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<HorarioDisponivelDTO> criarHorarioDisponivel(@RequestBody HorarioDisponivelDTO horarioDisponivelDTO) {
-        HorarioDisponivelDTO horarioAdicionado = horarioDisponivelService.criarHorarioDisponivel(horarioDisponivelDTO);
+    public ResponseEntity<HorarioDisponivelDTO> criarHorarioDisponivel(@RequestParam Long agendaId, @RequestBody HorarioDisponivelDTO horarioDisponivelDTO) {
+        HorarioDisponivelDTO horarioAdicionado = horarioDisponivelService.criarHorarioDisponivel(agendaId,horarioDisponivelDTO);
         return ResponseEntity.ok(horarioAdicionado);
     }
 

@@ -9,7 +9,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 public interface HorarioDisponivelService {
-    HorarioDisponivelDTO criarHorarioDisponivel(HorarioDisponivelDTO horarioDisponivelDTO);
+    HorarioDisponivelDTO criarHorarioDisponivel(Long agendaId, HorarioDisponivelDTO horarioDisponivelDTO);
     HorarioDisponivelDTO buscarHorarioDisponivelPorId(Long id);
     Page<HorarioDisponivelDTO> listarHorarios(Pageable pageable);
     HorarioDisponivelDTO atualizarHorarioDisponivel(Long id, HorarioDisponivelDTO horarioDisponivelDTO);

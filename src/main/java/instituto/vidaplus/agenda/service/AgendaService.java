@@ -10,7 +10,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 public interface AgendaService {
-    AgendaDTO criarAgenda(AgendaDTO agendaDTO);
+    AgendaDTO criarAgenda(Long profissionalId, AgendaDTO agendaDTO);
     AgendaDTO buscarAgendaPorId(Long id);
     Page<AgendaDTO> listarAgendas(Pageable pageable);
     AgendaDTO atualizarAgenda(Long id, AgendaDTO agendaDTO);

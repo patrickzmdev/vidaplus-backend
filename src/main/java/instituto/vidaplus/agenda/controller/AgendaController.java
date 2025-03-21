@@ -18,8 +18,8 @@ public class AgendaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<AgendaDTO> criarAgenda(AgendaDTO agendaDTO) {
-       AgendaDTO agenda = agendaService.criarAgenda(agendaDTO);
+    public ResponseEntity<AgendaDTO> criarAgenda(@RequestParam Long profissionalId, AgendaDTO agendaDTO) {
+       AgendaDTO agenda = agendaService.criarAgenda(profissionalId, agendaDTO);
        return ResponseEntity.ok(agenda);
     }
 

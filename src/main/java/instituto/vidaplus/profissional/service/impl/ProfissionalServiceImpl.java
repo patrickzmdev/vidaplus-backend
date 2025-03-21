@@ -52,6 +52,22 @@ public class ProfissionalServiceImpl implements ProfissionalService {
                 throw new RegistroProfissionalObrigatorio("Registro do profissional é obrigatório");
             }
 
+            if (profissionalRepository.existsByCpf(profissionalDTO.getCpf())) {
+                throw new DadoUnicoException("CPF já cadastrado");
+            }
+
+            if (profissionalRepository.existsByEmail(profissionalDTO.getEmail())) {
+                throw new DadoUnicoException("Email já cadastrado");
+            }
+
+            if (profissionalRepository.existsByTelefone(profissionalDTO.getTelefone())) {
+                throw new DadoUnicoException("Telefone já cadastrado");
+            }
+
+            if (profissionalRepository.existsByRegistro(profissionalDTO.getRegistro())) {
+                throw new DadoUnicoException("Registro já cadastrado");
+            }
+
             Administrador administrador = administradorRepository.findById(administradorId)
                     .orElseThrow(() -> new AdministradorNaoEncontradoException("Administrador não encontrado"));
 
@@ -84,17 +100,7 @@ public class ProfissionalServiceImpl implements ProfissionalService {
             Profissional profissionalSalvo = profissionalRepository.save(profissional);
             return new ProfissionalDTO(profissionalSalvo);
         }catch (DataIntegrityViolationException ex){
-            if (ex.getMessage().contains("cpf")) {
-                throw new DadoUnicoException("CPF já cadastrado");
-            } else if (ex.getMessage().contains("email")) {
-                throw new DadoUnicoException("Email já cadastrado");
-            } else if (ex.getMessage().contains("telefone")) {
-                throw new DadoUnicoException("Telefone já cadastrado");
-            } else if (ex.getMessage().contains("registro")) {
-                throw new DadoUnicoException("Registro já cadastrado");
-            } else {
                 throw new RuntimeException("Erro ao cadastrar profissional: " + ex.getMessage());
-            }
         }
     }
 
@@ -113,6 +119,22 @@ public class ProfissionalServiceImpl implements ProfissionalService {
 
             if (profissionalDTO.getRegistro() == null || profissionalDTO.getRegistro().isEmpty()) {
                 throw new RegistroProfissionalObrigatorio("Registro do profissional é obrigatório");
+            }
+
+            if (profissionalRepository.existsByCpfAndIdNot(profissionalDTO.getCpf(), id)) {
+                throw new DadoUnicoException("CPF já cadastrado");
+            }
+
+            if (profissionalRepository.existsByEmailAndIdNot(profissionalDTO.getEmail(), id)) {
+                throw new DadoUnicoException("Email já cadastrado");
+            }
+
+            if (profissionalRepository.existsByTelefoneAndIdNot(profissionalDTO.getTelefone(), id)) {
+                throw new DadoUnicoException("Telefone já cadastrado");
+            }
+
+            if (profissionalRepository.existsByRegistroAndIdNot(profissionalDTO.getRegistro(), id)) {
+                throw new DadoUnicoException("Registro já cadastrado");
             }
 
             Administrador administrador = administradorRepository.findById(profissionalDTO.getAdministradorId())
@@ -147,17 +169,7 @@ public class ProfissionalServiceImpl implements ProfissionalService {
             return new ProfissionalDTO(profissionalSalvo);
 
         } catch (DataIntegrityViolationException ex) {
-            if (ex.getMessage().contains("cpf")) {
-                throw new DadoUnicoException("CPF já cadastrado");
-            } else if (ex.getMessage().contains("email")) {
-                throw new DadoUnicoException("Email já cadastrado");
-            } else if (ex.getMessage().contains("telefone")) {
-                throw new DadoUnicoException("Telefone já cadastrado");
-            } else if (ex.getMessage().contains("registro")) {
-                throw new DadoUnicoException("Registro já cadastrado");
-            } else {
                 throw new RuntimeException("Erro ao cadastrar profissional: " + ex.getMessage());
-            }
         }
     }
 

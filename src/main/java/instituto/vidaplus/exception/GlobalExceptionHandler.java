@@ -5,6 +5,7 @@ import instituto.vidaplus.agenda.exception.AgendaNaoEncontradaException;
 import instituto.vidaplus.consulta.exception.ConsultaNaoEncontradaException;
 import instituto.vidaplus.exame.exception.ExameNaoEncontradoException;
 import instituto.vidaplus.exception.genericas.*;
+import instituto.vidaplus.horario.exception.ConflitoDeHorarioException;
 import instituto.vidaplus.horario.exception.HorarioNaoEncontradoException;
 import instituto.vidaplus.internacao.exception.InternacaoNaoEncontradaException;
 import instituto.vidaplus.internacao.exception.MotivoInternacaoException;
@@ -195,5 +196,10 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(TelemedicinaNaoEncontradaException.class)
     public ResponseEntity<String> handleTelemedicinaNaoEncontradaException(TelemedicinaNaoEncontradaException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ConflitoDeHorarioException.class)
+    public ResponseEntity<String> handleConflitoDeHorarioException(ConflitoDeHorarioException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }

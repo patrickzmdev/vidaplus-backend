@@ -23,11 +23,11 @@ public class AgendaServiceImpl implements AgendaService {
 
     @Override
     @Transactional
-    public AgendaDTO criarAgenda(AgendaDTO agendaDTO) {
-        Agenda agenda = new Agenda();
-        Profissional profissional = profissionalRepository.findById(agenda.getProfissional().getId())
+    public AgendaDTO criarAgenda(Long profissionalId, AgendaDTO agendaDTO) {
+        Profissional profissional = profissionalRepository.findById(profissionalId)
                 .orElseThrow(() -> new ProfissionalNaoEncontradoException("Profissional não encontrado"));
 
+        Agenda agenda = new Agenda();
         agenda.setProfissional(profissional);
         agenda.setAtivo(true);
         Agenda agendaSalva = agendaRepository.save(agenda);

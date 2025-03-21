@@ -6,6 +6,7 @@ import instituto.vidaplus.agenda.repository.AgendaRepository;
 import instituto.vidaplus.exception.genericas.DataInvalidaException;
 import instituto.vidaplus.horario.dto.HorarioDisponivelDTO;
 import instituto.vidaplus.horario.enums.DiasDaSemanaEnum;
+import instituto.vidaplus.horario.exception.ConflitoDeHorarioException;
 import instituto.vidaplus.horario.exception.HorarioNaoEncontradoException;
 import instituto.vidaplus.horario.model.HorarioDisponivel;
 import instituto.vidaplus.horario.repository.HorarioDisponivelRepository;
@@ -25,14 +26,21 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class HorarioDisponivelServiceImpl implements HorarioDisponivelService {
 
-    private HorarioDisponivelRepository horarioDisponivelRepository;
-    private AgendaRepository agendaRepository;
+    private final HorarioDisponivelRepository horarioDisponivelRepository;
+    private final AgendaRepository agendaRepository;
 
     @Override
     @Transactional
-    public HorarioDisponivelDTO criarHorarioDisponivel(HorarioDisponivelDTO horarioDisponivelDTO) {
-        Agenda agenda = agendaRepository.findById(horarioDisponivelDTO.getAgendaId())
+    public HorarioDisponivelDTO criarHorarioDisponivel(Long agendaId, HorarioDisponivelDTO horarioDisponivelDTO) {
+        Agenda agenda = agendaRepository.findById(agendaId)
                 .orElseThrow(() -> new AgendaNaoEncontradaException("Agenda não encontrada"));
+
+        boolean horarioExistente = horarioDisponivelRepository.existsByAgendaIdAndDiaDaSemanaAndHoraInicioAndHoraFim(
+                agendaId, horarioDisponivelDTO.getDiaDaSemana(), horarioDisponivelDTO.getHoraInicio(), horarioDisponivelDTO.getHoraFim());
+
+        if(horarioExistente){
+            throw new ConflitoDeHorarioException("Horário já cadastrado");
+        }
 
         HorarioDisponivel horarioDisponivel = new HorarioDisponivel();
         horarioDisponivel.setAgenda(agenda);
@@ -147,13 +155,15 @@ public class HorarioDisponivelServiceImpl implements HorarioDisponivelService {
                 .orElseThrow(() -> new AgendaNaoEncontradaException("Agenda não encontrada"));
 
         DiasDaSemanaEnum diaDaSemana = buscarDiaDaSemanaPorValor(data.getDayOfWeek().getValue());
-        List<HorarioDisponivel> horarios = horarioDisponivelRepository.findByAgendaIdAndDiaDaSemanaAndDisponivelTrue(agendaId, diaDaSemana);
+        List<HorarioDisponivel> horariosDisponiveis = horarioDisponivelRepository.findByAgendaIdAndDiaDaSemanaAndDisponivelTrue(agendaId, diaDaSemana);
 
-        for(HorarioDisponivel horario : horarios){
-            if(horario.getHoraInicio().isBefore(horaFim) && horario.getHoraFim().isAfter(horaInicio)){
+        for (HorarioDisponivel horario : horariosDisponiveis) {
+            if (!horario.getHoraInicio().isAfter(horaInicio) &&
+                    !horario.getHoraFim().isBefore(horaFim)) {
                 return true;
             }
         }
+
         return false;
     }
 
