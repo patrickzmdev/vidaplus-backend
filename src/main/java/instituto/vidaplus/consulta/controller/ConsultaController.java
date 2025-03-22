@@ -16,8 +16,8 @@ public class ConsultaController {
     private final ConsultaService consultaService;
 
     @PostMapping
-    public ResponseEntity<ConsultaDTO> criarConsulta(@RequestBody ConsultaDTO consultaDTO) {
-        ConsultaDTO consultaAdicionada = consultaService.criarConsulta(consultaDTO);
+    public ResponseEntity<ConsultaDTO> criarConsulta(@RequestParam Long pacienteId, @RequestParam Long profissionalId, @RequestParam Long agendaId, @RequestBody ConsultaDTO consultaDTO) {
+        ConsultaDTO consultaAdicionada = consultaService.criarConsulta(pacienteId, profissionalId, agendaId, consultaDTO);
         return ResponseEntity.ok(consultaAdicionada);
     }
 
@@ -31,12 +31,6 @@ public class ConsultaController {
     public ResponseEntity<Page<ConsultaDTO>> listarConsultas(Pageable pageable) {
         Page<ConsultaDTO> consultas = consultaService.listarConsultas(pageable);
         return ResponseEntity.ok(consultas);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<ConsultaDTO> atualizarConsulta(@PathVariable Long id, @RequestBody ConsultaDTO consultaDTO) {
-        ConsultaDTO consultaAtualizada = consultaService.atualizarConsulta(id, consultaDTO);
-        return ResponseEntity.ok(consultaAtualizada);
     }
 
     @DeleteMapping("/{id}")
@@ -55,5 +49,17 @@ public class ConsultaController {
     public ResponseEntity<Page<ConsultaDTO>> buscarConsultasPorProfissional(@PathVariable Long profissionalId, Pageable pageable) {
         Page<ConsultaDTO> consultasPorProfissional = consultaService.buscarConsultasPorProfissional(profissionalId, pageable);
         return ResponseEntity.ok(consultasPorProfissional);
+    }
+
+    @PutMapping("/{id}/confirmar")
+    public ResponseEntity<ConsultaDTO> confirmarConsulta(@PathVariable Long id) {
+        ConsultaDTO consultaConfirmada = consultaService.confirmarConsulta(id);
+        return ResponseEntity.ok(consultaConfirmada);
+    }
+
+    @PutMapping("/{id}/cancelar")
+    public ResponseEntity<ConsultaDTO> cancelarConsulta(@PathVariable Long id) {
+        ConsultaDTO consultaCancelada = consultaService.cancelarConsulta(id);
+        return ResponseEntity.ok(consultaCancelada);
     }
 }

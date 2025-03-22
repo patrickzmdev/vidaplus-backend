@@ -11,7 +11,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,10 +48,13 @@ public class Consulta {
     private List<Prontuario> prontuarios = new ArrayList<>();
 
     @Column(nullable = false)
-    private LocalDateTime dataHoraInicio;
+    private LocalDate data;
 
     @Column(nullable = false)
-    private LocalDateTime dataHoraFim;
+    private LocalTime horaInicio;
+
+    @Column(nullable = false)
+    private LocalTime horaFim;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

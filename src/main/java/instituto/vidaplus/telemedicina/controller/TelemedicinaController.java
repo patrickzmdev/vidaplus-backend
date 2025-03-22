@@ -14,10 +14,10 @@ public class TelemedicinaController {
 
     private final TelemedicinaService telemedicinaService;
 
-    @PostMapping
+    @PostMapping("/{consultaId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<TelemedicinaDTO> criarTelemedicina(Long consultaId, String linkVideoChamada) {
-        TelemedicinaDTO telemedicinaAdicionada = telemedicinaService.criarTelemedicina(consultaId, linkVideoChamada);
+    public ResponseEntity<TelemedicinaDTO> criarTelemedicina(@PathVariable Long consultaId) {
+        TelemedicinaDTO telemedicinaAdicionada = telemedicinaService.criarTelemedicina(consultaId);
         return ResponseEntity.ok(telemedicinaAdicionada);
     }
 

@@ -25,7 +25,7 @@ public class TelemedicinaServiceImpl implements TelemedicinaService {
 
     @Override
     @Transactional
-    public TelemedicinaDTO criarTelemedicina(Long consultaId, String linkVideoChamada) {
+    public TelemedicinaDTO criarTelemedicina(Long consultaId) {
         Consulta consulta = consultaRepository.findById(consultaId)
                 .orElseThrow(() -> new ConsultaNaoEncontradaException("Consulta não encontrada"));
 
@@ -35,11 +35,12 @@ public class TelemedicinaServiceImpl implements TelemedicinaService {
 
         Telemedicina telemedicina = new Telemedicina();
         telemedicina.setConsulta(consulta);
-        telemedicina.setLinkVideoChamada(linkVideoChamada != null ? linkVideoChamada : gerarLinkTelemedicina());
+        telemedicina.setLinkVideoChamada(gerarLinkTelemedicina());
         telemedicina.setVideoChamadaSegura(true);
-        Telemedicina telemedicinaSalva = telemedicinaRepository.save(telemedicina);
+        consulta.setTelemedicina(telemedicina);
+        Consulta consultaSalva = consultaRepository.save(consulta);
 
-        return new TelemedicinaDTO(telemedicinaSalva);
+        return new TelemedicinaDTO(consultaSalva.getTelemedicina());
     }
 
     @Override
@@ -66,6 +67,13 @@ public class TelemedicinaServiceImpl implements TelemedicinaService {
     public String deletarTelemedicina(Long telemedicinaId) {
         Telemedicina telemedicina = telemedicinaRepository.findById(telemedicinaId)
                 .orElseThrow(() -> new TelemedicinaNaoEncontradaException("Telemedicina não encontrada"));
+
+        Consulta consulta = telemedicina.getConsulta();
+        if (consulta != null) {
+            consulta.setTelemedicina(null);
+            consultaRepository.save(consulta);
+        }
+
         telemedicinaRepository.delete(telemedicina);
         return "Telemedicina removida com sucesso";
     }

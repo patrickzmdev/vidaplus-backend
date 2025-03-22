@@ -6,7 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Data
 @NoArgsConstructor
@@ -19,8 +20,9 @@ public class ConsultaDTO {
     private Long agendaId;
     private Long telemedicinaId;
     private String linkVideoChamada;
-    private LocalDateTime dataHoraInicio;
-    private LocalDateTime dataHoraFim;
+    private LocalDate data;
+    private LocalTime horaInicio;
+    private LocalTime horaFim;
     private StatusConsultaEnum status;
     private String motivoConsulta;
 
@@ -29,9 +31,15 @@ public class ConsultaDTO {
         this.pacienteId = consulta.getPaciente().getId();
         this.profissionalId = consulta.getProfissional().getId();
         this.agendaId = consulta.getAgenda().getId();
-        this.dataHoraInicio = consulta.getDataHoraInicio();
-        this.dataHoraFim = consulta.getDataHoraFim();
+        this.data = consulta.getData();
+        this.horaInicio = consulta.getHoraInicio();
+        this.horaFim = consulta.getHoraFim();
         this.status = consulta.getStatus();
         this.motivoConsulta = consulta.getMotivoConsulta();
+
+        if (consulta.getTelemedicina() != null) {
+            this.telemedicinaId = consulta.getTelemedicina().getId();
+            this.linkVideoChamada = consulta.getTelemedicina().getLinkVideoChamada();
+        }
     }
 }
