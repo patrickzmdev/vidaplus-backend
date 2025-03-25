@@ -14,11 +14,13 @@ public class ItemReceitaDTO {
     private Long receitaId;
     private String nome;
     private Boolean controlado;
+    private Integer quantidade;
 
     public ItemReceitaDTO(ItemReceita itemReceita) {
         this.id = itemReceita.getId();
         this.receitaId = itemReceita.getReceita().getId();
         this.nome = itemReceita.getNome();
         this.controlado = itemReceita.getControlado();
+        this.quantidade = itemReceita.getQuantidade();
     }
 }

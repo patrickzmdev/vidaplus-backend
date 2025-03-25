@@ -22,4 +22,8 @@ public class ItemReceita {
     private String nome;
 
     private Boolean controlado = false;
+
+    @Column(nullable = false)
+    private Integer quantidade = 1;
+
 }

@@ -19,6 +19,9 @@ import instituto.vidaplus.paciente.exception.PacienteNaoEncontradoException;
 import instituto.vidaplus.profissional.exception.ProfissionalNaoEMedicoException;
 import instituto.vidaplus.profissional.exception.ProfissionalNaoEncontradoException;
 import instituto.vidaplus.profissional.exception.RegistroProfissionalObrigatorio;
+import instituto.vidaplus.prontuario.exception.ProntuarioNaoEncontradoException;
+import instituto.vidaplus.receita.exception.ItemReceitaNaoEncontradoException;
+import instituto.vidaplus.receita.exception.ReceitaNaoEncontradaException;
 import instituto.vidaplus.suprimento.exception.QuantidadeSuprimentoException;
 import instituto.vidaplus.suprimento.exception.SuprimentoNaoEncontradoException;
 import instituto.vidaplus.telemedicina.exception.TelemedicinaJaCadastradaException;
@@ -201,5 +204,25 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ConflitoDeHorarioException.class)
     public ResponseEntity<String> handleConflitoDeHorarioException(ConflitoDeHorarioException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ProntuarioNaoEncontradoException.class)
+    public ResponseEntity<String> handleProntuarioNaoEncontradoException(ProntuarioNaoEncontradoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ErroAoGerarPdfException.class)
+    public ResponseEntity<String> handleErroAoGerarPdfException(ErroAoGerarPdfException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(ReceitaNaoEncontradaException.class)
+    public ResponseEntity<String> handleReceitaNaoEncontradaException(ReceitaNaoEncontradaException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ItemReceitaNaoEncontradoException.class)
+    public ResponseEntity<String> handleItemReceitaNaoEncontradoException(ItemReceitaNaoEncontradoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 }
