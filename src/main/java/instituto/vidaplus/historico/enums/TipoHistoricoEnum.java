@@ -5,5 +5,6 @@ public enum TipoHistoricoEnum {
     EXAME,
     MEDICAMENTO,
     PROCEDIMENTO,
+    CIRURGIA,
     OUTROS
 }
