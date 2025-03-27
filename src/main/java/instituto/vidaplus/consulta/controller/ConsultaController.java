@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,6 +17,7 @@ public class ConsultaController {
     private final ConsultaService consultaService;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<ConsultaDTO> criarConsulta(@RequestParam Long pacienteId, @RequestParam Long profissionalId, @RequestParam Long agendaId, @RequestBody ConsultaDTO consultaDTO) {
         ConsultaDTO consultaAdicionada = consultaService.criarConsulta(pacienteId, profissionalId, agendaId, consultaDTO);
         return ResponseEntity.ok(consultaAdicionada);

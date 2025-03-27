@@ -23,6 +23,7 @@ import instituto.vidaplus.prontuario.exception.ProntuarioNaoEncontradoException;
 import instituto.vidaplus.receita.exception.ItemReceitaNaoEncontradoException;
 import instituto.vidaplus.receita.exception.ReceitaNaoEncontradaException;
 import instituto.vidaplus.relatorio.exception.ErroEmRelatorioException;
+import instituto.vidaplus.seguranca.exception.TokenException;
 import instituto.vidaplus.suprimento.exception.QuantidadeSuprimentoException;
 import instituto.vidaplus.suprimento.exception.SuprimentoNaoEncontradoException;
 import instituto.vidaplus.telemedicina.exception.TelemedicinaJaCadastradaException;
@@ -230,5 +231,10 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ErroEmRelatorioException.class)
     public ResponseEntity<String> handleErroEmRelatorioException(ErroEmRelatorioException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(TokenException.class)
+    public ResponseEntity<String> handleTokenException(TokenException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }
