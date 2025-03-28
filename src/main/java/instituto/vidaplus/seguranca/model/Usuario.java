@@ -32,6 +32,10 @@ public class Usuario implements UserDetails {
 
     private boolean enabled = true;
 
+    private Integer tentativasFalhas = 0;
+
+    private String codigoDeRecuperacao;
+
     @Column(name = "conta_nao_bloqueada")
     private boolean contaNaoBloqueada = true;
 

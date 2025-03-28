@@ -24,6 +24,7 @@ import instituto.vidaplus.receita.exception.ItemReceitaNaoEncontradoException;
 import instituto.vidaplus.receita.exception.ReceitaNaoEncontradaException;
 import instituto.vidaplus.relatorio.exception.ErroEmRelatorioException;
 import instituto.vidaplus.seguranca.exception.TokenException;
+import instituto.vidaplus.seguranca.exception.UsuarioNaoEncontradoException;
 import instituto.vidaplus.suprimento.exception.QuantidadeSuprimentoException;
 import instituto.vidaplus.suprimento.exception.SuprimentoNaoEncontradoException;
 import instituto.vidaplus.telemedicina.exception.TelemedicinaJaCadastradaException;
@@ -235,6 +236,26 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(TokenException.class)
     public ResponseEntity<String> handleTokenException(TokenException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(UsuarioNaoEncontradoException.class)
+    public ResponseEntity<String> handleUsuarioNaoEncontradoException(UsuarioNaoEncontradoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(SenhaInvalidaException.class)
+    public ResponseEntity<String> handleSenhaInvalidaException(SenhaInvalidaException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(UsuarioJaCadastradoException.class)
+    public ResponseEntity<String> handleUsuarioJaCadastradoException(UsuarioJaCadastradoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(EmailJaCadastradoException.class)
+    public ResponseEntity<String> handleEmailJaCadastradoException(EmailJaCadastradoException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }

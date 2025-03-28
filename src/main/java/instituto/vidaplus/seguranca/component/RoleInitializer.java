@@ -1,6 +1,5 @@
 package instituto.vidaplus.seguranca.component;
 
-import instituto.vidaplus.seguranca.enums.UserRoles;
 import instituto.vidaplus.seguranca.model.Role;
 import instituto.vidaplus.seguranca.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
