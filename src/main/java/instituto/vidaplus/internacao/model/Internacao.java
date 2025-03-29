@@ -1,6 +1,5 @@
 package instituto.vidaplus.internacao.model;
 
-import instituto.vidaplus.administrador.model.Administrador;
 import instituto.vidaplus.leito.model.Leito;
 import instituto.vidaplus.paciente.model.Paciente;
 import instituto.vidaplus.profissional.model.Profissional;
@@ -42,9 +41,6 @@ public class Internacao {
     @JoinColumn(name = "medico_responsavel_id")
     private Profissional medicoResponsavel;
 
-    @ManyToOne
-    @JoinColumn(name = "administrador_id", nullable = false)
-    private Administrador administrador;
 
     @Column(nullable = false)
     private Boolean ativa = true;

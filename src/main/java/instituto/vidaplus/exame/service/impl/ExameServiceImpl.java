@@ -1,8 +1,6 @@
 package instituto.vidaplus.exame.service.impl;
 
-import instituto.vidaplus.administrador.exception.AdministradorNaoEncontradoException;
-import instituto.vidaplus.administrador.model.Administrador;
-import instituto.vidaplus.administrador.repository.AdministradorRepository;
+import instituto.vidaplus.email.service.EmailService;
 import instituto.vidaplus.exame.dto.ExameDTO;
 import instituto.vidaplus.exame.dto.ExameSuprimentoDTO;
 import instituto.vidaplus.exame.enums.StatusExameEnum;
@@ -25,6 +23,7 @@ import instituto.vidaplus.suprimento.repository.SuprimentoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,14 +37,13 @@ public class ExameServiceImpl implements ExameService {
     private final ExameRepository exameRepository;
     private final SuprimentoRepository suprimentoRepository;
     private final ExameSuprimentoRepository exameSuprimentoRepository;
-    private final AdministradorRepository administradorRepository;
     private final PacienteRepository pacienteRepository;
     private final ProfissionalRepository profissionalRepository;
+    private final EmailService emailService;
 
     @Override
-    public ExameDTO agendarExame(Long administradorId, Long pacienteId, ExameDTO exameDTO) {
-        Administrador administrador = administradorRepository.findById(administradorId)
-                .orElseThrow(() -> new AdministradorNaoEncontradoException("Administrador não encontrado"));
+    @PreAuthorize("hasRole('ADMIN')")
+    public ExameDTO agendarExame(Long pacienteId, ExameDTO exameDTO) {
 
         Paciente paciente = pacienteRepository.findById(pacienteId)
                 .orElseThrow(() -> new PacienteNaoEncontradoException("Paciente não encontrado"));
@@ -55,18 +53,19 @@ public class ExameServiceImpl implements ExameService {
         }
 
         Exame exame = new Exame();
-        exame.setAdministrador(administrador);
         exame.setPaciente(paciente);
         exame.setProfissional(profissionalRepository.findById(exameDTO.getProfissionalId())
                 .orElseThrow(() -> new ProfissionalNaoEncontradoException("Profissional não encontrado")));
         exame.setTipoExame(exameDTO.getTipoExame());
         exame.setDataAgendamento(exameDTO.getDataAgendamento());
         exame.setStatus(StatusExameEnum.AGENDADO);
+        emailService.confirmacaoExame(paciente, "Confirmação de Exame", exame);
         exameRepository.save(exame);
         return new ExameDTO(exame);
     }
 
     @Override
+    @PreAuthorize("hasRole('ADMIN')")
     public ExameDTO buscarExame(Long id) {
         Exame exame = exameRepository.findById(id)
                 .orElseThrow(() -> new ExameNaoEncontradoException("Exame não encontrado"));
@@ -74,6 +73,7 @@ public class ExameServiceImpl implements ExameService {
     }
 
     @Override
+    @PreAuthorize("hasRole('ADMIN')")
     public Page<ExameDTO> buscarExamesPorPaciente(Long pacienteId, Pageable pageable) {
         Paciente paciente = pacienteRepository.findById(pacienteId)
                 .orElseThrow(() -> new PacienteNaoEncontradoException("Paciente não encontrado"));
@@ -82,6 +82,7 @@ public class ExameServiceImpl implements ExameService {
     }
 
     @Override
+    @PreAuthorize("hasRole('ADMIN')")
     public String finalizarExame(Long id) {
         Exame exame = exameRepository.findById(id)
                 .orElseThrow(() -> new ExameNaoEncontradoException("Exame não encontrado"));
@@ -91,6 +92,7 @@ public class ExameServiceImpl implements ExameService {
     }
 
     @Override
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public String cancelarExame(Long id) {
         Exame exame = exameRepository.findById(id)
                 .orElseThrow(() -> new ExameNaoEncontradoException("Exame não encontrado"));
@@ -101,6 +103,7 @@ public class ExameServiceImpl implements ExameService {
 
     @Override
     @Transactional
+    @PreAuthorize("hasRole('ADMIN')")
     public ExameSuprimentoDTO adicionarSuprimentoAExame(Long exameId, Long suprimentoId, Integer quantidadeUtilizada) {
         Exame exame = exameRepository.findById(exameId)
                 .orElseThrow(() -> new ExameNaoEncontradoException("Exame não encontrado"));

@@ -1,6 +1,5 @@
 package instituto.vidaplus.relatorio.model;
 
-import instituto.vidaplus.administrador.model.Administrador;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,8 +27,4 @@ public class RelatorioFinanceiro {
 
     @Column(nullable = false)
     private Double lucro;
-
-    @ManyToOne
-    @JoinColumn(name = "administrador_id", nullable = false)
-    private Administrador administrador;
 }

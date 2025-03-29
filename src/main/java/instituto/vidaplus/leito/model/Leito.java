@@ -1,7 +1,5 @@
 package instituto.vidaplus.leito.model;
 
-import instituto.vidaplus.administrador.model.Administrador;
-import instituto.vidaplus.paciente.model.Paciente;
 import instituto.vidaplus.unidade.model.UnidadeHospitalar;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -26,8 +24,4 @@ public class Leito {
     @ManyToOne
     @JoinColumn(name = "unidade_hospitalar_id", nullable = false)
     private UnidadeHospitalar unidadeHospitalar;
-
-    @ManyToOne
-    @JoinColumn(name = "administrador_id", nullable = false)
-    private Administrador administrador;
 }

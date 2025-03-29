@@ -1,6 +1,5 @@
 package instituto.vidaplus.exame.model;
 
-import instituto.vidaplus.administrador.model.Administrador;
 import instituto.vidaplus.exame.enums.StatusExameEnum;
 import instituto.vidaplus.exame.enums.TipoExameEnum;
 import instituto.vidaplus.paciente.model.Paciente;
@@ -40,7 +39,4 @@ public class Exame {
     @Enumerated(EnumType.STRING)
     private StatusExameEnum status;
 
-    @ManyToOne
-    @JoinColumn(name = "administrador_id")
-    private Administrador administrador;
 }

@@ -5,7 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface SuprimentoService {
-    SuprimentoDTO cadastrarSuprimento(Long administradorId, SuprimentoDTO suprimentoDTO);
+    SuprimentoDTO cadastrarSuprimento(SuprimentoDTO suprimentoDTO);
     SuprimentoDTO editarSuprimento(Long id, SuprimentoDTO suprimentoDTO);
     String excluirSuprimento(Long id);
     SuprimentoDTO buscarSuprimento(Long id);

@@ -1,6 +1,5 @@
 package instituto.vidaplus.unidade.model;
 
-import instituto.vidaplus.administrador.model.Administrador;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,8 +32,4 @@ public class UnidadeHospitalar {
 
     @Column(nullable = false)
     private String email;
-
-    @ManyToOne
-    @JoinColumn(name = "administrador_id", nullable = false)
-    private Administrador administrador;
 }

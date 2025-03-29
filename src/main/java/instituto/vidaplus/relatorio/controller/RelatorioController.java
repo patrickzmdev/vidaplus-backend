@@ -5,6 +5,7 @@ import instituto.vidaplus.relatorio.dto.ResumoFinanceiroDTO;
 import instituto.vidaplus.relatorio.service.RelatorioFinanceiroService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -18,21 +19,25 @@ public class RelatorioController {
     private final RelatorioFinanceiroService relatorioService;
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<RelatorioFinanceiroDTO> registrarRelatorio(@RequestBody RelatorioFinanceiroDTO relatorioDTO) {
         return ResponseEntity.ok(relatorioService.registrarRelatorio(relatorioDTO));
     }
 
     @GetMapping("/periodo")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<RelatorioFinanceiroDTO>> buscarRelatorioPorPeriodo(@RequestParam LocalDate inicio,@RequestParam LocalDate fim) {
         return ResponseEntity.ok(relatorioService.buscarRelatorioPorPeriodo(inicio, fim));
     }
 
     @GetMapping("/resumo")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ResumoFinanceiroDTO> gerarResumoFinanceiro(@RequestParam LocalDate inicio,@RequestParam LocalDate fim) {
         return ResponseEntity.ok(relatorioService.gerarResumoFinanceiro(inicio, fim));
     }
 
     @GetMapping("/pdf")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<byte[]> exportarRelatorioPDF(
             @RequestParam LocalDate inicio,
             @RequestParam LocalDate fim) {
@@ -48,6 +53,7 @@ public class RelatorioController {
     }
 
     @GetMapping("/excel")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<byte[]> exportarRelatorioExcel(
             @RequestParam LocalDate inicio,
             @RequestParam LocalDate fim) {

@@ -1,8 +1,5 @@
 package instituto.vidaplus.unidade.service.impl;
 
-import instituto.vidaplus.administrador.exception.AdministradorNaoEncontradoException;
-import instituto.vidaplus.administrador.model.Administrador;
-import instituto.vidaplus.administrador.repository.AdministradorRepository;
 import instituto.vidaplus.endereco.dto.EnderecoDTO;
 import instituto.vidaplus.endereco.service.CepService;
 import instituto.vidaplus.exception.genericas.DadoUnicoException;
@@ -24,17 +21,13 @@ import org.springframework.stereotype.Service;
 public class UnidadeHospitalarServiceImpl implements UnidadeHospitalarService {
 
     private final UnidadeHospitalarRepository unidadeHospitalarRepository;
-    private final AdministradorRepository administradorRepository;
     private final CepService cepService;
     private final ValidadorCep validadorCep;
     private final ValidadorTelefone validadorTelefone;
 
     @Override
-    public UnidadeHospitalarDTO cadastrarUnidadeHospitalar(Long administradorId, UnidadeHospitalarDTO unidadeHospitalarDTO) {
+    public UnidadeHospitalarDTO cadastrarUnidadeHospitalar(UnidadeHospitalarDTO unidadeHospitalarDTO) {
         try{
-            Administrador administrador = administradorRepository.findById(administradorId)
-                    .orElseThrow(() -> new AdministradorNaoEncontradoException("Administrador não encontrado"));
-
             validadorCep.validarCep(unidadeHospitalarDTO.getCep());
             validadorTelefone.validarTelefone(unidadeHospitalarDTO.getTelefone());
 
@@ -49,7 +42,6 @@ public class UnidadeHospitalarServiceImpl implements UnidadeHospitalarService {
             unidadeHospitalar.setCidade(enderecoDTO.getLocalidade());
             unidadeHospitalar.setUf(enderecoDTO.getUf());
             unidadeHospitalar.setBairro(enderecoDTO.getBairro());
-            unidadeHospitalar.setAdministrador(administrador);
 
             UnidadeHospitalar unidadeHospitalarSalva = unidadeHospitalarRepository.save(unidadeHospitalar);
             return new UnidadeHospitalarDTO(unidadeHospitalarSalva);
@@ -68,9 +60,6 @@ public class UnidadeHospitalarServiceImpl implements UnidadeHospitalarService {
             UnidadeHospitalar unidadeHospitalar = unidadeHospitalarRepository.findById(id)
                     .orElseThrow(() -> new UnidadeHospitalarNaoEncontradaException("Unidade hospitalar não encontrada"));
 
-            Administrador administrador = administradorRepository.findById(unidadeHospitalarDTO.getAdministradorId())
-                    .orElseThrow(() -> new AdministradorNaoEncontradoException("Administrador não encontrado"));
-
             validadorTelefone.validarTelefone(unidadeHospitalarDTO.getTelefone());
             validadorCep.validarCep(unidadeHospitalarDTO.getCep());
 
@@ -84,7 +73,6 @@ public class UnidadeHospitalarServiceImpl implements UnidadeHospitalarService {
             unidadeHospitalar.setCidade(enderecoDTO.getLocalidade());
             unidadeHospitalar.setUf(enderecoDTO.getUf());
             unidadeHospitalar.setBairro(enderecoDTO.getBairro());
-            unidadeHospitalar.setAdministrador(administrador);
 
             UnidadeHospitalar unidadeHospitalarSalva = unidadeHospitalarRepository.save(unidadeHospitalar);
             return new UnidadeHospitalarDTO(unidadeHospitalarSalva);

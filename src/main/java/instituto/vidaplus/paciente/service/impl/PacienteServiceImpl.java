@@ -1,13 +1,8 @@
 package instituto.vidaplus.paciente.service.impl;
 
-import instituto.vidaplus.administrador.exception.AdministradorNaoEncontradoException;
-import instituto.vidaplus.administrador.model.Administrador;
-import instituto.vidaplus.administrador.repository.AdministradorRepository;
-import instituto.vidaplus.consulta.model.Consulta;
 import instituto.vidaplus.consulta.repository.ConsultaRepository;
 import instituto.vidaplus.endereco.dto.EnderecoDTO;
 import instituto.vidaplus.endereco.service.CepService;
-import instituto.vidaplus.exame.model.Exame;
 import instituto.vidaplus.exame.repository.ExameRepository;
 import instituto.vidaplus.exception.genericas.DadoUnicoException;
 import instituto.vidaplus.paciente.dto.PacienteDTO;
@@ -33,10 +28,6 @@ import java.util.List;
 public class PacienteServiceImpl implements PacienteService {
 
     private final PacienteRepository pacienteRepository;
-    private final ConsultaRepository consultaRepository;
-    private final ExameRepository exameRepository;
-    private final ProntuarioRepository prontuarioRepository;
-    private final AdministradorRepository administradorRepository;
     private final ValidadorCep validadorCep;
     private final ValidadorCpf validadorCpf;
     private final ValidadorEmail validadorEmail;
@@ -45,7 +36,7 @@ public class PacienteServiceImpl implements PacienteService {
 
     @Override
     @Transactional
-    public PacienteDTO cadastrarPaciente(Long administradorId, PacienteDTO pacienteDTO) {
+    public PacienteDTO cadastrarPaciente(PacienteDTO pacienteDTO) {
         try {
             if (pacienteDTO.getNome() == null || pacienteDTO.getNome().isEmpty()) {
                 throw new IllegalArgumentException("Nome do paciente é obrigatório");
@@ -53,9 +44,6 @@ public class PacienteServiceImpl implements PacienteService {
             if (pacienteDTO.getCpf() == null || pacienteDTO.getCpf().isEmpty()) {
                 throw new IllegalArgumentException("CPF do paciente é obrigatório");
             }
-
-            Administrador administrador = administradorRepository.findById(administradorId)
-                    .orElseThrow(() -> new AdministradorNaoEncontradoException("Administrador não encontrado"));
 
             validadorCpf.validarCpf(pacienteDTO.getCpf());
             validadorEmail.validarEmail(pacienteDTO.getEmail());
@@ -81,7 +69,6 @@ public class PacienteServiceImpl implements PacienteService {
             paciente.setBairro(endereco.getBairro());
             paciente.setCidade(endereco.getLocalidade());
             paciente.setUf(endereco.getUf());
-            paciente.setAdministrador(administrador);
 
             Paciente pacienteSalvo = pacienteRepository.save(paciente);
             return new PacienteDTO(pacienteSalvo);

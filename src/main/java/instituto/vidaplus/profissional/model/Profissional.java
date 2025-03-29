@@ -1,8 +1,6 @@
 package instituto.vidaplus.profissional.model;
 
-import instituto.vidaplus.administrador.model.Administrador;
 import instituto.vidaplus.core.Pessoa;
-import instituto.vidaplus.core.SexoEnum;
 import instituto.vidaplus.exame.model.Exame;
 import instituto.vidaplus.profissional.enums.EspecialidadeEnum;
 import instituto.vidaplus.profissional.enums.TipoProfissionalEnum;
@@ -53,8 +51,4 @@ public class Profissional extends Pessoa {
     @OneToMany(mappedBy = "profissional")
     @Builder.Default
     private List<Receita> receitasDigitais = new ArrayList<>();
-
-    @ManyToOne
-    @JoinColumn(name = "administrador_id", nullable = false)
-    private Administrador administrador;
 }

@@ -28,6 +28,7 @@ public class EmailServiceImpl implements EmailService {
                 "Data: " + formatadorData.formatarData(consulta.getData()) + "\n" +
                 "Atenciosamente,\n" +
                 "Instituto Vida Plus");
+        mailSender.send(message);
     }
 
     @Override
@@ -38,6 +39,7 @@ public class EmailServiceImpl implements EmailService {
         message.setText("Olá " + paciente.getNome() + ",\n\n" +
                 "Seu exame foi confirmado com sucesso!\n" +
                 "Data: " + formatadorData.formatarData(exame.getDataAgendamento()) + "\n" +
+                "Exame: " + exame.getTipoExame().getDescricao() + "\n" +
                 "Atenciosamente,\n" +
                 "Instituto Vida Plus");
         mailSender.send(message);

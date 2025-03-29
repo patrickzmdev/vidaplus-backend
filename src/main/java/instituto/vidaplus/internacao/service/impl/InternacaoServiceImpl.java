@@ -1,7 +1,5 @@
 package instituto.vidaplus.internacao.service.impl;
 
-import instituto.vidaplus.administrador.model.Administrador;
-import instituto.vidaplus.administrador.repository.AdministradorRepository;
 import instituto.vidaplus.internacao.dto.InternacaoDTO;
 import instituto.vidaplus.internacao.dto.InternacaoSuprimentoDto;
 import instituto.vidaplus.internacao.exception.InternacaoNaoEncontradaException;
@@ -42,22 +40,18 @@ public class InternacaoServiceImpl implements InternacaoService {
     private final LeitoRepository leitoRepository;
     private final SuprimentoRepository suprimentoRepository;
     private final InternacaoSuprimentoRepository internacaoSuprimentoRepository;
-    private final AdministradorRepository administradorRepository;
     private final ProfissionalRepository profissionalRepository;
     private final ValidadorMedico validadorMedico;
     private final ValidadorPacienteNaoInternado validadorPacienteNaoInternado;
 
     @Override
     @Transactional
-    public InternacaoDTO registrarInternacao(Long administradorId, Long pacienteId, Long leitoId, InternacaoDTO internacao) {
+    public InternacaoDTO registrarInternacao(Long pacienteId, Long leitoId, InternacaoDTO internacao) {
         Paciente paciente = pacienteRepository.findById(pacienteId)
                 .orElseThrow(() -> new PacienteNaoEncontradoException("Paciente não encontrado"));
 
         Leito leito = leitoRepository.findById(leitoId)
                 .orElseThrow(() -> new LeitoNaoExistenteException("Leito não encontrado"));
-
-        Administrador administrador = administradorRepository.findById(administradorId)
-                .orElseThrow(() -> new RuntimeException("Administrador não encontrado"));
 
         Profissional profissional = profissionalRepository.findById(internacao.getMedicoResponsavelId())
                 .orElseThrow(() -> new ProfissionalNaoEncontradoException("Profissional não encontrado"));
@@ -82,7 +76,6 @@ public class InternacaoServiceImpl implements InternacaoService {
         efetivarInternacao.setMotivoInternacao(internacao.getMotivoInternacao());
         efetivarInternacao.setObservacoes(internacao.getObservacoes());
         efetivarInternacao.setMedicoResponsavel(profissional);
-        efetivarInternacao.setAdministrador(administrador);
         efetivarInternacao.setAtiva(true);
 
         Internacao internacaoSalva = internacaoRepository.save(efetivarInternacao);

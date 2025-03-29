@@ -17,7 +17,6 @@ public class RelatorioFinanceiroDTO {
     private Double receita;
     private Double despesa;
     private Double lucro;
-    private Long administradorId;
 
     public RelatorioFinanceiroDTO(RelatorioFinanceiro relatorioFinanceiro) {
         this.id = relatorioFinanceiro.getId();
@@ -25,6 +24,5 @@ public class RelatorioFinanceiroDTO {
         this.receita = relatorioFinanceiro.getReceita();
         this.despesa = relatorioFinanceiro.getDespesa();
         this.lucro = relatorioFinanceiro.getLucro();
-        this.administradorId = relatorioFinanceiro.getAdministrador().getId();
     }
 }

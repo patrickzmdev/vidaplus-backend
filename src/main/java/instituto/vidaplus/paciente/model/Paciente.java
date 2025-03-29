@@ -1,6 +1,5 @@
 package instituto.vidaplus.paciente.model;
 
-import instituto.vidaplus.administrador.model.Administrador;
 import instituto.vidaplus.consulta.model.Consulta;
 import instituto.vidaplus.core.Pessoa;
 import instituto.vidaplus.exame.model.Exame;
@@ -52,8 +51,4 @@ public class Paciente extends Pessoa {
 
     @OneToMany(mappedBy = "paciente")
     private List<Consulta> consultas = new ArrayList<>();
-
-    @ManyToOne
-    @JoinColumn(name = "administrador_id", nullable = false)
-    private Administrador administrador;
 }

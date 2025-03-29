@@ -18,7 +18,6 @@ public class InternacaoDTO {
     private String motivoInternacao;
     private String observacoes;
     private Long medicoResponsavelId;
-    private Long administradorId;
     private Boolean ativa;
 
     public InternacaoDTO(Internacao internacao) {
@@ -30,7 +29,6 @@ public class InternacaoDTO {
         this.motivoInternacao = internacao.getMotivoInternacao();
         this.observacoes = internacao.getObservacoes();
         this.medicoResponsavelId = internacao.getMedicoResponsavel() != null ? internacao.getMedicoResponsavel().getId() : null;
-        this.administradorId = internacao.getAdministrador().getId();
         this.ativa = internacao.getAtiva();
     }
 }

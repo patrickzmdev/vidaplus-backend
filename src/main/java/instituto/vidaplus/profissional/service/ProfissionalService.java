@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface ProfissionalService {
-    ProfissionalDTO cadastrarProfissional(Long administradorId, ProfissionalDTO profissionalDTO);
+    ProfissionalDTO cadastrarProfissional(ProfissionalDTO profissionalDTO);
     ProfissionalDTO editarProfissional(Long id, ProfissionalDTO profissionalDTO);
     String excluirProfissional(Long id);
     ProfissionalDTO buscarProfissional(Long id);

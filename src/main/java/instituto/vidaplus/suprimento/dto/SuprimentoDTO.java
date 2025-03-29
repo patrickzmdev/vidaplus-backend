@@ -14,13 +14,11 @@ public class SuprimentoDTO {
     private String nome;
     private Integer quantidade;
     private String unidadeMedida;
-    private Long administradorId;
 
     public SuprimentoDTO(Suprimento suprimento) {
         this.id = suprimento.getId();
         this.nome = suprimento.getNome();
         this.quantidade = suprimento.getQuantidade();
         this.unidadeMedida = suprimento.getUnidadeMedida();
-        this.administradorId = suprimento.getAdministrador().getId();
     }
 }

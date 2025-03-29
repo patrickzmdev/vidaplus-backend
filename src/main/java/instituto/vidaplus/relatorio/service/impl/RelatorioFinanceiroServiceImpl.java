@@ -1,7 +1,5 @@
 package instituto.vidaplus.relatorio.service.impl;
 
-import instituto.vidaplus.administrador.model.Administrador;
-import instituto.vidaplus.administrador.repository.AdministradorRepository;
 import instituto.vidaplus.relatorio.dto.RelatorioFinanceiroDTO;
 import instituto.vidaplus.relatorio.dto.ResumoFinanceiroDTO;
 import instituto.vidaplus.relatorio.exception.ErroEmRelatorioException;
@@ -30,7 +28,6 @@ import java.util.stream.Collectors;
 public class RelatorioFinanceiroServiceImpl implements RelatorioFinanceiroService {
 
     private final RelatorioRepository relatorioRepository;
-    private final AdministradorRepository administradorRepository;
     private final FormatadorData formatadorData;
 
     @Override
@@ -40,10 +37,6 @@ public class RelatorioFinanceiroServiceImpl implements RelatorioFinanceiroServic
         relatorio.setReceita(relatorioDTO.getReceita());
         relatorio.setDespesa(relatorioDTO.getDespesa());
         relatorio.setLucro(relatorioDTO.getReceita() - relatorioDTO.getDespesa());
-
-        Administrador administrador = administradorRepository.findById(relatorioDTO.getAdministradorId())
-                .orElseThrow(() -> new RuntimeException("Administrador não encontrado"));
-        relatorio.setAdministrador(administrador);
 
         RelatorioFinanceiro salvo = relatorioRepository.save(relatorio);
         return new RelatorioFinanceiroDTO(salvo);

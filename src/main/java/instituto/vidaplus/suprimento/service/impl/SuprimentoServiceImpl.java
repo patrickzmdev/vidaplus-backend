@@ -1,8 +1,5 @@
 package instituto.vidaplus.suprimento.service.impl;
 
-import instituto.vidaplus.administrador.exception.AdministradorNaoEncontradoException;
-import instituto.vidaplus.administrador.model.Administrador;
-import instituto.vidaplus.administrador.repository.AdministradorRepository;
 import instituto.vidaplus.suprimento.dto.SuprimentoDTO;
 import instituto.vidaplus.suprimento.exception.QuantidadeSuprimentoException;
 import instituto.vidaplus.suprimento.exception.SuprimentoNaoEncontradoException;
@@ -19,12 +16,9 @@ import org.springframework.stereotype.Service;
 public class SuprimentoServiceImpl implements SuprimentoService {
 
     private final SuprimentoRepository suprimentoRepository;
-    private final AdministradorRepository administradorRepository;
 
     @Override
-    public SuprimentoDTO cadastrarSuprimento(Long administradorId, SuprimentoDTO suprimentoDTO) {
-        Administrador administrador = administradorRepository.findById(administradorId)
-                .orElseThrow(() -> new RuntimeException("Administrador não encontrado"));
+    public SuprimentoDTO cadastrarSuprimento(SuprimentoDTO suprimentoDTO) {
 
         if(suprimentoDTO.getQuantidade() <= 0) {
             throw new QuantidadeSuprimentoException("Quantidade inválida");
@@ -34,7 +28,6 @@ public class SuprimentoServiceImpl implements SuprimentoService {
         suprimento.setNome(suprimentoDTO.getNome());
         suprimento.setQuantidade(suprimentoDTO.getQuantidade());
         suprimento.setUnidadeMedida(suprimentoDTO.getUnidadeMedida());
-        suprimento.setAdministrador(administrador);
 
         suprimentoRepository.save(suprimento);
         return new SuprimentoDTO(suprimento);
@@ -49,13 +42,9 @@ public class SuprimentoServiceImpl implements SuprimentoService {
             throw new QuantidadeSuprimentoException("Quantidade inválida");
         }
 
-        Administrador administrador = administradorRepository.findById(suprimentoDTO.getAdministradorId())
-                        .orElseThrow(() -> new AdministradorNaoEncontradoException("Administrador não encontrado"));
-
         suprimentoExistente.setNome(suprimentoDTO.getNome());
         suprimentoExistente.setQuantidade(suprimentoDTO.getQuantidade());
         suprimentoExistente.setUnidadeMedida(suprimentoDTO.getUnidadeMedida());
-        suprimentoExistente.setAdministrador(administrador);
 
         Suprimento suprimento = suprimentoRepository.save(suprimentoExistente);
         return new SuprimentoDTO(suprimento);

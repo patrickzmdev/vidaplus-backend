@@ -20,7 +20,6 @@ public class ExameDTO {
     private TipoExameEnum tipoExame;
     private LocalDate dataAgendamento;
     private StatusExameEnum status;
-    private Long administradorId;
 
     public ExameDTO(Exame exame) {
         this.id = exame.getId();
@@ -29,6 +28,5 @@ public class ExameDTO {
         this.tipoExame = exame.getTipoExame();
         this.dataAgendamento = exame.getDataAgendamento();
         this.status = exame.getStatus();
-        this.administradorId = exame.getAdministrador().getId();
     }
 }

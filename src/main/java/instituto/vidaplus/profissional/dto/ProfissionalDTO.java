@@ -40,7 +40,6 @@ public class ProfissionalDTO {
     private List<Prontuario> prontuarios = new ArrayList<>();
     private List<Exame> examesSolicitados = new ArrayList<>();
     private List<Receita> receitasDigitais = new ArrayList<>();
-    private Long administradorId;
 
     public ProfissionalDTO(Profissional profissional) {
         this.id = profissional.getId();
@@ -63,7 +62,6 @@ public class ProfissionalDTO {
         this.prontuarios = profissional.getProntuarios();
         this.examesSolicitados = profissional.getExamesSolicitados();
         this.receitasDigitais = profissional.getReceitasDigitais();
-        this.administradorId = profissional.getAdministrador().getId();
     }
 
 }

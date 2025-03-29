@@ -1,6 +1,5 @@
 package instituto.vidaplus.suprimento.model;
 
-import instituto.vidaplus.administrador.model.Administrador;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,8 +22,4 @@ public class Suprimento {
 
     @Column(nullable = false)
     private String unidadeMedida;
-
-    @ManyToOne
-    @JoinColumn(name = "administrador_id", nullable = false)
-    private Administrador administrador;
 }

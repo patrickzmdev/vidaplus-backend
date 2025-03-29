@@ -1,6 +1,5 @@
 package instituto.vidaplus.exception;
 
-import instituto.vidaplus.administrador.exception.AdministradorNaoEncontradoException;
 import instituto.vidaplus.agenda.exception.AgendaNaoEncontradaException;
 import instituto.vidaplus.consulta.exception.ConsultaNaoEncontradaException;
 import instituto.vidaplus.exame.exception.ExameNaoEncontradoException;
@@ -87,11 +86,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(CepInvalidoException.class)
     public ResponseEntity<String> handleCepInvalidoException(CepInvalidoException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(AdministradorNaoEncontradoException.class)
-    public ResponseEntity<String> handleAdministradorNaoEncontradoException(AdministradorNaoEncontradoException ex) {
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(LeitoNaoExistenteException.class)

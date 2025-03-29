@@ -5,6 +5,7 @@ import instituto.vidaplus.receita.dto.ItemReceitaInfo;
 import instituto.vidaplus.receita.service.ItemReceitaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,18 +18,21 @@ public class ItemReceitaController {
     private final ItemReceitaService itemReceitaService;
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<ItemReceitaDTO> adicionarItemReceita(@RequestParam Long receitaId, @RequestBody ItemReceitaDTO itemReceitaDTO) {
         ItemReceitaDTO itemReceitaAdicionado = itemReceitaService.adicionarItemReceita(receitaId, itemReceitaDTO);
         return ResponseEntity.ok(itemReceitaAdicionado);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<String> removerItemReceita(@PathVariable Long id) {
         String mensagem = itemReceitaService.removerItemReceita(id);
         return ResponseEntity.ok(mensagem);
     }
 
     @GetMapping("/receita/{receitaId}")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<List<ItemReceitaInfo>> listarItemPorReceita(@PathVariable Long receitaId) {
         List<ItemReceitaInfo> itens = itemReceitaService.listarItemPorReceita(receitaId);
         return ResponseEntity.ok(itens);

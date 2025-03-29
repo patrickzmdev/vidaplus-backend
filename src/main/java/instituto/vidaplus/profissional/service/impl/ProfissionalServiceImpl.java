@@ -1,8 +1,5 @@
 package instituto.vidaplus.profissional.service.impl;
 
-import instituto.vidaplus.administrador.exception.AdministradorNaoEncontradoException;
-import instituto.vidaplus.administrador.model.Administrador;
-import instituto.vidaplus.administrador.repository.AdministradorRepository;
 import instituto.vidaplus.endereco.dto.EnderecoDTO;
 import instituto.vidaplus.endereco.service.CepService;
 import instituto.vidaplus.exception.genericas.DadoUnicoException;
@@ -30,7 +27,6 @@ import org.springframework.stereotype.Service;
 public class ProfissionalServiceImpl implements ProfissionalService {
 
     private final ProfissionalRepository profissionalRepository;
-    private final AdministradorRepository administradorRepository;
     private final ProfissionalCustomRepository profissionalCustomRepository;
     private final ValidadorCep validadorCep;
     private final ValidadorCpf validadorCpf;
@@ -39,7 +35,7 @@ public class ProfissionalServiceImpl implements ProfissionalService {
     private final CepService cepService;
 
     @Override
-    public ProfissionalDTO cadastrarProfissional(Long administradorId, ProfissionalDTO profissionalDTO) {
+    public ProfissionalDTO cadastrarProfissional(ProfissionalDTO profissionalDTO) {
         try{
             if(profissionalDTO.getNome() == null || profissionalDTO.getNome().isEmpty()){
                 throw new IllegalArgumentException("Nome do profissional é obrigatório");
@@ -68,9 +64,6 @@ public class ProfissionalServiceImpl implements ProfissionalService {
                 throw new DadoUnicoException("Registro já cadastrado");
             }
 
-            Administrador administrador = administradorRepository.findById(administradorId)
-                    .orElseThrow(() -> new AdministradorNaoEncontradoException("Administrador não encontrado"));
-
             validadorCpf.validarCpf(profissionalDTO.getCpf());
             validadorEmail.validarEmail(profissionalDTO.getEmail());
             validadorTelefone.validarTelefone(profissionalDTO.getTelefone());
@@ -95,7 +88,6 @@ public class ProfissionalServiceImpl implements ProfissionalService {
             profissional.setBairro(endereco.getBairro());
             profissional.setCidade(endereco.getLocalidade());
             profissional.setUf(endereco.getUf());
-            profissional.setAdministrador(administrador);
 
             Profissional profissionalSalvo = profissionalRepository.save(profissional);
             return new ProfissionalDTO(profissionalSalvo);
@@ -137,9 +129,6 @@ public class ProfissionalServiceImpl implements ProfissionalService {
                 throw new DadoUnicoException("Registro já cadastrado");
             }
 
-            Administrador administrador = administradorRepository.findById(profissionalDTO.getAdministradorId())
-                    .orElseThrow(() -> new AdministradorNaoEncontradoException("Administrador não encontrado"));
-
             validadorCpf.validarCpf(profissionalDTO.getCpf());
             validadorEmail.validarEmail(profissionalDTO.getEmail());
             validadorTelefone.validarTelefone(profissionalDTO.getTelefone());
@@ -163,7 +152,6 @@ public class ProfissionalServiceImpl implements ProfissionalService {
             profissionalExistente.setBairro(endereco.getBairro());
             profissionalExistente.setCidade(endereco.getLocalidade());
             profissionalExistente.setUf(endereco.getUf());
-            profissionalExistente.setAdministrador(administrador);
 
             Profissional profissionalSalvo = profissionalRepository.save(profissionalExistente);
             return new ProfissionalDTO(profissionalSalvo);

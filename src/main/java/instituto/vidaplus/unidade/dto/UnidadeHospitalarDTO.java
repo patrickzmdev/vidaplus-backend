@@ -19,7 +19,6 @@ public class UnidadeHospitalarDTO {
     private String uf;
     private String telefone;
     private String email;
-    private Long administradorId;
 
     public UnidadeHospitalarDTO(UnidadeHospitalar unidadeHospitalar) {
         this.id = unidadeHospitalar.getId();
@@ -31,6 +30,5 @@ public class UnidadeHospitalarDTO {
         this.uf = unidadeHospitalar.getUf();
         this.telefone = unidadeHospitalar.getTelefone();
         this.email = unidadeHospitalar.getEmail();
-        this.administradorId = unidadeHospitalar.getAdministrador().getId();
     }
 }

@@ -43,7 +43,6 @@ public class PacienteDTO {
     private List<Prontuario> prontuarios = new ArrayList<>();
     private List<Exame> exames = new ArrayList<>();
     private List<Consulta> consultas = new ArrayList<>();
-    private Long administradorId;
 
     public PacienteDTO(Paciente paciente) {
         this.id = paciente.getId();
@@ -69,6 +68,5 @@ public class PacienteDTO {
         this.prontuarios = paciente.getProntuarios();
         this.exames = paciente.getExames();
         this.consultas = paciente.getConsultas();
-        this.administradorId = paciente.getAdministrador().getId();
     }
 }

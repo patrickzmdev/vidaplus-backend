@@ -1,7 +1,5 @@
 package instituto.vidaplus.leito.service.impl;
 
-import instituto.vidaplus.administrador.model.Administrador;
-import instituto.vidaplus.administrador.repository.AdministradorRepository;
 import instituto.vidaplus.internacao.exception.InternacaoNaoEncontradaException;
 import instituto.vidaplus.internacao.model.Internacao;
 import instituto.vidaplus.internacao.repository.InternacaoRepository;
@@ -27,15 +25,11 @@ import org.springframework.stereotype.Service;
 public class LeitoServiceImpl implements LeitoService {
 
     private final LeitoRepository leitoRepository;
-    private final AdministradorRepository administradorRepository;
     private final UnidadeHospitalarRepository unidadeHospitalarRepository;
     private final InternacaoRepository internacaoRepository;
 
     @Override
-    public LeitoDTO adicionarLeito(Long administradorId,Long unidadeHospitalarId, LeitoDTO leitoDTO) {
-        Administrador administrador = administradorRepository.findById(administradorId)
-                .orElseThrow(() -> new RuntimeException("Administrador não encontrado"));
-
+    public LeitoDTO adicionarLeito(Long unidadeHospitalarId, LeitoDTO leitoDTO) {
         UnidadeHospitalar unidadeHospitalar = unidadeHospitalarRepository.findById(unidadeHospitalarId)
                 .orElseThrow(() -> new UnidadeHospitalarNaoEncontradaException("Unidade Hospitalar não encontrada"));
 
@@ -47,7 +41,6 @@ public class LeitoServiceImpl implements LeitoService {
         leito.setNumero(leitoDTO.getNumero());
         leito.setOcupado(false);
         leito.setUnidadeHospitalar(unidadeHospitalar);
-        leito.setAdministrador(administrador);
 
         Leito leitoSalvo = leitoRepository.save(leito);
         return new LeitoDTO(leitoSalvo);

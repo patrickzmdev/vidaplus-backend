@@ -13,6 +13,7 @@ import org.springframework.hateoas.PagedModel;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,13 +22,13 @@ import org.springframework.web.bind.annotation.*;
 public class ProfissionalController {
 
     private final ProfissionalService profissionalService;
-    private final PagedResourcesAssembler<ProfissionalResumoDTO> pagedResourcesAssembler;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> cadastrarProfissional(@RequestParam Long administradorId, @RequestBody ProfissionalDTO profissional) {
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public ResponseEntity<?> cadastrarProfissional(@RequestBody ProfissionalDTO profissional) {
         try {
-            ProfissionalDTO profissionalCadastrado = profissionalService.cadastrarProfissional(administradorId, profissional);
+            ProfissionalDTO profissionalCadastrado = profissionalService.cadastrarProfissional(profissional);
             return new ResponseEntity<>(profissionalCadastrado, HttpStatus.OK);
         } catch (DadoUnicoException ex){
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
@@ -35,24 +36,28 @@ public class ProfissionalController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<ProfissionalDTO> editarProfissional(@PathVariable Long id, @RequestBody ProfissionalDTO profissional) {
         ProfissionalDTO profissionalEditado = profissionalService.editarProfissional(id, profissional);
         return ResponseEntity.ok(profissionalEditado);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<String> excluirProfissional(@PathVariable Long id) {
         String mensagem = profissionalService.excluirProfissional(id);
         return ResponseEntity.ok(mensagem);
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<ProfissionalDTO> buscarProfissional(@PathVariable Long id) {
         ProfissionalDTO profissional = profissionalService.buscarProfissional(id);
         return ResponseEntity.ok(profissional);
     }
 
     @GetMapping("/nome")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<?> buscarProfissionaisPorNome(@RequestParam String nome, Pageable pageable) {
         Page<ProfissionalResumoDTO> profissionais = profissionalService.buscarProfissionaisPorNome(nome, pageable);
 
@@ -60,6 +65,7 @@ public class ProfissionalController {
     }
 
     @GetMapping("/especialidade")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<?> buscarProfissionaisPorEspecialidade(@RequestParam EspecialidadeEnum especialidade, Pageable pageable) {
         Page<ProfissionalResumoDTO> profissionais = profissionalService.buscarProfissionaisPorEspecialidade(especialidade, pageable);
 
@@ -67,6 +73,7 @@ public class ProfissionalController {
     }
 
     @GetMapping("/cidade")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<?> buscarProfissionaisPorCidade(@RequestParam String cidade, Pageable pageable) {
         Page<ProfissionalResumoDTO> profissionais = profissionalService.buscarProfissionaisPorCidade(cidade, pageable);
 
@@ -74,6 +81,7 @@ public class ProfissionalController {
     }
 
     @GetMapping("/especialidade-cidade")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<?> buscarProfissionaisPorEspecialidadeCidade(@RequestParam EspecialidadeEnum especialidade, @RequestParam String cidade, Pageable pageable) {
         Page<ProfissionalResumoDTO> profissionais = profissionalService.buscarProfissionaisPorEspecialidadeCidade(especialidade, cidade, pageable);
 

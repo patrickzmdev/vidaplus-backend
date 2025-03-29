@@ -9,6 +9,7 @@ import instituto.vidaplus.consulta.exception.ConsultaNaoEncontradaException;
 import instituto.vidaplus.consulta.model.Consulta;
 import instituto.vidaplus.consulta.repository.ConsultaRepository;
 import instituto.vidaplus.consulta.service.ConsultaService;
+import instituto.vidaplus.email.service.EmailService;
 import instituto.vidaplus.horario.exception.ConflitoDeHorarioException;
 import instituto.vidaplus.horario.exception.HorarioNaoEncontradoException;
 import instituto.vidaplus.paciente.exception.PacienteNaoEncontradoException;
@@ -34,6 +35,7 @@ public class ConsultaServiceImpl implements ConsultaService {
     private final PacienteRepository pacienteRepository;
     private final ProfissionalRepository profissionalRepository;
     private final AgendaRepository agendaRepository;
+    private final EmailService emailService;
 
     @Override
     @Transactional
@@ -81,7 +83,7 @@ public class ConsultaServiceImpl implements ConsultaService {
         consulta.setHoraFim(consultaDTO.getHoraFim());
         consulta.setStatus(StatusConsultaEnum.AGENDADA);
         consulta.setMotivoConsulta(consultaDTO.getMotivoConsulta());
-
+        emailService.confirmacaoConsulta(paciente, "Confirmação de Consulta", consulta);
         Consulta consultaSalva = consultaRepository.save(consulta);
         return new ConsultaDTO(consultaSalva);
     }

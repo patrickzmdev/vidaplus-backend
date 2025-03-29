@@ -5,7 +5,7 @@ import instituto.vidaplus.paciente.dto.PacienteDTO;
 import org.springframework.data.domain.Page;
 
 public interface LeitoService {
-    LeitoDTO adicionarLeito(Long administradorId,Long unidadeHospitalarId, LeitoDTO leitoDTO);
+    LeitoDTO adicionarLeito(Long unidadeHospitalarId, LeitoDTO leitoDTO);
     LeitoDTO buscarLeito(Long id);
     String deletarLeito(Long id);
     Boolean verificarLeitoDisponivel(Long id);

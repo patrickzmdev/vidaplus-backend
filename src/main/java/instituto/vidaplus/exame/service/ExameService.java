@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface ExameService {
-    ExameDTO agendarExame(Long administradorId,Long pacienteId, ExameDTO exameDTO);
+    ExameDTO agendarExame(Long pacienteId, ExameDTO exameDTO);
     ExameDTO buscarExame(Long id);
     Page<ExameDTO> buscarExamesPorPaciente(Long pacienteId, Pageable pageable);
     String finalizarExame(Long id);
