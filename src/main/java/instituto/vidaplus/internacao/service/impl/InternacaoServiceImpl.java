@@ -26,6 +26,8 @@ import instituto.vidaplus.suprimento.repository.SuprimentoRepository;
 import instituto.vidaplus.utils.validador.ValidadorMedico;
 import instituto.vidaplus.utils.validador.ValidadorPacienteNaoInternado;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,10 +45,12 @@ public class InternacaoServiceImpl implements InternacaoService {
     private final ProfissionalRepository profissionalRepository;
     private final ValidadorMedico validadorMedico;
     private final ValidadorPacienteNaoInternado validadorPacienteNaoInternado;
+    private static final Logger logger = LoggerFactory.getLogger(InternacaoServiceImpl.class);
 
     @Override
     @Transactional
     public InternacaoDTO registrarInternacao(Long pacienteId, Long leitoId, InternacaoDTO internacao) {
+        logger.info("Iniciando o registro de internação para o paciente com ID: {}", pacienteId);
         Paciente paciente = pacienteRepository.findById(pacienteId)
                 .orElseThrow(() -> new PacienteNaoEncontradoException("Paciente não encontrado"));
 
@@ -79,11 +83,13 @@ public class InternacaoServiceImpl implements InternacaoService {
         efetivarInternacao.setAtiva(true);
 
         Internacao internacaoSalva = internacaoRepository.save(efetivarInternacao);
+        logger.debug("Internacao: {}", internacaoSalva);
         return new InternacaoDTO(internacaoSalva);
     }
 
     @Override
     public String encerrarInternacao(Long internacaoId) {
+        logger.info("Encerrando internação com ID: {}", internacaoId);
         Internacao internacao = internacaoRepository.findById(internacaoId)
                 .orElseThrow(() -> new InternacaoNaoEncontradaException("Internação não encontrada"));
 
@@ -91,12 +97,14 @@ public class InternacaoServiceImpl implements InternacaoService {
         internacao.setAtiva(false);
 
         internacaoRepository.save(internacao);
+        logger.debug("Internacao: {}", internacao);
         return "Internação encerrada com sucesso";
     }
 
     @Override
     @Transactional
     public InternacaoDTO transferirPaciente(Long internacaoId, Long leitoId) {
+        logger.info("Iniciando paciente com ID: {}", internacaoId);
         Internacao internacao = internacaoRepository.findById(internacaoId)
                 .orElseThrow(() -> new InternacaoNaoEncontradaException ("Internação não encontrada"));
 
@@ -120,12 +128,14 @@ public class InternacaoServiceImpl implements InternacaoService {
         leitoRepository.save(leitoAntigo);
         leitoRepository.save(novoLeito);
         Internacao internacaoTransferida = internacaoRepository.save(internacao);
+        logger.debug("Internacao: {}", internacaoTransferida);
         return new InternacaoDTO(internacaoTransferida);
     }
 
     @Override
     @Transactional
     public InternacaoSuprimentoDto adicionarSuprimentoAUmaInternacao(Long internacaoId, Long suprimentoId, Integer quantidadeUtilizada) {
+        logger.info("Iniciando suprimento a internacao com ID: {}", internacaoId);
         Internacao internacao = internacaoRepository.findById(internacaoId)
                 .orElseThrow(() -> new InternacaoNaoEncontradaException("Internação não encontrada"));
 
@@ -144,6 +154,7 @@ public class InternacaoServiceImpl implements InternacaoService {
         internacaoSuprimento.setSuprimento(suprimento);
         internacaoSuprimento.setQuantidadeUtilizada(quantidadeUtilizada);
         InternacaoSuprimento internacaoSuprimentoSalvo = internacaoSuprimentoRepository.save(internacaoSuprimento);
+        logger.debug("InternacaoSuprimento: {}", internacaoSuprimento);
         return new InternacaoSuprimentoDto(internacaoSuprimentoSalvo);
     }
 }

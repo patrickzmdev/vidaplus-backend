@@ -1,5 +1,6 @@
 package instituto.vidaplus.profissional.service.impl;
 
+import instituto.vidaplus.documentacao.FinalidadeTratamento;
 import instituto.vidaplus.endereco.dto.EnderecoDTO;
 import instituto.vidaplus.endereco.service.CepService;
 import instituto.vidaplus.exception.genericas.DadoUnicoException;
@@ -17,6 +18,8 @@ import instituto.vidaplus.utils.validador.ValidadorCpf;
 import instituto.vidaplus.utils.validador.ValidadorEmail;
 import instituto.vidaplus.utils.validador.ValidadorTelefone;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,10 +36,14 @@ public class ProfissionalServiceImpl implements ProfissionalService {
     private final ValidadorEmail validadorEmail;
     private final ValidadorTelefone validadorTelefone;
     private final CepService cepService;
+    private static final Logger logger = LoggerFactory.getLogger(ProfissionalServiceImpl.class);
 
     @Override
+    @FinalidadeTratamento(descricao = "Cadastro de unidades hospitalares para atendimento",
+            baseLegal = "Execução de contrato/Interesse legítimo")
     public ProfissionalDTO cadastrarProfissional(ProfissionalDTO profissionalDTO) {
         try{
+            logger.info("Cadastrando profissional");
             if(profissionalDTO.getNome() == null || profissionalDTO.getNome().isEmpty()){
                 throw new IllegalArgumentException("Nome do profissional é obrigatório");
             }
@@ -90,6 +97,7 @@ public class ProfissionalServiceImpl implements ProfissionalService {
             profissional.setUf(endereco.getUf());
 
             Profissional profissionalSalvo = profissionalRepository.save(profissional);
+            logger.debug("Profissional salvo: {}", profissionalSalvo);
             return new ProfissionalDTO(profissionalSalvo);
         }catch (DataIntegrityViolationException ex){
                 throw new RuntimeException("Erro ao cadastrar profissional: " + ex.getMessage());
@@ -99,6 +107,7 @@ public class ProfissionalServiceImpl implements ProfissionalService {
     @Override
     public ProfissionalDTO editarProfissional(Long id, ProfissionalDTO profissionalDTO) {
         try {
+            logger.info("Editando profissional com ID: {}", id);
             Profissional profissionalExistente = profissionalRepository.findById(id)
                     .orElseThrow(() -> new ProfissionalNaoEncontradoException("Profissional não encontrado"));
 
@@ -154,6 +163,7 @@ public class ProfissionalServiceImpl implements ProfissionalService {
             profissionalExistente.setUf(endereco.getUf());
 
             Profissional profissionalSalvo = profissionalRepository.save(profissionalExistente);
+            logger.debug("Profissional editado: {}", profissionalSalvo);
             return new ProfissionalDTO(profissionalSalvo);
 
         } catch (DataIntegrityViolationException ex) {
@@ -163,9 +173,11 @@ public class ProfissionalServiceImpl implements ProfissionalService {
 
     @Override
     public String excluirProfissional(Long id) {
+        logger.info("Excluindo profissional: {}", id);
         Profissional profissional = profissionalRepository.findById(id)
                 .orElseThrow(() -> new ProfissionalNaoEncontradoException("Profissional não encontrado"));
         profissionalRepository.delete(profissional);
+        logger.debug("Profissional excluído: {}", profissional);
         return "Profissional excluído com sucesso";
     }
 

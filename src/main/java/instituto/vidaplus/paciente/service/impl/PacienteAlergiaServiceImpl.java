@@ -11,6 +11,8 @@ import instituto.vidaplus.paciente.repository.PacienteAlergiaRepository;
 import instituto.vidaplus.paciente.repository.PacienteRepository;
 import instituto.vidaplus.paciente.service.PacienteAlergiaService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,9 +25,11 @@ public class PacienteAlergiaServiceImpl implements PacienteAlergiaService {
 
     private final PacienteRepository pacienteRepository;
     private final PacienteAlergiaRepository pacienteAlergiaRepository;
+    private static final Logger logger = LoggerFactory.getLogger(PacienteAlergiaServiceImpl.class);
 
     @Transactional
     public PacienteAlergiaDTO adicionarAlergia(Long pacienteId, AlergiaEnum alergia, String observacao) {
+        logger.info("Adicionando alergia: {}", alergia);
         Paciente paciente = pacienteRepository.findById(pacienteId)
                 .orElseThrow(() -> new PacienteNaoEncontradoException("Paciente não encontrado"));
 
@@ -41,6 +45,7 @@ public class PacienteAlergiaServiceImpl implements PacienteAlergiaService {
         pacienteAlergia.setObservacao(observacao);
 
         PacienteAlergia pacienteSalvo = pacienteAlergiaRepository.save(pacienteAlergia);
+        logger.debug("Paciente: {}", pacienteAlergia);
         return new PacienteAlergiaDTO(pacienteSalvo);
     }
 
@@ -56,6 +61,7 @@ public class PacienteAlergiaServiceImpl implements PacienteAlergiaService {
 
     @Override
     public String excluirAlergia(Long pacienteId, AlergiaEnum alergia) {
+        logger.info("Excluindo alergia: {}", alergia);
         Paciente paciente = pacienteRepository.findById(pacienteId)
                 .orElseThrow(() -> new PacienteNaoEncontradoException("Paciente não encontrado"));
 
@@ -66,6 +72,7 @@ public class PacienteAlergiaServiceImpl implements PacienteAlergiaService {
         }
 
         pacienteAlergiaRepository.delete(pacienteAlergia);
+        logger.debug("Paciente: {}", pacienteAlergia);
         return "Alergia excluída com sucesso";
     }
 }

@@ -21,6 +21,8 @@ import instituto.vidaplus.suprimento.exception.SuprimentoNaoEncontradoException;
 import instituto.vidaplus.suprimento.model.Suprimento;
 import instituto.vidaplus.suprimento.repository.SuprimentoRepository;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -40,11 +42,13 @@ public class ExameServiceImpl implements ExameService {
     private final PacienteRepository pacienteRepository;
     private final ProfissionalRepository profissionalRepository;
     private final EmailService emailService;
+    private static final Logger logger = LoggerFactory.getLogger(ExameServiceImpl.class);
 
     @Override
     @PreAuthorize("hasRole('ADMIN')")
     public ExameDTO agendarExame(Long pacienteId, ExameDTO exameDTO) {
 
+        logger.info("Agendar exame: {}", exameDTO);
         Paciente paciente = pacienteRepository.findById(pacienteId)
                 .orElseThrow(() -> new PacienteNaoEncontradoException("Paciente não encontrado"));
 
@@ -61,6 +65,7 @@ public class ExameServiceImpl implements ExameService {
         exame.setStatus(StatusExameEnum.AGENDADO);
         emailService.confirmacaoExame(paciente, "Confirmação de Exame", exame);
         exameRepository.save(exame);
+        logger.debug("Exame: {}", exame);
         return new ExameDTO(exame);
     }
 
@@ -84,20 +89,24 @@ public class ExameServiceImpl implements ExameService {
     @Override
     @PreAuthorize("hasRole('ADMIN')")
     public String finalizarExame(Long id) {
+        logger.info("Finalizar exame: {}", id);
         Exame exame = exameRepository.findById(id)
                 .orElseThrow(() -> new ExameNaoEncontradoException("Exame não encontrado"));
         exame.setStatus(StatusExameEnum.REALIZADO);
         exameRepository.save(exame);
+        logger.debug("Exame: {}", exame);
         return "Exame finalizado com sucesso";
     }
 
     @Override
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public String cancelarExame(Long id) {
+        logger.info("Cancelar exame: {}", id);
         Exame exame = exameRepository.findById(id)
                 .orElseThrow(() -> new ExameNaoEncontradoException("Exame não encontrado"));
         exame.setStatus(StatusExameEnum.CANCELADO);
         exameRepository.save(exame);
+        logger.debug("Exame: {}", exame);
         return "Exame cancelado com sucesso";
     }
 
@@ -105,6 +114,7 @@ public class ExameServiceImpl implements ExameService {
     @Transactional
     @PreAuthorize("hasRole('ADMIN')")
     public ExameSuprimentoDTO adicionarSuprimentoAExame(Long exameId, Long suprimentoId, Integer quantidadeUtilizada) {
+        logger.info("Adicionar suprimento ao exame: {} e suprimento: {}", exameId, suprimentoId);
         Exame exame = exameRepository.findById(exameId)
                 .orElseThrow(() -> new ExameNaoEncontradoException("Exame não encontrado"));
         Suprimento suprimento = suprimentoRepository.findById(suprimentoId)
@@ -126,6 +136,7 @@ public class ExameServiceImpl implements ExameService {
         exameSuprimento.setSuprimento(suprimento);
         exameSuprimento.setQuantidadeUtilizada(quantidadeUtilizada);
         exameSuprimentoRepository.save(exameSuprimento);
+        logger.debug("Suprimento: {}", exameSuprimento);
         return new ExameSuprimentoDTO(exameSuprimento);
     }
 }

@@ -17,6 +17,8 @@ import instituto.vidaplus.receita.service.ItemReceitaService;
 import instituto.vidaplus.receita.service.ReceitaService;
 import instituto.vidaplus.utils.validador.FormatadorData;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -36,9 +38,11 @@ public class ReceitaServiceImpl implements ReceitaService {
     private final ProfissionalRepository profissionalRepository;
     private final FormatadorData formatadorData;
     private final ItemReceitaService itemReceitaService;
+    private static final Logger logger = LoggerFactory.getLogger(ReceitaServiceImpl.class);
 
     @Override
     public ReceitaDTO criarReceita(Long consultaId) {
+        logger.info("Criando receita com ID: {}", consultaId);
         Consulta consulta = consultaRepository.findById(consultaId)
                 .orElseThrow(() -> new ConsultaNaoEncontradaException("Consulta não encontrada"));
 
@@ -50,6 +54,7 @@ public class ReceitaServiceImpl implements ReceitaService {
         receita.setDataFimValidade(LocalDate.now().plusDays(30));
 
         Receita receitaSalva = receitaRepository.save(receita);
+        logger.debug("Receita criada com sucesso: {}", receitaSalva);
         return new ReceitaDTO(receitaSalva);
     }
 
@@ -97,6 +102,7 @@ public class ReceitaServiceImpl implements ReceitaService {
 
     @Override
     public byte[] gerarRelatorio(Long receitaId) {
+        logger.info("Gerando relatório para receita com ID: {}", receitaId);
         Receita receita = receitaRepository.findById(receitaId)
                 .orElseThrow(() -> new ReceitaNaoEncontradaException("Receita não encontrada"));
 

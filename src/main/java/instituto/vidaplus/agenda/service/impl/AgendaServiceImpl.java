@@ -9,10 +9,14 @@ import instituto.vidaplus.profissional.exception.ProfissionalNaoEncontradoExcept
 import instituto.vidaplus.profissional.model.Profissional;
 import instituto.vidaplus.profissional.repository.ProfissionalRepository;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+
 
 @Service
 @RequiredArgsConstructor
@@ -20,10 +24,12 @@ public class AgendaServiceImpl implements AgendaService {
 
     private final AgendaRepository agendaRepository;
     private final ProfissionalRepository profissionalRepository;
+    private static final Logger logger = LoggerFactory.getLogger(AgendaServiceImpl.class);
 
     @Override
     @Transactional
     public AgendaDTO criarAgenda(Long profissionalId, AgendaDTO agendaDTO) {
+        logger.info("Criando uma agenda para o profissional: {}", profissionalId);
         Profissional profissional = profissionalRepository.findById(profissionalId)
                 .orElseThrow(() -> new ProfissionalNaoEncontradoException("Profissional não encontrado"));
 
@@ -32,6 +38,7 @@ public class AgendaServiceImpl implements AgendaService {
         agenda.setAtivo(true);
         Agenda agendaSalva = agendaRepository.save(agenda);
 
+        logger.debug("Agenda salva: {}", agendaSalva);
         return new AgendaDTO(agendaSalva);
     }
 
@@ -49,6 +56,7 @@ public class AgendaServiceImpl implements AgendaService {
 
     @Override
     public AgendaDTO atualizarAgenda(Long id, AgendaDTO agendaDTO) {
+        logger.info("Atualizando a agenda com ID: {}", id);
         Agenda agenda = agendaRepository.findById(id)
                 .orElseThrow(() -> new AgendaNaoEncontradaException("Agenda não encontrada"));
 
@@ -62,16 +70,19 @@ public class AgendaServiceImpl implements AgendaService {
             agenda.setAtivo(agendaDTO.getAtivo());
         }
 
+        logger.debug("Agenda atualizada: {}", agenda);
         return new AgendaDTO(agendaRepository.save(agenda));
     }
 
     @Override
     @Transactional
     public String deletarAgenda(Long id) {
+        logger.info("Deletando a agenda com ID: {}", id);
         Agenda agenda = agendaRepository.findById(id)
                 .orElseThrow(() -> new AgendaNaoEncontradaException("Agenda não encontrada"));
 
         agendaRepository.delete(agenda);
+        logger.debug("Agenda deletada: {}", agenda);
         return "Agenda deletada com sucesso";
     }
 
@@ -85,18 +96,22 @@ public class AgendaServiceImpl implements AgendaService {
     @Override
     @Transactional
     public AgendaDTO ativarAgenda(Long id) {
+        logger.info("Ativarando a agenda com ID: {}", id);
         Agenda agenda = agendaRepository.findById(id)
                 .orElseThrow(() -> new AgendaNaoEncontradaException("Agenda não encontrada"));
         agenda.setAtivo(true);
+        logger.debug("Agenda ativada: {}", agenda);
         return new AgendaDTO(agendaRepository.save(agenda));
     }
 
     @Override
     @Transactional
     public AgendaDTO desativarAgenda(Long id) {
+        logger.info("Desativarando a agenda com ID: {}", id);
         Agenda agenda = agendaRepository.findById(id)
                 .orElseThrow(() -> new AgendaNaoEncontradaException("Agenda não encontrada"));
         agenda.setAtivo(false);
+        logger.debug("Agenda desatiada: {}", agenda);
         return new AgendaDTO(agendaRepository.save(agenda));
     }
 }

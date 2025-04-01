@@ -1,6 +1,7 @@
 package instituto.vidaplus.paciente.service.impl;
 
 import instituto.vidaplus.consulta.repository.ConsultaRepository;
+import instituto.vidaplus.documentacao.FinalidadeTratamento;
 import instituto.vidaplus.endereco.dto.EnderecoDTO;
 import instituto.vidaplus.endereco.service.CepService;
 import instituto.vidaplus.exame.repository.ExameRepository;
@@ -17,6 +18,8 @@ import instituto.vidaplus.utils.validador.ValidadorCpf;
 import instituto.vidaplus.utils.validador.ValidadorEmail;
 import instituto.vidaplus.utils.validador.ValidadorTelefone;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,11 +36,15 @@ public class PacienteServiceImpl implements PacienteService {
     private final ValidadorEmail validadorEmail;
     private final ValidadorTelefone validadorTelefone;
     private final CepService cepService;
+    private static final Logger log = LoggerFactory.getLogger(PacienteServiceImpl.class);
 
     @Override
     @Transactional
+    @FinalidadeTratamento(descricao = "Cadastro de unidades hospitalares para atendimento",
+            baseLegal = "Execução de contrato/Interesse legítimo")
     public PacienteDTO cadastrarPaciente(PacienteDTO pacienteDTO) {
         try {
+            log.info("Cadastrando Paciente: {}", pacienteDTO);
             if (pacienteDTO.getNome() == null || pacienteDTO.getNome().isEmpty()) {
                 throw new IllegalArgumentException("Nome do paciente é obrigatório");
             }
@@ -71,6 +78,7 @@ public class PacienteServiceImpl implements PacienteService {
             paciente.setUf(endereco.getUf());
 
             Paciente pacienteSalvo = pacienteRepository.save(paciente);
+            log.debug("Paciente: {}", pacienteSalvo);
             return new PacienteDTO(pacienteSalvo);
         }catch (DataIntegrityViolationException ex) {
             String errorMessage = ex.getMostSpecificCause().getMessage();
@@ -89,6 +97,7 @@ public class PacienteServiceImpl implements PacienteService {
     @Override
     public PacienteDTO editarPaciente(Long pacienteId, PacienteDTO pacienteAtualizado) {
         try {
+            log.info("Editando Paciente: {}", pacienteId);
             Paciente pacienteExistente = pacienteRepository.findById(pacienteId)
                     .orElseThrow(() -> new PacienteNaoEncontradoException("Paciente não encontrado"));
 
@@ -137,6 +146,7 @@ public class PacienteServiceImpl implements PacienteService {
             pacienteExistente.setUf(endereco.getUf());
 
             Paciente paciente = pacienteRepository.save(pacienteExistente);
+            log.debug("Paciente: {}", paciente);
             return new PacienteDTO(paciente);
         }catch (DadoUnicoException ex){
             throw new DadoUnicoException(ex.getMessage());
@@ -154,10 +164,12 @@ public class PacienteServiceImpl implements PacienteService {
 
     @Override
     public String excluirPaciente(Long pacienteId) {
+        log.info("Excluindo paciente: {}", pacienteId);
         Paciente paciente = pacienteRepository.findById(pacienteId)
                 .orElseThrow(() -> new RuntimeException("Paciente não encontrado com o ID: " + pacienteId));
 
         pacienteRepository.delete(paciente);
+        log.debug("Paciente: {}", paciente);
         return "Paciente excluído com sucesso";
     }
 }

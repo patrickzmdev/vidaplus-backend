@@ -12,6 +12,8 @@ import instituto.vidaplus.horario.model.HorarioDisponivel;
 import instituto.vidaplus.horario.repository.HorarioDisponivelRepository;
 import instituto.vidaplus.horario.service.HorarioDisponivelService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -28,10 +30,12 @@ public class HorarioDisponivelServiceImpl implements HorarioDisponivelService {
 
     private final HorarioDisponivelRepository horarioDisponivelRepository;
     private final AgendaRepository agendaRepository;
+    private static final Logger logger = LoggerFactory.getLogger(HorarioDisponivelServiceImpl.class);
 
     @Override
     @Transactional
     public HorarioDisponivelDTO criarHorarioDisponivel(Long agendaId, HorarioDisponivelDTO horarioDisponivelDTO) {
+        logger.info("Criando Horario Disponivel para a agenda com id: {}", agendaId);
         Agenda agenda = agendaRepository.findById(agendaId)
                 .orElseThrow(() -> new AgendaNaoEncontradaException("Agenda não encontrada"));
 
@@ -51,6 +55,7 @@ public class HorarioDisponivelServiceImpl implements HorarioDisponivelService {
         horarioDisponivel.setDisponivel(true);
 
         HorarioDisponivel horarioDisponivelSalvo = horarioDisponivelRepository.save(horarioDisponivel);
+        logger.debug("Horario Disponivel criado com sucesso: {}", horarioDisponivelSalvo);
         return new HorarioDisponivelDTO(horarioDisponivelSalvo);
 
     }
@@ -72,6 +77,7 @@ public class HorarioDisponivelServiceImpl implements HorarioDisponivelService {
     @Override
     @Transactional
     public HorarioDisponivelDTO atualizarHorarioDisponivel(Long id, HorarioDisponivelDTO horarioDTO) {
+        logger.info("Atualizando Horario Disponivel com id: {}", id);
         HorarioDisponivel horario = horarioDisponivelRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Horário não encontrado com o id: " + id));
 
@@ -108,10 +114,12 @@ public class HorarioDisponivelServiceImpl implements HorarioDisponivelService {
     @Override
     @Transactional
     public String deletarHorarioDisponivel(Long id) {
+        logger.info("Deletando Horario Disponivel com id: {}", id);
         if (!horarioDisponivelRepository.existsById(id)) {
             throw new RuntimeException("Horário não encontrado com o id: " + id);
         }
         horarioDisponivelRepository.deleteById(id);
+        logger.debug("Horario Disponivel com id: {}", id);
         return "Horário deletado com sucesso";
     }
 
@@ -132,20 +140,24 @@ public class HorarioDisponivelServiceImpl implements HorarioDisponivelService {
     @Override
     @Transactional
     public String marcarHorarioComoIndisponivel(Long id) {
+        logger.info("Marcar Horario indisponivel com id: {}", id);
         HorarioDisponivel horario = horarioDisponivelRepository.findById(id)
                 .orElseThrow(() -> new HorarioNaoEncontradoException("Horário não encontrado"));
         horario.setDisponivel(false);
         horarioDisponivelRepository.save(horario);
+        logger.debug("Horario com id: {}", id);
         return "Horário marcado como indisponível";
     }
 
     @Override
     @Transactional
     public String marcarHorarioComoDisponivel(Long id) {
+        logger.info("Marcar Horario disponivel com id: {}", id);
         HorarioDisponivel horario = horarioDisponivelRepository.findById(id)
                 .orElseThrow(() -> new HorarioNaoEncontradoException("Horário não encontrado"));
         horario.setDisponivel(true);
         horarioDisponivelRepository.save(horario);
+        logger.debug("Horario com id: {}", id);
         return "Horário marcado como disponível";
     }
 

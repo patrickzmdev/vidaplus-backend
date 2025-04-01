@@ -13,6 +13,8 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
@@ -29,9 +31,11 @@ public class RelatorioFinanceiroServiceImpl implements RelatorioFinanceiroServic
 
     private final RelatorioRepository relatorioRepository;
     private final FormatadorData formatadorData;
+    private static final Logger logger = LoggerFactory.getLogger(RelatorioFinanceiroServiceImpl.class);
 
     @Override
     public RelatorioFinanceiroDTO registrarRelatorio(RelatorioFinanceiroDTO relatorioDTO) {
+        logger.info("Registrando relatório financeiro: {}", relatorioDTO);
         RelatorioFinanceiro relatorio = new RelatorioFinanceiro();
         relatorio.setData(relatorioDTO.getData());
         relatorio.setReceita(relatorioDTO.getReceita());
@@ -39,6 +43,7 @@ public class RelatorioFinanceiroServiceImpl implements RelatorioFinanceiroServic
         relatorio.setLucro(relatorioDTO.getReceita() - relatorioDTO.getDespesa());
 
         RelatorioFinanceiro salvo = relatorioRepository.save(relatorio);
+        logger.debug("Salvo: {}", salvo);
         return new RelatorioFinanceiroDTO(salvo);
     }
 
@@ -68,6 +73,7 @@ public class RelatorioFinanceiroServiceImpl implements RelatorioFinanceiroServic
     @Override
     public byte[] exportarRelatorioPDF(LocalDate inicio, LocalDate fim) {
         try {
+            logger.info("Exportando relatório PDF de {} a {}", inicio, fim);
             List<RelatorioFinanceiroDTO> relatorios = buscarRelatorioPorPeriodo(inicio, fim);
             ResumoFinanceiroDTO resumo = gerarResumoFinanceiro(inicio, fim);
 
@@ -112,6 +118,7 @@ public class RelatorioFinanceiroServiceImpl implements RelatorioFinanceiroServic
     public byte[] exportarRelatorioExcel(LocalDate inicio, LocalDate fim) {
         try (Workbook workbook = new XSSFWorkbook();
              ByteArrayOutputStream out = new ByteArrayOutputStream()) {
+            logger.info("Exportando relatório Excel de {} a {}", inicio, fim);
 
             List<RelatorioFinanceiroDTO> relatorios = buscarRelatorioPorPeriodo(inicio, fim);
             ResumoFinanceiroDTO resumo = gerarResumoFinanceiro(inicio, fim);

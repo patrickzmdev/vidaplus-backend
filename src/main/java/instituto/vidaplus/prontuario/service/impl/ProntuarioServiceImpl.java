@@ -18,6 +18,8 @@ import instituto.vidaplus.prontuario.service.ProntuarioService;
 import instituto.vidaplus.utils.validador.FormatadorData;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -35,9 +37,11 @@ public class ProntuarioServiceImpl implements ProntuarioService {
     private final PacienteRepository pacienteRepository;
     private final ProfissionalRepository profissionalRepository;
     private final FormatadorData formatadorData;
+    private static final Logger logger = LoggerFactory.getLogger(ProntuarioServiceImpl.class);
 
     @Override
     public ProntuarioDTO criarProntuario(Long consultaId, ProntuarioDTO prontuarioDTO) {
+        logger.info("Criando prontuário para a consulta com ID: {}", consultaId);
         Consulta consulta = consultaRepository.findById(consultaId)
                 .orElseThrow(() -> new ConsultaNaoEncontradaException("Consulta não encontrada"));
 
@@ -54,6 +58,7 @@ public class ProntuarioServiceImpl implements ProntuarioService {
         prontuario.setTratamentoIndicado(prontuarioDTO.getTratamentoIndicado());
 
         Prontuario prontuarioSalvo = prontuarioRepository.save(prontuario);
+        logger.debug("Prontuario: {}", prontuarioSalvo);
         return new ProntuarioDTO(prontuarioSalvo);
     }
 
@@ -66,6 +71,7 @@ public class ProntuarioServiceImpl implements ProntuarioService {
 
     @Override
     public ProntuarioDTO atualizarProntuario(Long prontuarioId, ProntuarioDTO prontuarioDTO) {
+        logger.info("Atualizando prontuário com ID: {}", prontuarioId);
         Prontuario prontuario = prontuarioRepository.findById(prontuarioId)
                 .orElseThrow(() -> new ProntuarioNaoEncontradoException("Prontuário não encontrado"));
 
@@ -74,6 +80,7 @@ public class ProntuarioServiceImpl implements ProntuarioService {
         prontuario.setTratamentoIndicado(prontuarioDTO.getTratamentoIndicado());
 
         Prontuario prontuarioSalvo = prontuarioRepository.save(prontuario);
+        logger.debug("Prontuario: {}", prontuarioSalvo);
         return new ProntuarioDTO(prontuarioSalvo);
     }
 
@@ -111,6 +118,7 @@ public class ProntuarioServiceImpl implements ProntuarioService {
 
     @Override
     public byte[] gerarRelatorio(Long prontuarioId) {
+        logger.info("Gerando relatório para o prontuário com ID: {}", prontuarioId);
         Prontuario prontuario = prontuarioRepository.findById(prontuarioId)
                 .orElseThrow(() -> new ProntuarioNaoEncontradoException("Prontuário não encontrado"));
 

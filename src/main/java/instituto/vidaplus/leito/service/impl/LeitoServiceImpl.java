@@ -15,6 +15,8 @@ import instituto.vidaplus.unidade.exception.UnidadeHospitalarNaoEncontradaExcept
 import instituto.vidaplus.unidade.model.UnidadeHospitalar;
 import instituto.vidaplus.unidade.repository.UnidadeHospitalarRepository;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -27,9 +29,11 @@ public class LeitoServiceImpl implements LeitoService {
     private final LeitoRepository leitoRepository;
     private final UnidadeHospitalarRepository unidadeHospitalarRepository;
     private final InternacaoRepository internacaoRepository;
+    private static final Logger logger = LoggerFactory.getLogger(LeitoServiceImpl.class);
 
     @Override
     public LeitoDTO adicionarLeito(Long unidadeHospitalarId, LeitoDTO leitoDTO) {
+        logger.info("Adicionando leito: {}", leitoDTO);
         UnidadeHospitalar unidadeHospitalar = unidadeHospitalarRepository.findById(unidadeHospitalarId)
                 .orElseThrow(() -> new UnidadeHospitalarNaoEncontradaException("Unidade Hospitalar não encontrada"));
 
@@ -43,6 +47,7 @@ public class LeitoServiceImpl implements LeitoService {
         leito.setUnidadeHospitalar(unidadeHospitalar);
 
         Leito leitoSalvo = leitoRepository.save(leito);
+        logger.debug("Leito salvo: {}", leitoSalvo);
         return new LeitoDTO(leitoSalvo);
     }
 
@@ -55,9 +60,11 @@ public class LeitoServiceImpl implements LeitoService {
 
     @Override
     public String deletarLeito(Long id) {
+        logger.info("Deletando leito: {}", id);
         Leito leito = leitoRepository.findById(id)
                 .orElseThrow(() -> new LeitoNaoExistenteException("Leito não encontrado"));
         leitoRepository.delete(leito);
+        logger.debug("Leito deletado: {}", leito);
         return "Leito deletado com sucesso";
     }
 

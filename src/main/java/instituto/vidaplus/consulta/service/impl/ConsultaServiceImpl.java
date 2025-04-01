@@ -19,6 +19,8 @@ import instituto.vidaplus.profissional.exception.ProfissionalNaoEncontradoExcept
 import instituto.vidaplus.profissional.model.Profissional;
 import instituto.vidaplus.profissional.repository.ProfissionalRepository;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -36,10 +38,12 @@ public class ConsultaServiceImpl implements ConsultaService {
     private final ProfissionalRepository profissionalRepository;
     private final AgendaRepository agendaRepository;
     private final EmailService emailService;
+    private static final Logger logger = LoggerFactory.getLogger(ConsultaServiceImpl.class);
 
     @Override
     @Transactional
     public ConsultaDTO criarConsulta(Long pacienteId, Long profissionalId, Long agendaId, ConsultaDTO consultaDTO) {
+        logger.info("Criando consulta: {}", consultaDTO);
         Paciente paciente = pacienteRepository.findById(pacienteId)
                 .orElseThrow(() -> new PacienteNaoEncontradoException("Paciente não encontrado"));
 
@@ -85,6 +89,7 @@ public class ConsultaServiceImpl implements ConsultaService {
         consulta.setMotivoConsulta(consultaDTO.getMotivoConsulta());
         emailService.confirmacaoConsulta(paciente, "Confirmação de Consulta", consulta);
         Consulta consultaSalva = consultaRepository.save(consulta);
+        logger.debug("Consulta salva: {}", consultaSalva);
         return new ConsultaDTO(consultaSalva);
     }
 
@@ -103,9 +108,11 @@ public class ConsultaServiceImpl implements ConsultaService {
     @Override
     @Transactional
     public String deletarConsulta(Long id) {
+        logger.info("Deletando consulta: {}", id);
         Consulta consulta = consultaRepository.findById(id)
                 .orElseThrow(() -> new ConsultaNaoEncontradaException("Consulta não encontrada"));
         consultaRepository.delete(consulta);
+        logger.debug("Consulta deletada: {}", consulta);
         return "Consulta deletada com sucesso";
     }
 
@@ -127,19 +134,23 @@ public class ConsultaServiceImpl implements ConsultaService {
 
     @Override
     public ConsultaDTO confirmarConsulta(Long id) {
+        logger.info("Confirmando consulta: {}", id);
         Consulta consulta = consultaRepository.findById(id)
                 .orElseThrow(() -> new ConsultaNaoEncontradaException("Consulta não encontrada"));
         consulta.setStatus(StatusConsultaEnum.CONFIRMADA);
         Consulta consultaSalva = consultaRepository.save(consulta);
+        logger.debug("Consulta salva: {}", consultaSalva);
         return new ConsultaDTO(consultaSalva);
     }
 
     @Override
     public ConsultaDTO cancelarConsulta(Long id) {
+        logger.info("Cancelando consulta: {}", id);
         Consulta consulta = consultaRepository.findById(id)
                 .orElseThrow(() -> new ConsultaNaoEncontradaException("Consulta não encontrada"));
         consulta.setStatus(StatusConsultaEnum.CANCELADA);
         Consulta consultaSalva = consultaRepository.save(consulta);
+        logger.debug("Consulta salva: {}", consultaSalva);
         return new ConsultaDTO(consultaSalva);
     }
 }

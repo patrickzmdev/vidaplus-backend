@@ -7,6 +7,8 @@ import instituto.vidaplus.suprimento.model.Suprimento;
 import instituto.vidaplus.suprimento.repository.SuprimentoRepository;
 import instituto.vidaplus.suprimento.service.SuprimentoService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -16,10 +18,11 @@ import org.springframework.stereotype.Service;
 public class SuprimentoServiceImpl implements SuprimentoService {
 
     private final SuprimentoRepository suprimentoRepository;
+    private static final Logger logger = LoggerFactory.getLogger(SuprimentoServiceImpl.class);
 
     @Override
     public SuprimentoDTO cadastrarSuprimento(SuprimentoDTO suprimentoDTO) {
-
+        logger.info("Cadastrando suprimento: {}", suprimentoDTO);
         if(suprimentoDTO.getQuantidade() <= 0) {
             throw new QuantidadeSuprimentoException("Quantidade inválida");
         }
@@ -30,11 +33,13 @@ public class SuprimentoServiceImpl implements SuprimentoService {
         suprimento.setUnidadeMedida(suprimentoDTO.getUnidadeMedida());
 
         suprimentoRepository.save(suprimento);
+        logger.debug("Suprimento cadastrado: {}", suprimento);
         return new SuprimentoDTO(suprimento);
     }
 
     @Override
     public SuprimentoDTO editarSuprimento(Long id, SuprimentoDTO suprimentoDTO) {
+        logger.info("Editando suprimento: {}", suprimentoDTO);
         Suprimento suprimentoExistente = suprimentoRepository.findById(id)
                 .orElseThrow(() -> new SuprimentoNaoEncontradoException("Suprimento não encontrado"));
 
@@ -47,14 +52,17 @@ public class SuprimentoServiceImpl implements SuprimentoService {
         suprimentoExistente.setUnidadeMedida(suprimentoDTO.getUnidadeMedida());
 
         Suprimento suprimento = suprimentoRepository.save(suprimentoExistente);
+        logger.debug("Suprimento editado: {}", suprimento);
         return new SuprimentoDTO(suprimento);
     }
 
     @Override
     public String excluirSuprimento(Long id) {
+        logger.info("Excluindo suprimento: {}", id);
         Suprimento suprimento = suprimentoRepository.findById(id)
                 .orElseThrow(() -> new SuprimentoNaoEncontradoException("Suprimento não encontrado"));
         suprimentoRepository.delete(suprimento);
+        logger.debug("Suprimento excluido: {}", suprimento);
         return "Suprimento excluído com sucesso";
     }
 
