@@ -4,14 +4,15 @@ import instituto.vidaplus.consulta.model.Consulta;
 import instituto.vidaplus.horario.model.HorarioDisponivel;
 import instituto.vidaplus.profissional.model.Profissional;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Table(name = "agendas")
 public class Agenda {
@@ -28,6 +29,7 @@ public class Agenda {
     private List<HorarioDisponivel> horariosDisponiveis = new ArrayList<>();
 
     @OneToMany(mappedBy = "agenda")
+    @ToString.Exclude
     private List<Consulta> consultas = new ArrayList<>();
 
     @Column(nullable = false)

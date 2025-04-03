@@ -10,6 +10,7 @@ import instituto.vidaplus.telemedicina.model.Telemedicina;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -28,14 +29,17 @@ public class Consulta {
 
     @ManyToOne
     @JoinColumn(name = "paciente_id", nullable = false)
+    @ToString.Exclude
     private Paciente paciente;
 
     @ManyToOne
     @JoinColumn(name = "profissional_id", nullable = false)
+    @ToString.Exclude
     private Profissional profissional;
 
     @ManyToOne
     @JoinColumn(name = "agenda_id", nullable = false)
+    @ToString.Exclude
     private Agenda agenda;
 
     @OneToOne(mappedBy = "consulta", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -4,6 +4,7 @@ import instituto.vidaplus.documentacao.FinalidadeTratamento;
 import instituto.vidaplus.endereco.dto.EnderecoDTO;
 import instituto.vidaplus.endereco.service.CepService;
 import instituto.vidaplus.exception.genericas.DadoUnicoException;
+import instituto.vidaplus.exception.genericas.DataInvalidaException;
 import instituto.vidaplus.profissional.dto.ProfissionalDTO;
 import instituto.vidaplus.profissional.dto.ProfissionalResumoDTO;
 import instituto.vidaplus.profissional.enums.EspecialidadeEnum;
@@ -24,6 +25,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 
 @Service
 @RequiredArgsConstructor
@@ -69,6 +72,10 @@ public class ProfissionalServiceImpl implements ProfissionalService {
 
             if (profissionalRepository.existsByRegistro(profissionalDTO.getRegistro())) {
                 throw new DadoUnicoException("Registro já cadastrado");
+            }
+
+            if (profissionalDTO.getDataNascimento().isAfter(LocalDate.now())){
+                throw new DataInvalidaException("O campo data de nascimento não pode ser maior que a data atual");
             }
 
             validadorCpf.validarCpf(profissionalDTO.getCpf());
@@ -136,6 +143,10 @@ public class ProfissionalServiceImpl implements ProfissionalService {
 
             if (profissionalRepository.existsByRegistroAndIdNot(profissionalDTO.getRegistro(), id)) {
                 throw new DadoUnicoException("Registro já cadastrado");
+            }
+
+            if (profissionalDTO.getDataNascimento().isAfter(LocalDate.now())){
+                throw new DataInvalidaException("O campo data de nascimento não pode ser maior que a data atual");
             }
 
             validadorCpf.validarCpf(profissionalDTO.getCpf());

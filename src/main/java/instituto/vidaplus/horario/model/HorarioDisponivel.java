@@ -5,6 +5,7 @@ import instituto.vidaplus.horario.enums.DiasDaSemanaEnum;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.cglib.core.Local;
 
 import java.time.LocalTime;
@@ -21,6 +22,7 @@ public class HorarioDisponivel {
 
     @ManyToOne
     @JoinColumn(name = "agenda_id", nullable = false)
+    @ToString.Exclude
     private Agenda agenda;
 
     @Enumerated(EnumType.STRING)

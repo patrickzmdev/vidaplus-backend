@@ -28,7 +28,7 @@ public class AgendaServiceImpl implements AgendaService {
 
     @Override
     @Transactional
-    public AgendaDTO criarAgenda(Long profissionalId, AgendaDTO agendaDTO) {
+    public AgendaDTO criarAgenda(Long profissionalId) {
         logger.info("Criando uma agenda para o profissional: {}", profissionalId);
         Profissional profissional = profissionalRepository.findById(profissionalId)
                 .orElseThrow(() -> new ProfissionalNaoEncontradoException("Profissional não encontrado"));
@@ -47,31 +47,6 @@ public class AgendaServiceImpl implements AgendaService {
         Agenda agenda = agendaRepository.findById(id)
                 .orElseThrow(() -> new AgendaNaoEncontradaException("Agenda não encontrada"));
         return new AgendaDTO(agenda);
-    }
-
-    @Override
-    public Page<AgendaDTO> listarAgendas(Pageable pageable) {
-        return agendaRepository.findAll(pageable).map(AgendaDTO::new);
-    }
-
-    @Override
-    public AgendaDTO atualizarAgenda(Long id, AgendaDTO agendaDTO) {
-        logger.info("Atualizando a agenda com ID: {}", id);
-        Agenda agenda = agendaRepository.findById(id)
-                .orElseThrow(() -> new AgendaNaoEncontradaException("Agenda não encontrada"));
-
-        if(agendaDTO.getProfissionalId() != null) {
-            Profissional profissional = profissionalRepository.findById(agendaDTO.getProfissionalId())
-                    .orElseThrow(() -> new ProfissionalNaoEncontradoException("Profissional não encontrado"));
-            agenda.setProfissional(profissional);
-        }
-
-        if(agendaDTO.getAtivo() != null) {
-            agenda.setAtivo(agendaDTO.getAtivo());
-        }
-
-        logger.debug("Agenda atualizada: {}", agenda);
-        return new AgendaDTO(agendaRepository.save(agenda));
     }
 
     @Override

@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface ConsultaService {
-    ConsultaDTO criarConsulta(Long pacienteId, Long profissionalId, Long agendaId, ConsultaDTO consultaDTO);
+    ConsultaDTO criarConsulta(Long pacienteId, Long agendaId, ConsultaDTO consultaDTO);
     ConsultaDTO buscarConsultaPorId(Long id);
     Page<ConsultaDTO> listarConsultas(Pageable pageable);
     String deletarConsulta(Long id);

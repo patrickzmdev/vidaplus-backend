@@ -10,6 +10,7 @@ import instituto.vidaplus.consulta.model.Consulta;
 import instituto.vidaplus.consulta.repository.ConsultaRepository;
 import instituto.vidaplus.consulta.service.ConsultaService;
 import instituto.vidaplus.email.service.EmailService;
+import instituto.vidaplus.exception.genericas.DataInvalidaException;
 import instituto.vidaplus.horario.exception.ConflitoDeHorarioException;
 import instituto.vidaplus.horario.exception.HorarioNaoEncontradoException;
 import instituto.vidaplus.paciente.exception.PacienteNaoEncontradoException;
@@ -42,13 +43,10 @@ public class ConsultaServiceImpl implements ConsultaService {
 
     @Override
     @Transactional
-    public ConsultaDTO criarConsulta(Long pacienteId, Long profissionalId, Long agendaId, ConsultaDTO consultaDTO) {
+    public ConsultaDTO criarConsulta(Long pacienteId, Long agendaId, ConsultaDTO consultaDTO) {
         logger.info("Criando consulta: {}", consultaDTO);
         Paciente paciente = pacienteRepository.findById(pacienteId)
                 .orElseThrow(() -> new PacienteNaoEncontradoException("Paciente não encontrado"));
-
-        Profissional profissional = profissionalRepository.findById(profissionalId)
-                .orElseThrow(() -> new ProfissionalNaoEncontradoException("Profissional não encontrado"));
 
         Agenda agenda = agendaRepository.findById(agendaId)
                 .orElseThrow(() -> new AgendaNaoEncontradaException("Agenda não encontrada"));
@@ -56,6 +54,10 @@ public class ConsultaServiceImpl implements ConsultaService {
         LocalDate dataConsulta = consultaDTO.getData();
         LocalTime horaInicio = consultaDTO.getHoraInicio();
         LocalTime horaFim = consultaDTO.getHoraFim();
+
+        if(dataConsulta.isBefore(LocalDate.now())) {
+            throw new DataInvalidaException("A data da consulta não pode ser anterior a data atual");
+        }
 
         int dayOfWeekValue = dataConsulta.getDayOfWeek().getValue();
 
@@ -80,7 +82,7 @@ public class ConsultaServiceImpl implements ConsultaService {
 
         Consulta consulta = new Consulta();
         consulta.setPaciente(paciente);
-        consulta.setProfissional(profissional);
+        consulta.setProfissional(agenda.getProfissional());
         consulta.setAgenda(agenda);
         consulta.setData(consultaDTO.getData());
         consulta.setHoraInicio(consultaDTO.getHoraInicio());

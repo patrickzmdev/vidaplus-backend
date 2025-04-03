@@ -20,12 +20,12 @@ public class SpringdocConfig {
         securityRequirement.addList("bearer-key");
 
         OpenAPI openAPI = new OpenAPI()
-        .openapi("3.0.3")
-        .info(new Info()
-                .title("API Hospital Vida+")
-                .version("1.0")
-                .description("API para sistema hospitalar com conformidade LGPD")
-                .contact(new Contact().name("Patrick")));
+                .info(new Info()
+                        .title("API Hospital Vida+")
+                        .version("1.0")
+                        .description("API para sistema hospitalar com conformidade LGPD")
+                        .contact(new Contact().name("Patrick")));
+
         openAPI.addExtension("x-lgpd-info", createLgpdInfo());
 
         List<SecurityRequirement> security = new ArrayList<>();

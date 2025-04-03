@@ -6,6 +6,7 @@ import instituto.vidaplus.endereco.dto.EnderecoDTO;
 import instituto.vidaplus.endereco.service.CepService;
 import instituto.vidaplus.exame.repository.ExameRepository;
 import instituto.vidaplus.exception.genericas.DadoUnicoException;
+import instituto.vidaplus.exception.genericas.DataInvalidaException;
 import instituto.vidaplus.paciente.dto.PacienteDTO;
 import instituto.vidaplus.paciente.exception.PacienteNaoEncontradoException;
 import instituto.vidaplus.paciente.model.Paciente;
@@ -24,6 +25,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -50,6 +53,10 @@ public class PacienteServiceImpl implements PacienteService {
             }
             if (pacienteDTO.getCpf() == null || pacienteDTO.getCpf().isEmpty()) {
                 throw new IllegalArgumentException("CPF do paciente é obrigatório");
+            }
+
+            if(pacienteDTO.getDataNascimento().isAfter(LocalDate.now())){
+                throw new DataInvalidaException("Data de nascimento não pode ser futura");
             }
 
             validadorCpf.validarCpf(pacienteDTO.getCpf());
@@ -120,6 +127,10 @@ public class PacienteServiceImpl implements PacienteService {
                     throw new DadoUnicoException("Telefone já cadastrado");
                 }
                 pacienteExistente.setTelefone(pacienteAtualizado.getTelefone());
+            }
+
+            if(pacienteAtualizado.getDataNascimento().isAfter(LocalDate.now())){
+                throw new DataInvalidaException("Data de nascimento não pode ser futura");
             }
 
             validadorCpf.validarCpf(pacienteAtualizado.getCpf());
