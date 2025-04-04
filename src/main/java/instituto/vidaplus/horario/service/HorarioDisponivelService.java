@@ -12,7 +12,6 @@ public interface HorarioDisponivelService {
     HorarioDisponivelDTO criarHorarioDisponivel(Long agendaId, HorarioDisponivelDTO horarioDisponivelDTO);
     HorarioDisponivelDTO buscarHorarioDisponivelPorId(Long id);
     Page<HorarioDisponivelDTO> listarHorarios(Pageable pageable);
-    HorarioDisponivelDTO atualizarHorarioDisponivel(Long id, HorarioDisponivelDTO horarioDisponivelDTO);
     String deletarHorarioDisponivel(Long id);
     List<HorarioDisponivelDTO> listarHorariosPorAgenda(Long agendaId);
     List<HorarioDisponivelDTO> listarHorariosDisponiveisPorAgenda(Long agendaId);

@@ -76,47 +76,10 @@ public class HorarioDisponivelServiceImpl implements HorarioDisponivelService {
 
     @Override
     @Transactional
-    public HorarioDisponivelDTO atualizarHorarioDisponivel(Long id, HorarioDisponivelDTO horarioDTO) {
-        logger.info("Atualizando Horario Disponivel com id: {}", id);
-        HorarioDisponivel horario = horarioDisponivelRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Horário não encontrado com o id: " + id));
-
-        if (horarioDTO.getAgendaId() != null) {
-            Agenda agenda = agendaRepository.findById(horarioDTO.getAgendaId())
-                    .orElseThrow(() -> new RuntimeException("Agenda não encontrada com o id: " + horarioDTO.getAgendaId()));
-            horario.setAgenda(agenda);
-        }
-
-        if (horarioDTO.getDiaDaSemana() != null) {
-            horario.setDiaDaSemana(horarioDTO.getDiaDaSemana());
-        }
-
-        if (horarioDTO.getHoraInicio() != null) {
-            horario.setHoraInicio(horarioDTO.getHoraInicio());
-        }
-
-        if (horarioDTO.getHoraFim() != null) {
-            horario.setHoraFim(horarioDTO.getHoraFim());
-        }
-
-        if (horarioDTO.getDuracaoMediaEmMinutos() != null) {
-            horario.setDuracaoMediaEmMinutos(horarioDTO.getDuracaoMediaEmMinutos());
-        }
-
-        if (horarioDTO.getDisponivel() != null) {
-            horario.setDisponivel(horarioDTO.getDisponivel());
-        }
-
-        HorarioDisponivel updatedHorario = horarioDisponivelRepository.save(horario);
-        return new HorarioDisponivelDTO(updatedHorario);
-    }
-
-    @Override
-    @Transactional
     public String deletarHorarioDisponivel(Long id) {
         logger.info("Deletando Horario Disponivel com id: {}", id);
         if (!horarioDisponivelRepository.existsById(id)) {
-            throw new RuntimeException("Horário não encontrado com o id: " + id);
+            throw new HorarioNaoEncontradoException("Horário não encontrado com o id: " + id);
         }
         horarioDisponivelRepository.deleteById(id);
         logger.debug("Horario Disponivel com id: {}", id);
