@@ -18,6 +18,8 @@ import instituto.vidaplus.prontuario.service.ProntuarioService;
 import instituto.vidaplus.utils.validador.FormatadorData;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.util.JRLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -25,8 +27,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
-import java.nio.charset.StandardCharsets;
+import java.io.InputStream;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -122,19 +126,40 @@ public class ProntuarioServiceImpl implements ProntuarioService {
         Prontuario prontuario = prontuarioRepository.findById(prontuarioId)
                 .orElseThrow(() -> new ProntuarioNaoEncontradoException("Prontuário não encontrado"));
 
-        try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
-            String sb = "PRONTUÁRIO MÉDICO\n\n" +
-                    "Paciente: " + prontuario.getPaciente().getNome() + "\n" +
-                    "Profissional: " + prontuario.getProfissional().getNome() + "\n" +
-                    "Data: " + formatadorData.formatarData(prontuario.getDataRegistro()) + "\n\n" +
-                    "Descrição:\n" + prontuario.getDescricao() + "\n\n" +
-                    "Diagnóstico:\n" + prontuario.getDiagnostico() + "\n\n" +
-                    "Tratamento:\n" + prontuario.getTratamentoIndicado();
+        try {
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("pacienteNome", prontuario.getPaciente().getNome());
+            parameters.put("profissionalNome", prontuario.getProfissional().getNome());
+            parameters.put("dataRegistro", formatadorData.formatarData(prontuario.getDataRegistro()));
+            parameters.put("descricao", prontuario.getDescricao());
+            parameters.put("diagnostico", prontuario.getDiagnostico());
+            parameters.put("tratamentoIndicado", prontuario.getTratamentoIndicado());
 
-            return sb.getBytes(StandardCharsets.UTF_8);
+            InputStream reportStream = getClass().getResourceAsStream("/reports/prontuario.jrxml");
+            if (reportStream == null) {
+                throw new ErroAoGerarPdfException("Template de relatório não encontrado: /reports/prontuario.jrxml");
+            }
+
+            JasperReport jasperReport;
+            try {
+                InputStream compiledStream = getClass().getResourceAsStream("/reports/prontuario.jasper");
+                if (compiledStream != null) {
+                    jasperReport = (JasperReport) JRLoader.loadObject(compiledStream);
+                } else {
+                    jasperReport = JasperCompileManager.compileReport(reportStream);
+                }
+            } catch (JRException e) {
+                throw new ErroAoGerarPdfException("Erro ao compilar o relatório: " + e.getMessage());
+            }
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
+
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            JasperExportManager.exportReportToPdfStream(jasperPrint, out);
+
+            return out.toByteArray();
         } catch (Exception e) {
-            throw new ErroAoGerarPdfException("Erro ao gerar PDF");
+            throw new ErroAoGerarPdfException("Erro ao gerar relatório PDF: " + e.getMessage());
         }
-
     }
 }

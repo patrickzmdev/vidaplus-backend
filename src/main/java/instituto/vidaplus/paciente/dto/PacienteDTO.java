@@ -1,9 +1,11 @@
 package instituto.vidaplus.paciente.dto;
 
+import com.fasterxml.jackson.annotation.*;
 import instituto.vidaplus.consulta.model.Consulta;
 import instituto.vidaplus.core.SexoEnum;
 import instituto.vidaplus.exame.model.Exame;
 import instituto.vidaplus.historico.model.HistoricoClinico;
+import instituto.vidaplus.leito.dto.LeitoDTO;
 import instituto.vidaplus.paciente.model.Paciente;
 import instituto.vidaplus.paciente.model.PacienteAlergia;
 import instituto.vidaplus.prontuario.model.Prontuario;
@@ -18,6 +20,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@JsonIgnoreProperties({"leito"})
 public class PacienteDTO {
 
     private Long id;
@@ -43,6 +47,8 @@ public class PacienteDTO {
     private List<Prontuario> prontuarios = new ArrayList<>();
     private List<Exame> exames = new ArrayList<>();
     private List<Consulta> consultas = new ArrayList<>();
+
+    private LeitoDTO leito;
 
     public PacienteDTO(Paciente paciente) {
         this.id = paciente.getId();

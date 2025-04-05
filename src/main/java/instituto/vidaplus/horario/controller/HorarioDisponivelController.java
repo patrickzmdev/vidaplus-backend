@@ -211,26 +211,7 @@ public class HorarioDisponivelController {
         return horarioDisponivelService.marcarHorarioComoIndisponivel(id);
     }
 
-    @Operation(summary = "Marcar horário como disponível",
-            description = "Altera o status de um horário para disponível")
-    @ApiResponse(responseCode = "200",
-            description = "Horário marcado como disponível com sucesso",
-            content = @Content(
-                    mediaType = "application/json",
-                    examples = @ExampleObject(
-                            value = "{\"mensagem\": \"Horário marcado como disponível\"}"
-                    )
-            )
-    )
-    @ApiResponse(responseCode = "404",
-            description = "Horário não encontrado",
-            content = @Content(
-                    mediaType = "application/json",
-                    examples = @ExampleObject(
-                            value = "{\"mensagem\": \"Horário não encontrado\"}"
-                    )
-            )
-    )
+
     @PutMapping("/{id}/disponivel")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public String marcarHorarioComoDisponivel(@Parameter(description = "Id do horario", example = "1", required = true)@PathVariable Long id) {

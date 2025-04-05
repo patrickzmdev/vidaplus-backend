@@ -10,6 +10,7 @@ import instituto.vidaplus.leito.model.Leito;
 import instituto.vidaplus.leito.repository.LeitoRepository;
 import instituto.vidaplus.leito.service.LeitoService;
 import instituto.vidaplus.paciente.dto.PacienteDTO;
+import instituto.vidaplus.paciente.dto.PacienteResumidoDTO;
 import instituto.vidaplus.paciente.model.Paciente;
 import instituto.vidaplus.unidade.exception.UnidadeHospitalarNaoEncontradaException;
 import instituto.vidaplus.unidade.model.UnidadeHospitalar;
@@ -76,7 +77,7 @@ public class LeitoServiceImpl implements LeitoService {
     }
 
     @Override
-    public PacienteDTO buscarPacienteInternadoPorLeito(Long leitoId, Long unidadeHospitalarId) {
+    public PacienteResumidoDTO buscarPacienteInternadoPorLeito(Long leitoId, Long unidadeHospitalarId) {
         Leito leito = leitoRepository.findById(leitoId)
                 .orElseThrow(() -> new LeitoNaoExistenteException("Leito não encontrado"));
 
@@ -91,7 +92,7 @@ public class LeitoServiceImpl implements LeitoService {
                 .orElseThrow(() -> new InternacaoNaoEncontradaException("Não foi possível encontrar a internação"));
 
         Paciente paciente = internacao.getPaciente();
-        return new PacienteDTO(paciente);
+        return new PacienteResumidoDTO(paciente);
     }
 
     @Override

@@ -2,6 +2,7 @@ package instituto.vidaplus.leito.service;
 
 import instituto.vidaplus.leito.dto.LeitoDTO;
 import instituto.vidaplus.paciente.dto.PacienteDTO;
+import instituto.vidaplus.paciente.dto.PacienteResumidoDTO;
 import org.springframework.data.domain.Page;
 
 public interface LeitoService {
@@ -9,6 +10,6 @@ public interface LeitoService {
     LeitoDTO buscarLeito(Long id);
     String deletarLeito(Long id);
     Boolean verificarLeitoDisponivel(Long id);
-    PacienteDTO buscarPacienteInternadoPorLeito(Long leitoId, Long unidadeHospitalarId);
+    PacienteResumidoDTO buscarPacienteInternadoPorLeito(Long leitoId, Long unidadeHospitalarId);
     Page<LeitoDTO> listarLeitosDisponiveis(Long unidadeHospitalarId);
 }

@@ -1,6 +1,8 @@
 package instituto.vidaplus.leito.dto;
 
+import com.fasterxml.jackson.annotation.*;
 import instituto.vidaplus.leito.model.Leito;
+import instituto.vidaplus.paciente.dto.PacienteDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +10,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@JsonIgnoreProperties({"pacienteDTO"})
 public class LeitoDTO {
 
     private Long id;
