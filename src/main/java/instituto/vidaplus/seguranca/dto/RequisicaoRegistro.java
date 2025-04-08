@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Data
 public class RequisicaoRegistro {
-    private String username;
+    private String userName;
     private String email;
     private String senha;
 

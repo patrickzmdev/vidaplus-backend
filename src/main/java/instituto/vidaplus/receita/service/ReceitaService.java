@@ -13,5 +13,5 @@ public interface ReceitaService {
     Page<ReceitaDTO> buscarReceitasPorProfissionalId(Long profissionalId, Pageable pageable);
     Page<ReceitaDTO> buscarReceitaPorConsultaId(Long consultaId, Pageable pageable);
     Page<ReceitaDTO> buscarReceitasPorPeriodo(Long pacienteId, LocalDate dataInicio, LocalDate dataFim, Pageable pageable);
-    byte[] gerarRelatorio(Long receitaId);
+    byte[] gerarReceita(Long receitaId);
 }

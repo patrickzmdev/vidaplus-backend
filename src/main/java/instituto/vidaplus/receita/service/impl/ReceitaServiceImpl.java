@@ -101,7 +101,7 @@ public class ReceitaServiceImpl implements ReceitaService {
     }
 
     @Override
-    public byte[] gerarRelatorio(Long receitaId) {
+    public byte[] gerarReceita(Long receitaId) {
         logger.info("Gerando relatório para receita com ID: {}", receitaId);
         Receita receita = receitaRepository.findById(receitaId)
                 .orElseThrow(() -> new ReceitaNaoEncontradaException("Receita não encontrada"));

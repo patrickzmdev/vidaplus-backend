@@ -38,7 +38,7 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
     private final ValidadorSenha validadorSenha;
 
     public Usuario registrarUsuario(RequisicaoRegistro requisicao) {
-        if (usuarioRepository.existsByNomeUsuario(requisicao.getUsername())) {
+        if (usuarioRepository.existsByNomeUsuario(requisicao.getUserName())) {
             throw new UsuarioJaCadastradoException("Usuário já existe");
         }
         if (usuarioRepository.existsByEmail(requisicao.getEmail())) {
@@ -47,7 +47,7 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
 
         validadorSenha.validarSenha(requisicao.getSenha());
         Usuario usuario = new Usuario();
-        usuario.setNomeUsuario(requisicao.getUsername());
+        usuario.setNomeUsuario(requisicao.getUserName());
         usuario.setEmail(requisicao.getEmail());
         usuario.setSenha(passwordEncoder.encode(requisicao.getSenha()));
 
@@ -71,12 +71,12 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
     public String loginUsuario(RequisicaoLogin requisicaoLogin) {
         try {
             Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(requisicaoLogin.getUsername(), requisicaoLogin.getSenha())
+                    new UsernamePasswordAuthenticationToken(requisicaoLogin.getUserName(), requisicaoLogin.getSenha())
             );
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-            Usuario usuario = usuarioRepository.findByNomeUsuario(requisicaoLogin.getUsername())
+            Usuario usuario = usuarioRepository.findByNomeUsuario(requisicaoLogin.getUserName())
                     .orElseThrow(() -> new UsuarioNaoEncontradoException("Usuário não encontrado"));
 
             usuario.setTentativasFalhas(0);
@@ -85,7 +85,7 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
 
             return jwtTokenUtil.generateToken(userDetails);
         }catch (BadCredentialsException e) {
-            Usuario usuario = usuarioRepository.findByNomeUsuario(requisicaoLogin.getUsername())
+            Usuario usuario = usuarioRepository.findByNomeUsuario(requisicaoLogin.getUserName())
                     .orElseThrow(() -> new UsuarioNaoEncontradoException("Usuário não encontrado"));
 
             usuario.setTentativasFalhas(usuario.getTentativasFalhas() + 1);

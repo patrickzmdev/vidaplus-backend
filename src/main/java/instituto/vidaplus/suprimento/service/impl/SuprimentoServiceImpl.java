@@ -2,6 +2,7 @@ package instituto.vidaplus.suprimento.service.impl;
 
 import instituto.vidaplus.suprimento.dto.SuprimentoDTO;
 import instituto.vidaplus.suprimento.exception.QuantidadeSuprimentoException;
+import instituto.vidaplus.suprimento.exception.SuprimentoException;
 import instituto.vidaplus.suprimento.exception.SuprimentoNaoEncontradoException;
 import instituto.vidaplus.suprimento.model.Suprimento;
 import instituto.vidaplus.suprimento.repository.SuprimentoRepository;
@@ -25,6 +26,12 @@ public class SuprimentoServiceImpl implements SuprimentoService {
         logger.info("Cadastrando suprimento: {}", suprimentoDTO);
         if(suprimentoDTO.getQuantidade() <= 0) {
             throw new QuantidadeSuprimentoException("Quantidade inválida");
+        }
+        if(suprimentoDTO.getNome() == null) {
+            throw new SuprimentoException("Nome inválido");
+        }
+        if(suprimentoDTO.getUnidadeMedida() == null) {
+            throw new SuprimentoException("Unidade de medida inválida");
         }
 
         Suprimento suprimento = new Suprimento();

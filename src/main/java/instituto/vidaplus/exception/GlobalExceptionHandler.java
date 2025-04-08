@@ -25,6 +25,7 @@ import instituto.vidaplus.relatorio.exception.ErroEmRelatorioException;
 import instituto.vidaplus.seguranca.exception.TokenException;
 import instituto.vidaplus.seguranca.exception.UsuarioNaoEncontradoException;
 import instituto.vidaplus.suprimento.exception.QuantidadeSuprimentoException;
+import instituto.vidaplus.suprimento.exception.SuprimentoException;
 import instituto.vidaplus.suprimento.exception.SuprimentoNaoEncontradoException;
 import instituto.vidaplus.telemedicina.exception.TelemedicinaJaCadastradaException;
 import instituto.vidaplus.telemedicina.exception.TelemedicinaNaoEncontradaException;
@@ -250,6 +251,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(EmailJaCadastradoException.class)
     public ResponseEntity<String> handleEmailJaCadastradoException(EmailJaCadastradoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(SuprimentoException.class)
+    public ResponseEntity<String> handleSuprimentoException(SuprimentoException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }

@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class RequisicaoLogin {
-    private String username;
+    private String userName;
     private String senha;
 }
