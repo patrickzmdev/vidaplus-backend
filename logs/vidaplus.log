@@ -2593,3 +2593,9 @@ org.postgresql.util.PSQLException: ERRO: o valor nulo na coluna "unidade_medida"
 2025-04-08T20:06:16.250-03:00  INFO 1288 --- [vidaplus] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
 2025-04-08T20:06:16.254-03:00  INFO 1288 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Started VidaplusApplication in 3.153 seconds (process running for 1898.786)
 2025-04-08T20:06:16.258-03:00  INFO 1288 --- [vidaplus] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-04-08T21:04:51.280-03:00  WARN 1288 --- [vidaplus] [HikariPool-3 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Thread starvation or clock leap detected (housekeeper delta=29m36s988ms130µs500ns).
+2025-04-08T21:17:56.847-03:00  INFO 1288 --- [vidaplus] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-08T21:17:56.853-03:00  INFO 1288 --- [vidaplus] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-08T21:17:56.858-03:00  INFO 1288 --- [vidaplus] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T21:17:56.859-03:00  INFO 1288 --- [vidaplus] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2025-04-08T21:17:56.864-03:00  INFO 1288 --- [vidaplus] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
