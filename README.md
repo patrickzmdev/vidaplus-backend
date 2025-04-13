@@ -1,7 +1,7 @@
 # Sistema de Gestão Hospitalar - Instituto VidaPlus
 
 ## Visão Geral
-Sistema integrado para gestão hospitalar do Instituto VidaPlus, oferecendo controle de pacientes, profissionais, exames, suprimentos e relatórios financeiros.
+Sistema integrado para gestão hospitalar do Instituto VidaPlus, oferecendo controle de pacientes, profissionais, exames, internações, suprimentos e relatórios financeiros.
 
 ## Funcionalidades Principais
 
@@ -11,8 +11,12 @@ Sistema integrado para gestão hospitalar do Instituto VidaPlus, oferecendo cont
 - Agendamento de consultas e exames
 
 ### Gestão de Profissionais
-- Cadastro de médicos, enfermeiros e administradores
-- Controle de especialidades e escalas
+- Cadastro de médicos, enfermeiros, etc
+
+### Gestão de Internações
+- Cadastro de internações
+- Associação com suprimentos utilizados
+- Controle completo de leitos
 
 ### Gestão de Exames
 - Cadastro de tipos de exames
