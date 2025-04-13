@@ -93,7 +93,7 @@ public class InternacaoServiceImpl implements InternacaoService {
         Internacao internacao = internacaoRepository.findById(internacaoId)
                 .orElseThrow(() -> new InternacaoNaoEncontradaException("Internação não encontrada"));
 
-        internacao.setDataAlta(LocalDateTime.now());
+        internacao.setDataEncerramento(LocalDateTime.now());
         internacao.setAtiva(false);
 
         internacaoRepository.save(internacao);

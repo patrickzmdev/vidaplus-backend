@@ -49,59 +49,46 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll()
+                        .requestMatchers(
+                                HttpMethod.GET,
+                                "/v3/api-docs",
+                                "/v3/api-docs/**",
+                                "/v3/api-docs.yaml",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html"
+                        ).permitAll()
+                        .requestMatchers("/recuperacao-senha/**").permitAll()
+                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/api/user/**").hasAnyRole("USER", "ADMIN")
+                        .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                // Filtro de autenticação de desenvolvimento que sempre autentica o usuário
-                .addFilterBefore(new DevAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenUtil, userDetailsService),
+                        UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
-    // Classe de filtro que autentica automaticamente qualquer requisição para desenvolvimento
-    public static class DevAuthenticationFilter extends OncePerRequestFilter {
-        @Override
-        protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, FilterChain filterChain)
-                throws ServletException, IOException {
-
-            // Cria uma autenticação com ROLE_ADMIN para desenvolvimento
-            List<GrantedAuthority> authorities = Arrays.asList(
-                    new SimpleGrantedAuthority("ROLE_ADMIN"),
-                    new SimpleGrantedAuthority("ROLE_USER")
-            );
-
-            Authentication authentication = new UsernamePasswordAuthenticationToken(
-                    "dev-user", null, authorities);
-
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-
-            filterChain.doFilter(request, response);
-        }
-    }
-
-    //Desabilitado para desenvolvimento
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        return http
-//                .csrf(AbstractHttpConfigurer::disable)
-//                .authorizeHttpRequests(auth -> auth
-//                        .requestMatchers(
-//                                HttpMethod.GET,
-//                                "/v3/api-docs",
-//                                "/v3/api-docs/**",
-//                                "/v3/api-docs.yaml",
-//                                "/swagger-ui/**",
-//                                "/swagger-ui.html"
-//                        ).permitAll()
-//                        .requestMatchers("/recuperacao-senha/**").permitAll()
-//                        .requestMatchers("/api/auth/**").permitAll()
-//                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
-//                        .requestMatchers("/api/user/**").hasAnyRole("USER", "ADMIN")
-//                        .anyRequest().authenticated()
-//                )
-//                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-//                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenUtil, userDetailsService),
-//                        UsernamePasswordAuthenticationFilter.class)
-//                .build();
+//    // Classe de filtro que autentica automaticamente qualquer requisição para desenvolvimento
+//    public static class DevAuthenticationFilter extends OncePerRequestFilter {
+//        @Override
+//        protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, FilterChain filterChain)
+//                throws ServletException, IOException {
+//
+//            // Cria uma autenticação com ROLE_ADMIN para desenvolvimento
+//            List<GrantedAuthority> authorities = Arrays.asList(
+//                    new SimpleGrantedAuthority("ROLE_ADMIN"),
+//                    new SimpleGrantedAuthority("ROLE_USER")
+//            );
+//
+//            Authentication authentication = new UsernamePasswordAuthenticationToken(
+//                    "dev-user", null, authorities);
+//
+//            SecurityContextHolder.getContext().setAuthentication(authentication);
+//
+//            filterChain.doFilter(request, response);
+//        }
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

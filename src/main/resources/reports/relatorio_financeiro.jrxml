@@ -23,7 +23,6 @@
     <field name="receita" class="java.lang.Double"/>
     <field name="despesa" class="java.lang.Double"/>
     <field name="lucro" class="java.lang.Double"/>
-    <field name="administradorId" class="java.lang.Long"/>
     
     <title>
         <band height="70">

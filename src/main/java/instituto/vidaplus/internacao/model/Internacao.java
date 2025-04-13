@@ -30,7 +30,7 @@ public class Internacao {
     @Column(nullable = false)
     private LocalDateTime dataAdmissao;
 
-    private LocalDateTime dataAlta;
+    private LocalDateTime dataEncerramento;
 
     @Column(nullable = false)
     private String motivoInternacao;

@@ -14,7 +14,7 @@ public class InternacaoDTO {
     private Long pacienteId;
     private Long leitoId;
     private String dataAdmissao;
-    private String dataAlta;
+    private String dataEncerramento;
     private String motivoInternacao;
     private String observacoes;
     private Long medicoResponsavelId;
@@ -25,7 +25,7 @@ public class InternacaoDTO {
         this.pacienteId = internacao.getPaciente().getId();
         this.leitoId = internacao.getLeito().getId();
         this.dataAdmissao = internacao.getDataAdmissao().toString();
-        this.dataAlta = internacao.getDataAlta() != null ? internacao.getDataAlta().toString() : null;
+        this.dataEncerramento = internacao.getDataEncerramento() != null ? internacao.getDataEncerramento().toString() : null;
         this.motivoInternacao = internacao.getMotivoInternacao();
         this.observacoes = internacao.getObservacoes();
         this.medicoResponsavelId = internacao.getMedicoResponsavel() != null ? internacao.getMedicoResponsavel().getId() : null;
