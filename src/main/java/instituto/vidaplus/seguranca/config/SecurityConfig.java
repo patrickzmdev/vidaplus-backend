@@ -36,8 +36,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
-// Desabilite ou modifique a configuração de segurança em nível de método
-@EnableMethodSecurity(prePostEnabled = false) // Isso desativa @PreAuthorize
+@EnableMethodSecurity(prePostEnabled = false)
 @RequiredArgsConstructor
 public class SecurityConfig {
 
@@ -68,27 +67,6 @@ public class SecurityConfig {
                         UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
-
-//    // Classe de filtro que autentica automaticamente qualquer requisição para desenvolvimento
-//    public static class DevAuthenticationFilter extends OncePerRequestFilter {
-//        @Override
-//        protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, FilterChain filterChain)
-//                throws ServletException, IOException {
-//
-//            // Cria uma autenticação com ROLE_ADMIN para desenvolvimento
-//            List<GrantedAuthority> authorities = Arrays.asList(
-//                    new SimpleGrantedAuthority("ROLE_ADMIN"),
-//                    new SimpleGrantedAuthority("ROLE_USER")
-//            );
-//
-//            Authentication authentication = new UsernamePasswordAuthenticationToken(
-//                    "dev-user", null, authorities);
-//
-//            SecurityContextHolder.getContext().setAuthentication(authentication);
-//
-//            filterChain.doFilter(request, response);
-//        }
-//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

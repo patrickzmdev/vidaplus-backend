@@ -1,28 +1,28 @@
-2025-04-13T14:31:13.333-03:00  INFO 1764 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Starting VidaplusApplication using Java 23.0.2 with PID 1764 (C:\Users\patri\Documents\Projetos\vidaplus\back end\vidaplus\target\classes started by patri in C:\Users\patri\Documents\Projetos\vidaplus\back end\vidaplus)
-2025-04-13T14:31:13.337-03:00 DEBUG 1764 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Running with Spring Boot v3.4.3, Spring v6.2.3
-2025-04-13T14:31:13.338-03:00  INFO 1764 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : No active profile set, falling back to 1 default profile: "default"
-2025-04-13T14:31:13.429-03:00  INFO 1764 --- [vidaplus] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-04-13T14:31:13.430-03:00  INFO 1764 --- [vidaplus] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-04-13T14:31:15.290-03:00  INFO 1764 --- [vidaplus] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-04-13T14:31:15.459-03:00  INFO 1764 --- [vidaplus] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 161 ms. Found 21 JPA repository interfaces.
-2025-04-13T14:31:16.175-03:00  INFO 1764 --- [vidaplus] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-04-13T14:31:16.189-03:00  INFO 1764 --- [vidaplus] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-04-13T14:31:16.190-03:00  INFO 1764 --- [vidaplus] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
-2025-04-13T14:31:16.239-03:00  INFO 1764 --- [vidaplus] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-04-13T14:31:16.239-03:00  INFO 1764 --- [vidaplus] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2809 ms
-2025-04-13T14:31:16.473-03:00  INFO 1764 --- [vidaplus] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-04-13T14:31:16.647-03:00  INFO 1764 --- [vidaplus] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@55223012
-2025-04-13T14:31:16.649-03:00  INFO 1764 --- [vidaplus] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-04-13T14:31:16.684-03:00  INFO 1764 --- [vidaplus] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/vidaplus (PostgreSQL 17.2)
-2025-04-13T14:31:16.737-03:00  INFO 1764 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.021s)
-2025-04-13T14:31:16.737-03:00  WARN 1764 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
-2025-04-13T14:31:16.799-03:00  INFO 1764 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
-2025-04-13T14:31:16.803-03:00  INFO 1764 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
-2025-04-13T14:31:16.916-03:00  INFO 1764 --- [vidaplus] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-04-13T14:31:16.986-03:00  INFO 1764 --- [vidaplus] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
-2025-04-13T14:31:17.022-03:00  INFO 1764 --- [vidaplus] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-04-13T14:31:17.301-03:00  INFO 1764 --- [vidaplus] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-04-13T14:31:17.399-03:00  INFO 1764 --- [vidaplus] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-04-17T22:00:48.936-03:00  INFO 14080 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Starting VidaplusApplication using Java 23.0.2 with PID 14080 (C:\Users\patri\Documents\Projetos\vidaplus\back end\vidaplus\target\classes started by patri in C:\Users\patri\Documents\Projetos\vidaplus\back end\vidaplus)
+2025-04-17T22:00:48.941-03:00 DEBUG 14080 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Running with Spring Boot v3.4.3, Spring v6.2.3
+2025-04-17T22:00:48.942-03:00  INFO 14080 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-04-17T22:00:49.038-03:00  INFO 14080 --- [vidaplus] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-04-17T22:00:49.038-03:00  INFO 14080 --- [vidaplus] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-04-17T22:00:50.468-03:00  INFO 14080 --- [vidaplus] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-17T22:00:50.643-03:00  INFO 14080 --- [vidaplus] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 165 ms. Found 21 JPA repository interfaces.
+2025-04-17T22:00:51.426-03:00  INFO 14080 --- [vidaplus] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-17T22:00:51.442-03:00  INFO 14080 --- [vidaplus] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-17T22:00:51.442-03:00  INFO 14080 --- [vidaplus] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-17T22:00:51.493-03:00  INFO 14080 --- [vidaplus] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-17T22:00:51.493-03:00  INFO 14080 --- [vidaplus] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2454 ms
+2025-04-17T22:00:51.732-03:00  INFO 14080 --- [vidaplus] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-17T22:00:51.907-03:00  INFO 14080 --- [vidaplus] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@52e9a085
+2025-04-17T22:00:51.909-03:00  INFO 14080 --- [vidaplus] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-17T22:00:51.945-03:00  INFO 14080 --- [vidaplus] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/vidaplus (PostgreSQL 17.2)
+2025-04-17T22:00:52.002-03:00  INFO 14080 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.021s)
+2025-04-17T22:00:52.002-03:00  WARN 14080 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2025-04-17T22:00:52.067-03:00  INFO 14080 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2025-04-17T22:00:52.071-03:00  INFO 14080 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2025-04-17T22:00:52.204-03:00  INFO 14080 --- [vidaplus] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-17T22:00:52.302-03:00  INFO 14080 --- [vidaplus] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-17T22:00:52.356-03:00  INFO 14080 --- [vidaplus] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-17T22:00:52.690-03:00  INFO 14080 --- [vidaplus] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-17T22:00:52.784-03:00  INFO 14080 --- [vidaplus] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 17.2
@@ -30,53 +30,46 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-04-13T14:31:18.692-03:00  INFO 1764 --- [vidaplus] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-04-13T14:31:19.880-03:00  INFO 1764 --- [vidaplus] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-04-13T14:31:20.222-03:00 DEBUG 1764 --- [vidaplus] [restartedMain] i.v.seguranca.token.JwtTokenFilter       : Filter 'jwtTokenFilter' configured for use
-2025-04-13T14:31:20.655-03:00  INFO 1764 --- [vidaplus] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-04-13T14:31:21.197-03:00  INFO 1764 --- [vidaplus] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name usuarioDetaisServiceImpl
-2025-04-13T14:31:21.409-03:00  WARN 1764 --- [vidaplus] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-04-13T14:31:22.045-03:00  INFO 1764 --- [vidaplus] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/vidaplus'
-2025-04-13T14:31:22.125-03:00  INFO 1764 --- [vidaplus] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-04-13T14:31:22.175-03:00  INFO 1764 --- [vidaplus] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-04-13T14:31:22.186-03:00  INFO 1764 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Started VidaplusApplication in 9.343 seconds (process running for 10.437)
-2025-04-13T14:32:04.110-03:00  INFO 1764 --- [vidaplus] [http-nio-8080-exec-5] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-04-13T14:32:04.111-03:00  INFO 1764 --- [vidaplus] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-04-13T14:32:04.112-03:00  INFO 1764 --- [vidaplus] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-04-13T14:32:26.014-03:00  WARN 1764 --- [vidaplus] [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [instituto.vidaplus.exception.genericas.SenhaInvalidaException: Senha incorreta: você tem 1 tentativas restantes]
-2025-04-13T14:32:36.737-03:00  WARN 1764 --- [vidaplus] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [instituto.vidaplus.seguranca.exception.UsuarioNaoEncontradoException: Usuário bloqueado]
-2025-04-13T14:35:14.353-03:00  INFO 1764 --- [vidaplus] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-04-13T14:35:14.359-03:00  INFO 1764 --- [vidaplus] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-04-13T14:35:14.370-03:00  INFO 1764 --- [vidaplus] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-04-13T14:35:14.374-03:00  INFO 1764 --- [vidaplus] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-04-13T14:35:14.382-03:00  INFO 1764 --- [vidaplus] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-04-13T14:35:16.943-03:00  INFO 16076 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Starting VidaplusApplication using Java 23.0.2 with PID 16076 (C:\Users\patri\Documents\Projetos\vidaplus\back end\vidaplus\target\classes started by patri in C:\Users\patri\Documents\Projetos\vidaplus\back end\vidaplus)
-2025-04-13T14:35:16.945-03:00 DEBUG 16076 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Running with Spring Boot v3.4.3, Spring v6.2.3
-2025-04-13T14:35:16.945-03:00  INFO 16076 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : No active profile set, falling back to 1 default profile: "default"
-2025-04-13T14:35:17.014-03:00  INFO 16076 --- [vidaplus] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-04-13T14:35:17.014-03:00  INFO 16076 --- [vidaplus] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-04-13T14:35:18.050-03:00  INFO 16076 --- [vidaplus] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-04-13T14:35:18.217-03:00  INFO 16076 --- [vidaplus] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 158 ms. Found 21 JPA repository interfaces.
-2025-04-13T14:35:18.867-03:00  INFO 16076 --- [vidaplus] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-04-13T14:35:18.881-03:00  INFO 16076 --- [vidaplus] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-04-13T14:35:18.881-03:00  INFO 16076 --- [vidaplus] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
-2025-04-13T14:35:18.926-03:00  INFO 16076 --- [vidaplus] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-04-13T14:35:18.926-03:00  INFO 16076 --- [vidaplus] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1912 ms
-2025-04-13T14:35:19.153-03:00  INFO 16076 --- [vidaplus] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-04-13T14:35:19.392-03:00  INFO 16076 --- [vidaplus] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@55e1cd74
-2025-04-13T14:35:19.393-03:00  INFO 16076 --- [vidaplus] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-04-13T14:35:19.419-03:00  INFO 16076 --- [vidaplus] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/vidaplus (PostgreSQL 17.2)
-2025-04-13T14:35:19.445-03:00  INFO 16076 --- [vidaplus] [restartedMain] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
-2025-04-13T14:35:19.447-03:00  INFO 16076 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.007s)
-2025-04-13T14:35:19.447-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
-2025-04-13T14:35:19.457-03:00  INFO 16076 --- [vidaplus] [restartedMain] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
-2025-04-13T14:35:19.552-03:00  INFO 16076 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
-2025-04-13T14:35:19.556-03:00  INFO 16076 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
-2025-04-13T14:35:19.665-03:00  INFO 16076 --- [vidaplus] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-04-13T14:35:19.711-03:00  INFO 16076 --- [vidaplus] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
-2025-04-13T14:35:19.741-03:00  INFO 16076 --- [vidaplus] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-04-13T14:35:19.976-03:00  INFO 16076 --- [vidaplus] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-04-13T14:35:20.046-03:00  INFO 16076 --- [vidaplus] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-04-17T22:00:54.075-03:00  INFO 14080 --- [vidaplus] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-17T22:00:55.186-03:00  INFO 14080 --- [vidaplus] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-17T22:00:55.538-03:00 DEBUG 14080 --- [vidaplus] [restartedMain] i.v.seguranca.token.JwtTokenFilter       : Filter 'jwtTokenFilter' configured for use
+2025-04-17T22:00:55.990-03:00  INFO 14080 --- [vidaplus] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-17T22:00:56.571-03:00  INFO 14080 --- [vidaplus] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name usuarioDetaisServiceImpl
+2025-04-17T22:00:56.807-03:00  WARN 14080 --- [vidaplus] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-17T22:00:57.471-03:00  INFO 14080 --- [vidaplus] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/vidaplus'
+2025-04-17T22:00:57.548-03:00  INFO 14080 --- [vidaplus] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-04-17T22:00:57.590-03:00  INFO 14080 --- [vidaplus] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-17T22:00:57.598-03:00  INFO 14080 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Started VidaplusApplication in 9.155 seconds (process running for 10.173)
+2025-04-17T22:02:59.171-03:00  INFO 14080 --- [vidaplus] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-17T22:02:59.177-03:00  INFO 14080 --- [vidaplus] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-17T22:02:59.185-03:00  INFO 14080 --- [vidaplus] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-17T22:02:59.189-03:00  INFO 14080 --- [vidaplus] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-17T22:02:59.192-03:00  INFO 14080 --- [vidaplus] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-17T22:03:03.081-03:00  INFO 16072 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Starting VidaplusApplication using Java 23.0.2 with PID 16072 (C:\Users\patri\Documents\Projetos\vidaplus\back end\vidaplus\target\classes started by patri in C:\Users\patri\Documents\Projetos\vidaplus\back end\vidaplus)
+2025-04-17T22:03:03.083-03:00 DEBUG 16072 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Running with Spring Boot v3.4.3, Spring v6.2.3
+2025-04-17T22:03:03.084-03:00  INFO 16072 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-04-17T22:03:03.157-03:00  INFO 16072 --- [vidaplus] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-04-17T22:03:03.157-03:00  INFO 16072 --- [vidaplus] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-04-17T22:03:04.152-03:00  INFO 16072 --- [vidaplus] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-17T22:03:04.319-03:00  INFO 16072 --- [vidaplus] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 158 ms. Found 21 JPA repository interfaces.
+2025-04-17T22:03:04.972-03:00  INFO 16072 --- [vidaplus] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-17T22:03:04.985-03:00  INFO 16072 --- [vidaplus] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-17T22:03:04.985-03:00  INFO 16072 --- [vidaplus] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-17T22:03:05.031-03:00  INFO 16072 --- [vidaplus] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-17T22:03:05.031-03:00  INFO 16072 --- [vidaplus] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1874 ms
+2025-04-17T22:03:05.243-03:00  INFO 16072 --- [vidaplus] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-17T22:03:05.382-03:00  INFO 16072 --- [vidaplus] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1d3dfa37
+2025-04-17T22:03:05.383-03:00  INFO 16072 --- [vidaplus] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-17T22:03:05.408-03:00  INFO 16072 --- [vidaplus] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/vidaplus (PostgreSQL 17.2)
+2025-04-17T22:03:05.442-03:00  INFO 16072 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.014s)
+2025-04-17T22:03:05.443-03:00  WARN 16072 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2025-04-17T22:03:05.504-03:00  INFO 16072 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2025-04-17T22:03:05.507-03:00  INFO 16072 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2025-04-17T22:03:05.609-03:00  INFO 16072 --- [vidaplus] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-17T22:03:05.656-03:00  INFO 16072 --- [vidaplus] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-17T22:03:05.688-03:00  INFO 16072 --- [vidaplus] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-17T22:03:05.912-03:00  INFO 16072 --- [vidaplus] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-17T22:03:05.982-03:00  INFO 16072 --- [vidaplus] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 17.2
@@ -84,74 +77,46 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-04-13T14:35:21.282-03:00  INFO 16076 --- [vidaplus] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-04-13T14:35:21.417-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:35:21.417-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "ukspxdepvvb3btbkwthf2i8ae79" da relação "agendas" não existe, ignorando
-2025-04-13T14:35:21.419-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:35:21.419-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "uk1mj2svx930q0tkx1d18qa9rtf" da relação "pacientes" não existe, ignorando
-2025-04-13T14:35:21.422-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:35:21.422-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "uka83ft0lfk8ltx47ve931qw2kq" da relação "pacientes" não existe, ignorando
-2025-04-13T14:35:21.424-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:35:21.424-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "uk2vu7drdd6x0ur0aqrkljh8ui0" da relação "pacientes" não existe, ignorando
-2025-04-13T14:35:21.427-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:35:21.427-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "ukr8kb9uaydfbvenu0stdorj78c" da relação "profissionais" não existe, ignorando
-2025-04-13T14:35:21.429-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:35:21.429-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "ukbd0dp6v813pvhnaktgjc745rg" da relação "profissionais" não existe, ignorando
-2025-04-13T14:35:21.431-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:35:21.431-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "ukes0wa7gotjsre54wjfxn9ynge" da relação "profissionais" não existe, ignorando
-2025-04-13T14:35:21.434-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:35:21.434-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "ukjk8w2f01ul3v9y6wdhujt9g18" da relação "profissionais" não existe, ignorando
-2025-04-13T14:35:21.436-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:35:21.436-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "ukq79k0e3cauv3i0ia95gedlnkr" da relação "telemedicina" não existe, ignorando
-2025-04-13T14:35:21.438-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:35:21.438-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "ukkfsp0s1tflm1cwlj8idhqsad0" da relação "usuarios" não existe, ignorando
-2025-04-13T14:35:21.441-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:35:21.441-03:00  WARN 16076 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "ukcqib64rin33t2gw8a1c2x7ir2" da relação "usuarios" não existe, ignorando
-2025-04-13T14:35:21.490-03:00  INFO 16076 --- [vidaplus] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-04-13T14:35:21.794-03:00 DEBUG 16076 --- [vidaplus] [restartedMain] i.v.seguranca.token.JwtTokenFilter       : Filter 'jwtTokenFilter' configured for use
-2025-04-13T14:35:22.204-03:00  INFO 16076 --- [vidaplus] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-04-13T14:35:22.687-03:00  INFO 16076 --- [vidaplus] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name usuarioDetaisServiceImpl
-2025-04-13T14:35:22.894-03:00  WARN 16076 --- [vidaplus] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-04-13T14:35:23.501-03:00  INFO 16076 --- [vidaplus] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/vidaplus'
-2025-04-13T14:35:23.581-03:00  INFO 16076 --- [vidaplus] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-04-13T14:35:23.633-03:00  INFO 16076 --- [vidaplus] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-04-13T14:35:23.642-03:00  INFO 16076 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Started VidaplusApplication in 7.148 seconds (process running for 8.128)
-2025-04-13T14:35:54.556-03:00  INFO 16076 --- [vidaplus] [http-nio-8080-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-04-13T14:35:54.556-03:00  INFO 16076 --- [vidaplus] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-04-13T14:35:54.558-03:00  INFO 16076 --- [vidaplus] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-04-13T14:39:57.619-03:00  WARN 16076 --- [vidaplus] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [instituto.vidaplus.exception.genericas.SenhaInvalidaException: Senha incorreta: você tem 2 tentativas restantes]
-2025-04-13T14:44:22.652-03:00  INFO 16076 --- [vidaplus] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-04-13T14:44:22.658-03:00  INFO 16076 --- [vidaplus] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-04-13T14:44:22.668-03:00  INFO 16076 --- [vidaplus] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-04-13T14:44:22.672-03:00  INFO 16076 --- [vidaplus] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-04-13T14:44:22.679-03:00  INFO 16076 --- [vidaplus] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-04-13T14:44:25.084-03:00  INFO 7512 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Starting VidaplusApplication using Java 23.0.2 with PID 7512 (C:\Users\patri\Documents\Projetos\vidaplus\back end\vidaplus\target\classes started by patri in C:\Users\patri\Documents\Projetos\vidaplus\back end\vidaplus)
-2025-04-13T14:44:25.086-03:00 DEBUG 7512 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Running with Spring Boot v3.4.3, Spring v6.2.3
-2025-04-13T14:44:25.087-03:00  INFO 7512 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : No active profile set, falling back to 1 default profile: "default"
-2025-04-13T14:44:25.155-03:00  INFO 7512 --- [vidaplus] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-04-13T14:44:25.157-03:00  INFO 7512 --- [vidaplus] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-04-13T14:44:26.173-03:00  INFO 7512 --- [vidaplus] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-04-13T14:44:26.343-03:00  INFO 7512 --- [vidaplus] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 161 ms. Found 21 JPA repository interfaces.
-2025-04-13T14:44:27.009-03:00  INFO 7512 --- [vidaplus] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-04-13T14:44:27.022-03:00  INFO 7512 --- [vidaplus] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-04-13T14:44:27.022-03:00  INFO 7512 --- [vidaplus] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
-2025-04-13T14:44:27.068-03:00  INFO 7512 --- [vidaplus] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-04-13T14:44:27.068-03:00  INFO 7512 --- [vidaplus] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1911 ms
-2025-04-13T14:44:27.300-03:00  INFO 7512 --- [vidaplus] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-04-13T14:44:27.440-03:00  INFO 7512 --- [vidaplus] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1b0e8a65
-2025-04-13T14:44:27.441-03:00  INFO 7512 --- [vidaplus] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-04-13T14:44:27.465-03:00  INFO 7512 --- [vidaplus] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/vidaplus (PostgreSQL 17.2)
-2025-04-13T14:44:27.491-03:00  INFO 7512 --- [vidaplus] [restartedMain] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
-2025-04-13T14:44:27.493-03:00  INFO 7512 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.007s)
-2025-04-13T14:44:27.493-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
-2025-04-13T14:44:27.504-03:00  INFO 7512 --- [vidaplus] [restartedMain] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
-2025-04-13T14:44:27.598-03:00  INFO 7512 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
-2025-04-13T14:44:27.601-03:00  INFO 7512 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
-2025-04-13T14:44:27.700-03:00  INFO 7512 --- [vidaplus] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-04-13T14:44:27.753-03:00  INFO 7512 --- [vidaplus] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
-2025-04-13T14:44:27.784-03:00  INFO 7512 --- [vidaplus] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-04-13T14:44:28.018-03:00  INFO 7512 --- [vidaplus] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-04-13T14:44:28.090-03:00  INFO 7512 --- [vidaplus] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-04-17T22:03:07.165-03:00  INFO 16072 --- [vidaplus] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-17T22:03:08.230-03:00  INFO 16072 --- [vidaplus] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-17T22:03:08.517-03:00 DEBUG 16072 --- [vidaplus] [restartedMain] i.v.seguranca.token.JwtTokenFilter       : Filter 'jwtTokenFilter' configured for use
+2025-04-17T22:03:08.918-03:00  INFO 16072 --- [vidaplus] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-17T22:03:09.401-03:00  INFO 16072 --- [vidaplus] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name usuarioDetaisServiceImpl
+2025-04-17T22:03:09.610-03:00  WARN 16072 --- [vidaplus] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-17T22:03:10.188-03:00  INFO 16072 --- [vidaplus] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/vidaplus'
+2025-04-17T22:03:10.260-03:00  INFO 16072 --- [vidaplus] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-04-17T22:03:10.301-03:00  INFO 16072 --- [vidaplus] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-17T22:03:10.309-03:00  INFO 16072 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Started VidaplusApplication in 7.637 seconds (process running for 8.423)
+2025-04-17T22:05:04.516-03:00  INFO 16072 --- [vidaplus] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-17T22:05:04.524-03:00  INFO 16072 --- [vidaplus] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-17T22:05:04.532-03:00  INFO 16072 --- [vidaplus] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-17T22:05:04.535-03:00  INFO 16072 --- [vidaplus] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-17T22:05:04.540-03:00  INFO 16072 --- [vidaplus] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-17T22:05:06.657-03:00  INFO 17564 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Starting VidaplusApplication using Java 23.0.2 with PID 17564 (C:\Users\patri\Documents\Projetos\vidaplus\back end\vidaplus\target\classes started by patri in C:\Users\patri\Documents\Projetos\vidaplus\back end\vidaplus)
+2025-04-17T22:05:06.659-03:00 DEBUG 17564 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Running with Spring Boot v3.4.3, Spring v6.2.3
+2025-04-17T22:05:06.660-03:00  INFO 17564 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-04-17T22:05:06.727-03:00  INFO 17564 --- [vidaplus] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-04-17T22:05:06.727-03:00  INFO 17564 --- [vidaplus] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-04-17T22:05:07.756-03:00  INFO 17564 --- [vidaplus] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-17T22:05:08.014-03:00  INFO 17564 --- [vidaplus] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 244 ms. Found 21 JPA repository interfaces.
+2025-04-17T22:05:08.818-03:00  INFO 17564 --- [vidaplus] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-17T22:05:08.834-03:00  INFO 17564 --- [vidaplus] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-17T22:05:08.835-03:00  INFO 17564 --- [vidaplus] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-17T22:05:08.894-03:00  INFO 17564 --- [vidaplus] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-17T22:05:08.895-03:00  INFO 17564 --- [vidaplus] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2167 ms
+2025-04-17T22:05:09.197-03:00  INFO 17564 --- [vidaplus] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-17T22:05:09.441-03:00  INFO 17564 --- [vidaplus] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@ea69593
+2025-04-17T22:05:09.443-03:00  INFO 17564 --- [vidaplus] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-17T22:05:09.474-03:00  INFO 17564 --- [vidaplus] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/vidaplus (PostgreSQL 17.2)
+2025-04-17T22:05:09.523-03:00  INFO 17564 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.022s)
+2025-04-17T22:05:09.523-03:00  WARN 17564 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2025-04-17T22:05:09.604-03:00  INFO 17564 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2025-04-17T22:05:09.610-03:00  INFO 17564 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2025-04-17T22:05:09.753-03:00  INFO 17564 --- [vidaplus] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-17T22:05:09.807-03:00  INFO 17564 --- [vidaplus] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-17T22:05:09.851-03:00  INFO 17564 --- [vidaplus] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-17T22:05:10.140-03:00  INFO 17564 --- [vidaplus] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-17T22:05:10.224-03:00  INFO 17564 --- [vidaplus] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 17.2
@@ -159,257 +124,53 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-04-13T14:44:29.283-03:00  INFO 7512 --- [vidaplus] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-04-13T14:44:29.408-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:44:29.408-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "ukspxdepvvb3btbkwthf2i8ae79" da relação "agendas" não existe, ignorando
-2025-04-13T14:44:29.410-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:44:29.410-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "uk1mj2svx930q0tkx1d18qa9rtf" da relação "pacientes" não existe, ignorando
-2025-04-13T14:44:29.413-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:44:29.413-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "uka83ft0lfk8ltx47ve931qw2kq" da relação "pacientes" não existe, ignorando
-2025-04-13T14:44:29.415-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:44:29.415-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "uk2vu7drdd6x0ur0aqrkljh8ui0" da relação "pacientes" não existe, ignorando
-2025-04-13T14:44:29.418-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:44:29.418-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "ukr8kb9uaydfbvenu0stdorj78c" da relação "profissionais" não existe, ignorando
-2025-04-13T14:44:29.420-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:44:29.421-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "ukbd0dp6v813pvhnaktgjc745rg" da relação "profissionais" não existe, ignorando
-2025-04-13T14:44:29.426-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:44:29.426-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "ukes0wa7gotjsre54wjfxn9ynge" da relação "profissionais" não existe, ignorando
-2025-04-13T14:44:29.429-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:44:29.429-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "ukjk8w2f01ul3v9y6wdhujt9g18" da relação "profissionais" não existe, ignorando
-2025-04-13T14:44:29.431-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:44:29.432-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "ukq79k0e3cauv3i0ia95gedlnkr" da relação "telemedicina" não existe, ignorando
-2025-04-13T14:44:29.434-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:44:29.434-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "ukkfsp0s1tflm1cwlj8idhqsad0" da relação "usuarios" não existe, ignorando
-2025-04-13T14:44:29.436-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2025-04-13T14:44:29.436-03:00  WARN 7512 --- [vidaplus] [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : restrição "ukcqib64rin33t2gw8a1c2x7ir2" da relação "usuarios" não existe, ignorando
-2025-04-13T14:44:29.488-03:00  INFO 7512 --- [vidaplus] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-04-13T14:44:29.787-03:00 DEBUG 7512 --- [vidaplus] [restartedMain] i.v.seguranca.token.JwtTokenFilter       : Filter 'jwtTokenFilter' configured for use
-2025-04-13T14:44:30.189-03:00  INFO 7512 --- [vidaplus] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-04-13T14:44:30.669-03:00  INFO 7512 --- [vidaplus] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name usuarioDetaisServiceImpl
-2025-04-13T14:44:30.880-03:00  WARN 7512 --- [vidaplus] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-04-13T14:44:31.461-03:00  INFO 7512 --- [vidaplus] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/vidaplus'
-2025-04-13T14:44:31.534-03:00  INFO 7512 --- [vidaplus] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-04-13T14:44:31.580-03:00  INFO 7512 --- [vidaplus] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-04-13T14:44:31.588-03:00  INFO 7512 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Started VidaplusApplication in 6.928 seconds (process running for 7.776)
-2025-04-13T14:45:06.835-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-04-13T14:45:06.836-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-04-13T14:45:06.837-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-04-13T14:46:08.040-03:00  WARN 7512 --- [vidaplus] [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [instituto.vidaplus.exception.genericas.SenhaInvalidaException: A senha deve ter no mínimo 8 caracteres. A senha deve conter pelo menos um caractere especial]
-2025-04-13T14:49:28.415-03:00  WARN 7512 --- [vidaplus] [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [instituto.vidaplus.exception.genericas.SenhaInvalidaException: Senha incorreta: você tem 2 tentativas restantes]
-2025-04-13T14:57:39.867-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-2] i.v.p.service.impl.PacienteServiceImpl   : Cadastrando Paciente: PacienteDTO(id=null, nome=Patrick Zanela, sexo=MASCULINO, cpf=94526494020, dataNascimento=1980-01-15, email=patrickzm290493@gmail.com.br, telefone=(48)98765-4388, cep=78659970, logradouro=null, bairro=null, cidade=null, uf=null, possuiPlanoDeSaude=true, planoDeSaudeNome=null, receberNotificacaoEmail=true, aceitouTermosTelemedicina=null, tokenTeleconsulta=null, tipoSanguineo=null, historicoClinico=[], alergias=[], prontuarios=[], exames=[], consultas=[], leito=null)
-2025-04-13T14:57:40.531-03:00 DEBUG 7512 --- [vidaplus] [http-nio-8080-exec-2] i.v.p.service.impl.PacienteServiceImpl   : Paciente: Paciente(possuiPlanoDeSaude=true, planoDeSaudeNome=null, receberNotificacaoEmail=true, aceitouTermosTelemedicina=null, tokenTeleconsulta=null, tipoSanguineo=null, historicoClinico=null, alergias=[], prontuarios=[], exames=[], consultas=[])
-2025-04-13T15:02:02.234-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-6] i.v.p.s.impl.PacienteAlergiaServiceImpl  : Adicionando alergia: PENICILINA
-2025-04-13T15:02:02.256-03:00 DEBUG 7512 --- [vidaplus] [http-nio-8080-exec-6] i.v.p.s.impl.PacienteAlergiaServiceImpl  : Paciente: [FAILED toString()]
-2025-04-13T15:03:50.964-03:00 ERROR 7512 --- [vidaplus] [http-nio-8080-exec-10] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
-
-io.jsonwebtoken.security.SignatureException: JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
-	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:399) ~[jjwt-impl-0.11.5.jar:0.11.5]
-	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:529) ~[jjwt-impl-0.11.5.jar:0.11.5]
-	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:589) ~[jjwt-impl-0.11.5.jar:0.11.5]
-	at io.jsonwebtoken.impl.ImmutableJwtParser.parseClaimsJws(ImmutableJwtParser.java:173) ~[jjwt-impl-0.11.5.jar:0.11.5]
-	at instituto.vidaplus.seguranca.token.JwtTokenUtil.getUsernameFromToken(JwtTokenUtil.java:57) ~[classes/:na]
-	at instituto.vidaplus.seguranca.token.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:40) ~[classes/:na]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:243) ~[spring-webmvc-6.2.3.jar:6.2.3]
-	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:238) ~[spring-security-config-6.4.3.jar:6.4.3]
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at java.base/java.lang.Thread.run(Thread.java:1575) ~[na:na]
-
-2025-04-13T15:04:30.755-03:00 ERROR 7512 --- [vidaplus] [http-nio-8080-exec-8] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
-
-io.jsonwebtoken.security.SignatureException: JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
-	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:399) ~[jjwt-impl-0.11.5.jar:0.11.5]
-	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:529) ~[jjwt-impl-0.11.5.jar:0.11.5]
-	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:589) ~[jjwt-impl-0.11.5.jar:0.11.5]
-	at io.jsonwebtoken.impl.ImmutableJwtParser.parseClaimsJws(ImmutableJwtParser.java:173) ~[jjwt-impl-0.11.5.jar:0.11.5]
-	at instituto.vidaplus.seguranca.token.JwtTokenUtil.getUsernameFromToken(JwtTokenUtil.java:57) ~[classes/:na]
-	at instituto.vidaplus.seguranca.token.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:40) ~[classes/:na]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.4.3.jar:6.4.3]
-	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:243) ~[spring-webmvc-6.2.3.jar:6.2.3]
-	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:238) ~[spring-security-config-6.4.3.jar:6.4.3]
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
-	at java.base/java.lang.Thread.run(Thread.java:1575) ~[na:na]
-
-2025-04-13T15:05:04.324-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-1] i.v.p.s.impl.ProfissionalServiceImpl     : Cadastrando profissional
-2025-04-13T15:05:04.810-03:00 DEBUG 7512 --- [vidaplus] [http-nio-8080-exec-1] i.v.p.s.impl.ProfissionalServiceImpl     : Profissional salvo: Profissional(registro=registro teste editado, tipoProfissional=MEDICO, especialidade=CARDIOLOGIA, permiteTelemedicina=true, tokenTelemedicina=null, prontuarios=[], examesSolicitados=[], receitasDigitais=[])
-2025-04-13T15:08:44.662-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-10] i.v.u.s.i.UnidadeHospitalarServiceImpl   : Cadastrando unidade hospitalar com id: null
-2025-04-13T15:08:45.168-03:00 DEBUG 7512 --- [vidaplus] [http-nio-8080-exec-10] i.v.u.s.i.UnidadeHospitalarServiceImpl   : 
-2025-04-13T15:11:24.167-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-6] i.v.s.s.impl.SuprimentoServiceImpl       : Cadastrando suprimento: SuprimentoDTO(id=null, nome=seringas, quantidade=100000, unidadeMedida=pecas)
-2025-04-13T15:11:24.174-03:00 DEBUG 7512 --- [vidaplus] [http-nio-8080-exec-6] i.v.s.s.impl.SuprimentoServiceImpl       : Suprimento cadastrado: Suprimento(id=1, nome=seringas, quantidade=100000, unidadeMedida=pecas)
-2025-04-13T15:13:00.004-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-8] i.v.leito.service.impl.LeitoServiceImpl  : Adicionando leito: LeitoDTO(id=null, numero=2, ocupado=null, unidadeHospitalarId=null)
-2025-04-13T15:13:00.017-03:00 DEBUG 7512 --- [vidaplus] [http-nio-8080-exec-8] i.v.leito.service.impl.LeitoServiceImpl  : Leito salvo: Leito(id=1, numero=2, ocupado=false, unidadeHospitalar=UnidadeHospitalar(id=1, nome=Unidade teste, cep=69086770, logradouro=Rua Acapiú, bairro=Gilberto Mestrinho, cidade=Manaus, uf=AM, telefone=48988714142, email=unnidade@teste.com))
-2025-04-13T15:14:38.645-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-4] i.v.i.s.impl.InternacaoServiceImpl       : Iniciando o registro de internação para o paciente com ID: 1
-2025-04-13T15:14:38.661-03:00 DEBUG 7512 --- [vidaplus] [http-nio-8080-exec-4] i.v.i.s.impl.InternacaoServiceImpl       : Internacao: [FAILED toString()]
-2025-04-13T15:16:01.782-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-9] i.v.i.s.impl.InternacaoServiceImpl       : Iniciando suprimento a internacao com ID: 1
-2025-04-13T15:16:01.794-03:00 DEBUG 7512 --- [vidaplus] [http-nio-8080-exec-9] i.v.i.s.impl.InternacaoServiceImpl       : InternacaoSuprimento: [FAILED toString()]
-2025-04-13T15:18:15.642-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-4] i.v.exame.service.impl.ExameServiceImpl  : Agendar exame: ExameDTO(id=null, pacienteId=null, profissionalId=3, tipoExame=HEMOGRAMA, dataAgendamento=2025-04-15, status=null)
-2025-04-13T15:18:15.650-03:00  WARN 7512 --- [vidaplus] [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [instituto.vidaplus.profissional.exception.ProfissionalNaoEncontradoException: Profissional não encontrado]
-2025-04-13T15:18:20.607-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-5] i.v.exame.service.impl.ExameServiceImpl  : Agendar exame: ExameDTO(id=null, pacienteId=null, profissionalId=1, tipoExame=HEMOGRAMA, dataAgendamento=2025-04-15, status=null)
-2025-04-13T15:18:24.427-03:00 DEBUG 7512 --- [vidaplus] [http-nio-8080-exec-5] i.v.exame.service.impl.ExameServiceImpl  : Exame: [FAILED toString()]
-2025-04-13T15:19:08.549-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-6] i.v.exame.service.impl.ExameServiceImpl  : Agendar exame: ExameDTO(id=null, pacienteId=null, profissionalId=1, tipoExame=HEMOGRAMA, dataAgendamento=2025-04-11, status=null)
-2025-04-13T15:19:08.553-03:00  WARN 7512 --- [vidaplus] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [instituto.vidaplus.exception.genericas.DataInvalidaException: Data de agendamento inválida]
-2025-04-13T15:20:06.367-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-10] i.v.a.service.impl.AgendaServiceImpl     : Criando uma agenda para o profissional: 1
-2025-04-13T15:20:06.374-03:00 DEBUG 7512 --- [vidaplus] [http-nio-8080-exec-10] i.v.a.service.impl.AgendaServiceImpl     : Agenda salva: instituto.vidaplus.agenda.model.Agenda@1b913fe7
-2025-04-13T15:22:14.978-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-2] i.v.h.s.i.HorarioDisponivelServiceImpl   : Criando Horario Disponivel para a agenda com id: 1
-2025-04-13T15:22:14.994-03:00 DEBUG 7512 --- [vidaplus] [http-nio-8080-exec-2] i.v.h.s.i.HorarioDisponivelServiceImpl   : Horario Disponivel criado com sucesso: HorarioDisponivel(id=1, diaDaSemana=SEGUNDA, horaInicio=08:00, horaFim=18:30, duracaoMediaEmMinutos=30, disponivel=true)
-2025-04-13T15:25:06.778-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-7] i.v.c.service.impl.ConsultaServiceImpl   : Criando consulta: ConsultaDTO(id=null, pacienteId=null, profissionalId=null, agendaId=null, telemedicinaId=null, linkVideoChamada=null, data=2025-04-14, horaInicio=08:00, horaFim=08:30, status=null, motivoConsulta=gripe)
-2025-04-13T15:25:10.647-03:00 DEBUG 7512 --- [vidaplus] [http-nio-8080-exec-7] i.v.c.service.impl.ConsultaServiceImpl   : Consulta salva: Consulta(id=1, telemedicina=null, receitas=[], prontuarios=[], data=2025-04-14, horaInicio=08:00, horaFim=08:30, status=AGENDADA, motivoConsulta=gripe)
-2025-04-13T15:26:34.739-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-10] i.v.c.service.impl.ConsultaServiceImpl   : Criando consulta: ConsultaDTO(id=null, pacienteId=null, profissionalId=null, agendaId=null, telemedicinaId=null, linkVideoChamada=null, data=2025-04-14, horaInicio=07:00, horaFim=08:30, status=null, motivoConsulta=gripe)
-2025-04-13T15:26:34.747-03:00  WARN 7512 --- [vidaplus] [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [instituto.vidaplus.horario.exception.HorarioNaoEncontradoException: Não há horário disponível para esta data e hora na agenda do profissional]
-2025-04-13T15:27:11.090-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-1] i.v.c.service.impl.ConsultaServiceImpl   : Criando consulta: ConsultaDTO(id=null, pacienteId=null, profissionalId=null, agendaId=null, telemedicinaId=null, linkVideoChamada=null, data=2025-04-14, horaInicio=08:00, horaFim=08:30, status=null, motivoConsulta=gripe)
-2025-04-13T15:27:11.100-03:00  WARN 7512 --- [vidaplus] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [instituto.vidaplus.horario.exception.ConflitoDeHorarioException: Este horário já está ocupado por outra consulta]
-2025-04-13T15:27:23.374-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-3] i.v.c.service.impl.ConsultaServiceImpl   : Criando consulta: ConsultaDTO(id=null, pacienteId=null, profissionalId=null, agendaId=null, telemedicinaId=null, linkVideoChamada=null, data=2025-04-14, horaInicio=08:00, horaFim=08:20, status=null, motivoConsulta=gripe)
-2025-04-13T15:27:23.383-03:00  WARN 7512 --- [vidaplus] [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [instituto.vidaplus.horario.exception.ConflitoDeHorarioException: Este horário já está ocupado por outra consulta]
-2025-04-13T15:31:52.498-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-6] i.v.p.s.impl.ProntuarioServiceImpl       : Criando prontuário para a consulta com ID: 1
-2025-04-13T15:31:52.509-03:00 DEBUG 7512 --- [vidaplus] [http-nio-8080-exec-6] i.v.p.s.impl.ProntuarioServiceImpl       : Prontuario: [FAILED toString()]
-2025-04-13T15:33:01.948-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-8] i.v.p.s.impl.ProntuarioServiceImpl       : Gerando relatório para o prontuário com ID: 1
-2025-04-13T15:33:03.612-03:00  WARN 7512 --- [vidaplus] [http-nio-8080-exec-8] n.s.j.engine.export.PdfGlyphRenderer     : Unpatched iText found, cannot use glyph rendering
-2025-04-13T15:34:19.344-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-1] i.v.r.service.impl.ReceitaServiceImpl    : Criando receita com ID: 1
-2025-04-13T15:34:19.356-03:00 DEBUG 7512 --- [vidaplus] [http-nio-8080-exec-1] i.v.r.service.impl.ReceitaServiceImpl    : Receita criada com sucesso: [FAILED toString()]
-2025-04-13T15:36:39.486-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-9] i.v.r.service.impl.ReceitaServiceImpl    : Gerando relatório para receita com ID: 1
-2025-04-13T15:38:23.175-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-1] i.v.r.s.i.RelatorioFinanceiroServiceImpl : Registrando relatório financeiro: RelatorioFinanceiroDTO(id=null, data=2025-01-03, receita=15000.0, despesa=5000.0, lucro=null)
-2025-04-13T15:38:23.184-03:00 DEBUG 7512 --- [vidaplus] [http-nio-8080-exec-1] i.v.r.s.i.RelatorioFinanceiroServiceImpl : Salvo: RelatorioFinanceiro(id=1, data=2025-01-03, receita=15000.0, despesa=5000.0, lucro=10000.0)
-2025-04-13T15:39:23.742-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-4] i.v.r.s.i.RelatorioFinanceiroServiceImpl : Exportando relatório PDF de 2025-01-01 a 2025-01-10
-2025-04-13T15:39:23.857-03:00  WARN 7512 --- [vidaplus] [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [instituto.vidaplus.relatorio.exception.ErroEmRelatorioException: Erro ao gerar relatório PDF: Error retrieving field value from bean: administradorId.]
-2025-04-13T15:40:31.775-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-6] i.v.r.s.i.RelatorioFinanceiroServiceImpl : Exportando relatório PDF de 2025-01-01 a 2025-01-10
-2025-04-13T15:40:31.865-03:00  WARN 7512 --- [vidaplus] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [instituto.vidaplus.relatorio.exception.ErroEmRelatorioException: Erro ao gerar relatório PDF: Error retrieving field value from bean: administradorId.]
-2025-04-13T15:43:26.075-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-9] i.v.r.s.i.RelatorioFinanceiroServiceImpl : Exportando relatório Excel de 2025-01-01 a 2025-01-10
-2025-04-13T15:43:48.197-03:00  INFO 7512 --- [vidaplus] [http-nio-8080-exec-8] i.v.r.s.i.RelatorioFinanceiroServiceImpl : Exportando relatório PDF de 2025-01-01 a 2025-01-10
-2025-04-13T15:43:48.288-03:00  WARN 7512 --- [vidaplus] [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [instituto.vidaplus.relatorio.exception.ErroEmRelatorioException: Erro ao gerar relatório PDF: Error retrieving field value from bean: administradorId.]
-2025-04-13T15:50:09.986-03:00  INFO 7512 --- [vidaplus] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-04-13T15:50:09.993-03:00  INFO 7512 --- [vidaplus] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-04-13T15:50:10.002-03:00  INFO 7512 --- [vidaplus] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-04-13T15:50:10.007-03:00  INFO 7512 --- [vidaplus] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-04-13T15:50:10.012-03:00  INFO 7512 --- [vidaplus] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-04-13T15:50:12.442-03:00  INFO 3436 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Starting VidaplusApplication using Java 23.0.2 with PID 3436 (C:\Users\patri\Documents\Projetos\vidaplus\back end\vidaplus\target\classes started by patri in C:\Users\patri\Documents\Projetos\vidaplus\back end\vidaplus)
-2025-04-13T15:50:12.443-03:00 DEBUG 3436 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Running with Spring Boot v3.4.3, Spring v6.2.3
-2025-04-13T15:50:12.444-03:00  INFO 3436 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : No active profile set, falling back to 1 default profile: "default"
-2025-04-13T15:50:12.512-03:00  INFO 3436 --- [vidaplus] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-04-13T15:50:12.512-03:00  INFO 3436 --- [vidaplus] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-04-13T15:50:13.531-03:00  INFO 3436 --- [vidaplus] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-04-13T15:50:13.695-03:00  INFO 3436 --- [vidaplus] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 156 ms. Found 21 JPA repository interfaces.
-2025-04-13T15:50:14.337-03:00  INFO 3436 --- [vidaplus] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-04-13T15:50:14.351-03:00  INFO 3436 --- [vidaplus] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-04-13T15:50:14.351-03:00  INFO 3436 --- [vidaplus] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
-2025-04-13T15:50:14.399-03:00  INFO 3436 --- [vidaplus] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-04-13T15:50:14.401-03:00  INFO 3436 --- [vidaplus] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1889 ms
-2025-04-13T15:50:14.621-03:00  INFO 3436 --- [vidaplus] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-04-13T15:50:14.757-03:00  INFO 3436 --- [vidaplus] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1b0e8a65
-2025-04-13T15:50:14.758-03:00  INFO 3436 --- [vidaplus] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-04-13T15:50:14.783-03:00  INFO 3436 --- [vidaplus] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/vidaplus (PostgreSQL 17.2)
-2025-04-13T15:50:14.818-03:00  INFO 3436 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.014s)
-2025-04-13T15:50:14.818-03:00  WARN 3436 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
-2025-04-13T15:50:14.887-03:00  INFO 3436 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
-2025-04-13T15:50:14.890-03:00  INFO 3436 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
-2025-04-13T15:50:14.990-03:00  INFO 3436 --- [vidaplus] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-04-13T15:50:15.038-03:00  INFO 3436 --- [vidaplus] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
-2025-04-13T15:50:15.068-03:00  INFO 3436 --- [vidaplus] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-04-13T15:50:15.312-03:00  INFO 3436 --- [vidaplus] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-04-13T15:50:15.390-03:00  INFO 3436 --- [vidaplus] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-04-17T22:05:11.966-03:00  INFO 17564 --- [vidaplus] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-17T22:05:13.366-03:00  INFO 17564 --- [vidaplus] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-17T22:05:13.827-03:00 DEBUG 17564 --- [vidaplus] [restartedMain] i.v.seguranca.token.JwtTokenFilter       : Filter 'jwtTokenFilter' configured for use
+2025-04-17T22:05:14.374-03:00  INFO 17564 --- [vidaplus] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-17T22:05:14.954-03:00  INFO 17564 --- [vidaplus] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name usuarioDetaisServiceImpl
+2025-04-17T22:05:15.179-03:00  WARN 17564 --- [vidaplus] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-17T22:05:15.892-03:00  INFO 17564 --- [vidaplus] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/vidaplus'
+2025-04-17T22:05:15.970-03:00  INFO 17564 --- [vidaplus] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-04-17T22:05:16.020-03:00  INFO 17564 --- [vidaplus] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-17T22:05:16.029-03:00  INFO 17564 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Started VidaplusApplication in 9.818 seconds (process running for 10.775)
+2025-04-17T22:05:26.393-03:00  INFO 17564 --- [vidaplus] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-17T22:05:26.393-03:00  INFO 17564 --- [vidaplus] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-17T22:05:26.396-03:00  INFO 17564 --- [vidaplus] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-04-17T22:05:48.471-03:00  INFO 17564 --- [vidaplus] [http-nio-8080-exec-3] i.v.p.s.impl.PacienteAlergiaServiceImpl  : Adicionando alergia: PENICILINA
+2025-04-17T22:05:48.495-03:00  WARN 17564 --- [vidaplus] [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [instituto.vidaplus.paciente.exception.AlergiaJaCadastradaException: Alergia já cadastrada para o paciente]
+2025-04-17T22:06:00.819-03:00  INFO 17564 --- [vidaplus] [http-nio-8080-exec-4] i.v.p.s.impl.PacienteAlergiaServiceImpl  : Adicionando alergia: LACTOSE
+2025-04-17T22:06:00.859-03:00 DEBUG 17564 --- [vidaplus] [http-nio-8080-exec-4] i.v.p.s.impl.PacienteAlergiaServiceImpl  : Paciente: [FAILED toString()]
+2025-04-17T22:07:13.758-03:00  INFO 17564 --- [vidaplus] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-17T22:07:13.764-03:00  INFO 17564 --- [vidaplus] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-17T22:07:13.773-03:00  INFO 17564 --- [vidaplus] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-17T22:07:13.776-03:00  INFO 17564 --- [vidaplus] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-17T22:07:13.782-03:00  INFO 17564 --- [vidaplus] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-17T22:09:12.172-03:00  INFO 3408 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Starting VidaplusApplication using Java 23.0.2 with PID 3408 (C:\Users\patri\Documents\Projetos\vidaplus\back end\vidaplus\target\classes started by patri in C:\Users\patri\Documents\Projetos\vidaplus\back end\vidaplus)
+2025-04-17T22:09:12.174-03:00 DEBUG 3408 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Running with Spring Boot v3.4.3, Spring v6.2.3
+2025-04-17T22:09:12.174-03:00  INFO 3408 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-04-17T22:09:12.246-03:00  INFO 3408 --- [vidaplus] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-04-17T22:09:12.246-03:00  INFO 3408 --- [vidaplus] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-04-17T22:09:13.315-03:00  INFO 3408 --- [vidaplus] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-17T22:09:13.484-03:00  INFO 3408 --- [vidaplus] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 162 ms. Found 21 JPA repository interfaces.
+2025-04-17T22:09:14.182-03:00  INFO 3408 --- [vidaplus] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-17T22:09:14.196-03:00  INFO 3408 --- [vidaplus] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-17T22:09:14.196-03:00  INFO 3408 --- [vidaplus] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-17T22:09:14.243-03:00  INFO 3408 --- [vidaplus] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-17T22:09:14.243-03:00  INFO 3408 --- [vidaplus] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1996 ms
+2025-04-17T22:09:14.472-03:00  INFO 3408 --- [vidaplus] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-17T22:09:14.616-03:00  INFO 3408 --- [vidaplus] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3e79d38
+2025-04-17T22:09:14.617-03:00  INFO 3408 --- [vidaplus] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-17T22:09:14.643-03:00  INFO 3408 --- [vidaplus] [restartedMain] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/vidaplus (PostgreSQL 17.2)
+2025-04-17T22:09:14.680-03:00  INFO 3408 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbValidate     : Successfully validated 0 migrations (execution time 00:00.015s)
+2025-04-17T22:09:14.680-03:00  WARN 3408 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbValidate     : No migrations found. Are your locations set up correctly?
+2025-04-17T22:09:14.741-03:00  INFO 3408 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2025-04-17T22:09:14.744-03:00  INFO 3408 --- [vidaplus] [restartedMain] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2025-04-17T22:09:14.849-03:00  INFO 3408 --- [vidaplus] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-17T22:09:14.894-03:00  INFO 3408 --- [vidaplus] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-17T22:09:14.924-03:00  INFO 3408 --- [vidaplus] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-17T22:09:15.196-03:00  INFO 3408 --- [vidaplus] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-17T22:09:15.331-03:00  INFO 3408 --- [vidaplus] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 17.2
@@ -417,23 +178,21 @@ io.jsonwebtoken.security.SignatureException: JWT signature does not match locall
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-04-13T15:50:16.593-03:00  INFO 3436 --- [vidaplus] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-04-13T15:50:17.660-03:00  INFO 3436 --- [vidaplus] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-04-13T15:50:17.951-03:00 DEBUG 3436 --- [vidaplus] [restartedMain] i.v.seguranca.token.JwtTokenFilter       : Filter 'jwtTokenFilter' configured for use
-2025-04-13T15:50:18.371-03:00  INFO 3436 --- [vidaplus] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-04-13T15:50:18.871-03:00  INFO 3436 --- [vidaplus] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name usuarioDetaisServiceImpl
-2025-04-13T15:50:19.077-03:00  WARN 3436 --- [vidaplus] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-04-13T15:50:19.688-03:00  INFO 3436 --- [vidaplus] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/vidaplus'
-2025-04-13T15:50:19.762-03:00  INFO 3436 --- [vidaplus] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2025-04-13T15:50:19.804-03:00  INFO 3436 --- [vidaplus] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-04-13T15:50:19.812-03:00  INFO 3436 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Started VidaplusApplication in 7.831 seconds (process running for 8.769)
-2025-04-13T15:50:26.581-03:00  INFO 3436 --- [vidaplus] [http-nio-8080-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-04-13T15:50:26.582-03:00  INFO 3436 --- [vidaplus] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-04-13T15:50:26.583-03:00  INFO 3436 --- [vidaplus] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-04-13T15:50:40.639-03:00  INFO 3436 --- [vidaplus] [http-nio-8080-exec-5] i.v.r.s.i.RelatorioFinanceiroServiceImpl : Exportando relatório PDF de 2025-01-01 a 2025-01-10
-2025-04-13T15:50:41.861-03:00  WARN 3436 --- [vidaplus] [http-nio-8080-exec-5] n.s.j.engine.export.PdfGlyphRenderer     : Unpatched iText found, cannot use glyph rendering
-2025-04-13T15:51:29.637-03:00  INFO 3436 --- [vidaplus] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-04-13T15:51:29.646-03:00  INFO 3436 --- [vidaplus] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-04-13T15:51:29.680-03:00  INFO 3436 --- [vidaplus] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-04-13T15:51:29.683-03:00  INFO 3436 --- [vidaplus] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-04-13T15:51:29.686-03:00  INFO 3436 --- [vidaplus] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-17T22:09:17.167-03:00  INFO 3408 --- [vidaplus] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-17T22:09:18.416-03:00  INFO 3408 --- [vidaplus] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-17T22:09:18.813-03:00 DEBUG 3408 --- [vidaplus] [restartedMain] i.v.seguranca.token.JwtTokenFilter       : Filter 'jwtTokenFilter' configured for use
+2025-04-17T22:09:19.358-03:00  INFO 3408 --- [vidaplus] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-17T22:09:19.966-03:00  INFO 3408 --- [vidaplus] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name usuarioDetaisServiceImpl
+2025-04-17T22:09:20.305-03:00  WARN 3408 --- [vidaplus] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-17T22:09:21.171-03:00  INFO 3408 --- [vidaplus] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/vidaplus'
+2025-04-17T22:09:21.252-03:00  INFO 3408 --- [vidaplus] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-04-17T22:09:21.337-03:00  INFO 3408 --- [vidaplus] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-17T22:09:21.349-03:00  INFO 3408 --- [vidaplus] [restartedMain] instituto.vidaplus.VidaplusApplication   : Started VidaplusApplication in 9.63 seconds (process running for 10.481)
+2025-04-17T22:09:30.051-03:00  INFO 3408 --- [vidaplus] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-17T22:09:30.051-03:00  INFO 3408 --- [vidaplus] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-17T22:09:30.053-03:00  INFO 3408 --- [vidaplus] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-04-17T22:09:39.823-03:00  INFO 3408 --- [vidaplus] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-17T22:09:39.829-03:00  INFO 3408 --- [vidaplus] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-17T22:09:39.838-03:00  INFO 3408 --- [vidaplus] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-17T22:09:39.841-03:00  INFO 3408 --- [vidaplus] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-17T22:09:39.850-03:00  INFO 3408 --- [vidaplus] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
