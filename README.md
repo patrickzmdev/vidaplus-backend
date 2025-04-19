@@ -34,7 +34,7 @@ Sistema integrado para gestão hospitalar do Instituto VidaPlus, oferecendo cont
 - Resumos financeiros
 
 ## Tecnologias Utilizadas
-- Java 17
+- Java 21
 - Spring Boot
 - Spring Security
 - JPA/Hibernate
@@ -44,7 +44,7 @@ Sistema integrado para gestão hospitalar do Instituto VidaPlus, oferecendo cont
 - JavaMailSander
 
 ## Requisitos do Sistema
-- Java 17+
+- Java 21+
 - Maven 
 - PostgreSQL
 - Mínimo 4GB RAM para execução
